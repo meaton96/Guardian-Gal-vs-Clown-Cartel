@@ -5,11 +5,10 @@ using System.Collections.Generic;
 
 public class GGvsCCEditorTarget : TargetRules
 {
-	public GGvsCCEditorTarget( TargetInfo Target) : base(Target)
+	public GGvsCCEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
-		DefaultBuildSettings = BuildSettingsVersion.V4;
-		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_3;
+		DefaultBuildSettings = BuildSettingsVersion.V2;
 		ExtraModuleNames.Add("GGvsCC");
 	}
 }
