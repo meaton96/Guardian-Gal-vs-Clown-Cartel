@@ -1,0 +1,3 @@
+C:\Users\Mike\Documents\GitHub\Guardian-Gal-vs-Clown-Cartel\GGvsCC\Intermediate\Build\Win64\UE4Editor\Development\GGvsCC\Definitions.GGvsCC.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h

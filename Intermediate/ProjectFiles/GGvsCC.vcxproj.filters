@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\GGvsCC.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{60465409-2D18-4265-B721-B24449DFC589}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\GGvsCC.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\GGvsCCEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{23C57036-C0D3-4933-A59E-88EC747388E7}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\GGvsCC">
+      <UniqueIdentifier>{B42A4765-7DAE-4C8F-B2BE-73319AE061A2}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\GGvsCC\GGvsCC.Build.cs">
+      <Filter>Source\GGvsCC</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\GGvsCC\GGvsCC.cpp">
+      <Filter>Source\GGvsCC</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GGvsCC\GGvsCC.h">
+      <Filter>Source\GGvsCC</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GGvsCC\GGvsCCCharacter.cpp">
+      <Filter>Source\GGvsCC</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GGvsCC\GGvsCCCharacter.h">
+      <Filter>Source\GGvsCC</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GGvsCC\GGvsCCGameMode.cpp">
+      <Filter>Source\GGvsCC</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GGvsCC\GGvsCCGameMode.h">
+      <Filter>Source\GGvsCC</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
