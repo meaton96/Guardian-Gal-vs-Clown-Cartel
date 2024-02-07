@@ -1,2 +1,0 @@
-C:\Users\Mike\Documents\GitHub\Guardian-Gal-vs-Clown-Cartel\GGvsCC\Intermediate\Build\Win64\UE4Editor\Development\GGvsCC\Definitions.GGvsCC.h
-C:\Users\Mike\Documents\GitHub\Guardian-Gal-vs-Clown-Cartel\GGvsCC\Source\GGvsCC\GGvsCC.h
