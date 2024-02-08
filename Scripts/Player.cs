@@ -5,14 +5,19 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D sprite;
 	private Vector2 mouseDownPosition;
 
+	private const float SWIPE_THRESHOLD = 100;
+	private const float LONG_PRESS_THRESHOLD = 200;
+
 	private Line lineDetector;
+	private Interface ui;
 	private float mouseDownTime;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		lineDetector = GetNode<Line>("Line");
-		GD.Print(lineDetector);
+		ui = GetNode<Interface>("UserInterface");
+		//GD.Print(lineDetector);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,11 +53,11 @@ public partial class Player : CharacterBody2D
 				//also built in info about input from touch screens on mobile 
 				//example:
 
-				if (timePressed < 100)
+				if (timePressed < LONG_PRESS_THRESHOLD)
 				{
 					HandleClick();
 				}
-				else if (distance > 100)
+				else if (distance > SWIPE_THRESHOLD)
 				{
 					HandleSwipe();
 				}
@@ -72,7 +77,12 @@ public partial class Player : CharacterBody2D
 		GD.Print("Click");
 		if (lineDetector.CheckTap())
 		{
+			ui.DisplayHit();
 			GD.Print("Note Detected");
+		}
+		else {
+			ui.DisplayMiss();
+		
 		}
 	}
 	private void HandleLongPress()
@@ -80,7 +90,11 @@ public partial class Player : CharacterBody2D
 		GD.Print("Long press");
 		if (lineDetector.CheckHold())
 		{
+			ui.DisplayHit();
 			GD.Print("Note Detected");
+		}
+		else {
+			ui.DisplayMiss();
 		}
 	}
 	private void HandleSwipe()
@@ -88,7 +102,11 @@ public partial class Player : CharacterBody2D
 		GD.Print("Swipe");
 		if (lineDetector.CheckSwipe())
 		{
+			ui.DisplayHit();
 			GD.Print("Note Detected");
+		}
+		else {
+			ui.DisplayMiss();
 		}
 	}
 }

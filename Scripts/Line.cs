@@ -13,7 +13,9 @@ public partial class Line : Container
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		noteController = GetNode<NoteController>("NoteController");
+		
+		noteController = GetNode<NoteController>("../NoteController");
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +27,7 @@ public partial class Line : Container
 	// Returns false if there is no note detected after checking tap
 	public bool CheckTap()
 	{
+		
 		foreach (Note n in noteController.existingNotes)
 		{
 			if (n is RegNote && n.active && n.GlobalPosition.X >= (GlobalPosition.X - Size.X) && n.GlobalPosition.X <= (GlobalPosition.X + Size.X))

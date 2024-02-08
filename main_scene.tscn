@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=39 format=3 uid="uid://b2vfgihr8uqcs"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_e3qmu"]
 [ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="1_feimn"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dj6gsqwrnxp4p" path="res://Prefabs/note.tscn" id="9_xr7yv"]
 [ext_resource type="Script" path="res://Scripts/Notes/HoldNote.cs" id="10_bhsgm"]
 [ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="10_jxbjw"]
+[ext_resource type="Script" path="res://Scripts/Interface.cs" id="13_natsi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
 atlas = ExtResource("1_jgql2")
@@ -183,6 +184,12 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_st583"]
+
+[sub_resource type="SystemFont" id="SystemFont_xh16i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lvbaq"]
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(1093, 578)
 script = ExtResource("1_e3qmu")
@@ -344,3 +351,23 @@ offset_top = -602.0
 offset_right = -57.0
 offset_bottom = 98.0
 script = ExtResource("7_140gw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Line"]
+modulate = Color(1, 1, 1, 0.368627)
+position = Vector2(49, 344)
+scale = Vector2(-13.4057, 648.086)
+texture = SubResource("PlaceholderTexture2D_st583")
+
+[node name="UserInterface" type="VBoxContainer" parent="."]
+offset_left = -575.0
+offset_top = -440.0
+offset_right = -535.0
+offset_bottom = -400.0
+scale = Vector2(4.12, 3.4)
+script = ExtResource("13_natsi")
+
+[node name="FeedbackLabel" type="Label" parent="UserInterface"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_xh16i")
+theme_override_font_sizes/font_size = 13
+label_settings = SubResource("LabelSettings_lvbaq")
