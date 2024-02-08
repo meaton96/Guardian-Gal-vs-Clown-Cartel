@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dj6gsqwrnxp4p"]
+
+[node name="Note" type="Sprite2D"]
+position = Vector2(-58.7627, -253)
+rotation = 3.14159
+scale = Vector2(0.0456511, -0.929059)

@@ -1,10 +1,17 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=35 format=3 uid="uid://b2vfgihr8uqcs"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_e3qmu"]
 [ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="1_feimn"]
 [ext_resource type="Texture2D" uid="uid://2sutc3r5t0g6" path="res://PlaceholderCharacter/Attack_KG_1.png" id="1_jgql2"]
 [ext_resource type="Texture2D" uid="uid://bebfm7vbvdp4x" path="res://PlaceholderCharacter/Attack_KG_2.png" id="2_4uvb4"]
 [ext_resource type="Texture2D" uid="uid://dignm8vagpq3n" path="res://PlaceholderCharacter/Attack_KG_4.png" id="3_m7r27"]
+[ext_resource type="Script" path="res://Scripts/Line.cs" id="7_140gw"]
+[ext_resource type="Script" path="res://Scripts/Notes/RegNote.cs" id="8_oig1r"]
+[ext_resource type="Texture2D" uid="uid://boglkyw6lnpvq" path="res://Sprites/NoteSprite.png" id="8_qldeg"]
+[ext_resource type="Script" path="res://Scripts/Notes/SwipeNote.cs" id="9_jp07v"]
+[ext_resource type="PackedScene" uid="uid://dj6gsqwrnxp4p" path="res://Prefabs/note.tscn" id="9_xr7yv"]
+[ext_resource type="Script" path="res://Scripts/Notes/HoldNote.cs" id="10_bhsgm"]
+[ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="10_jxbjw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
 atlas = ExtResource("1_jgql2")
@@ -185,3 +192,155 @@ scale = Vector2(1.74, 1.95313)
 sprite_frames = SubResource("SpriteFrames_nse0a")
 animation = &"attack1_ph"
 autoplay = "idle_ph"
+
+[node name="NoteController" type="Container" parent="."]
+offset_left = -1114.0
+offset_top = -575.0
+offset_right = 86.0
+offset_bottom = 75.0
+script = ExtResource("10_jxbjw")
+
+[node name="RegNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote2" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote3" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote4" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote5" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote6" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote7" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote8" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote9" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="RegNote10" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.188235, 0.568627, 0.156863, 1)
+z_index = 5
+position = Vector2(-75, 300)
+rotation = 0.0
+scale = Vector2(0.1, 0.025)
+texture = ExtResource("8_qldeg")
+script = ExtResource("8_oig1r")
+
+[node name="SwipeNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.00784314, 0, 0.152941, 1)
+z_index = 5
+position = Vector2(-74.9543, 300)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_qldeg")
+script = ExtResource("9_jp07v")
+
+[node name="SwipeNote2" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.00784314, 0, 0.152941, 1)
+z_index = 5
+position = Vector2(-74.9543, 300)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_qldeg")
+script = ExtResource("9_jp07v")
+
+[node name="SwipeNote3" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(0.00784314, 0, 0.152941, 1)
+z_index = 5
+position = Vector2(-74.9543, 300)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_qldeg")
+script = ExtResource("9_jp07v")
+
+[node name="HoldNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(1, 0.32549, 1, 1)
+z_index = 5
+position = Vector2(-74.9543, 300)
+scale = Vector2(0.025, 0.1)
+texture = ExtResource("8_qldeg")
+script = ExtResource("10_bhsgm")
+
+[node name="HoldNote2" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(1, 0.32549, 1, 1)
+z_index = 5
+position = Vector2(-74.9543, 300)
+scale = Vector2(0.025, 0.1)
+texture = ExtResource("8_qldeg")
+script = ExtResource("10_bhsgm")
+
+[node name="HoldNote3" parent="NoteController" instance=ExtResource("9_xr7yv")]
+modulate = Color(1, 0.32549, 1, 1)
+z_index = 5
+position = Vector2(-74.9543, 300)
+scale = Vector2(0.025, 0.1)
+texture = ExtResource("8_qldeg")
+script = ExtResource("10_bhsgm")
+
+[node name="Line" type="BoxContainer" parent="."]
+offset_left = -157.0
+offset_top = -602.0
+offset_right = -57.0
+offset_bottom = 98.0
+script = ExtResource("7_140gw")

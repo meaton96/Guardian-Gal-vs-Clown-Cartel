@@ -4,18 +4,21 @@ public partial class Player : CharacterBody2D
 {
 	private AnimatedSprite2D sprite;
 	private Vector2 mouseDownPosition;
+
+	private Line lineDetector;
 	private float mouseDownTime;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-	
+		lineDetector = GetNode<Line>("Line");
+		GD.Print(lineDetector);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
+		
 	}
 
 	public override void _Input(InputEvent @event)
@@ -66,15 +69,26 @@ public partial class Player : CharacterBody2D
 
 	private void HandleClick()
 	{
-
 		GD.Print("Click");
+		if (lineDetector.CheckTap())
+		{
+			GD.Print("Note Detected");
+		}
 	}
 	private void HandleLongPress()
 	{
 		GD.Print("Long press");
+		if (lineDetector.CheckHold())
+		{
+			GD.Print("Note Detected");
+		}
 	}
 	private void HandleSwipe()
 	{
 		GD.Print("Swipe");
+		if (lineDetector.CheckSwipe())
+		{
+			GD.Print("Note Detected");
+		}
 	}
 }
