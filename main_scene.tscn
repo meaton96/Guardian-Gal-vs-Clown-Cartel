@@ -212,7 +212,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -221,7 +221,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -230,7 +230,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -239,7 +239,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -248,7 +248,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -257,7 +257,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -266,7 +266,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -275,7 +275,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -284,7 +284,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -293,7 +293,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-75, 300)
 rotation = 0.0
-scale = Vector2(0.1, 0.025)
+scale = Vector2(0.025, 0.1)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -325,7 +325,7 @@ script = ExtResource("9_jp07v")
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
 position = Vector2(-74.9543, 300)
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.15, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
@@ -333,7 +333,7 @@ script = ExtResource("10_bhsgm")
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
 position = Vector2(-74.9543, 300)
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.15, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
@@ -341,7 +341,7 @@ script = ExtResource("10_bhsgm")
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
 position = Vector2(-74.9543, 300)
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.15, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
