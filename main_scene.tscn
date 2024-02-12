@@ -201,99 +201,99 @@ animation = &"attack1_ph"
 autoplay = "idle_ph"
 
 [node name="NoteController" type="Container" parent="."]
-offset_left = -1114.0
-offset_top = -575.0
-offset_right = 86.0
-offset_bottom = 75.0
+offset_left = -1109.0
+offset_top = -573.0
+offset_right = 91.0
+offset_bottom = 77.0
 script = ExtResource("10_jxbjw")
 
 [node name="RegNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote2" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote3" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote4" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote5" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote6" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote7" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote8" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote9" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
 [node name="RegNote10" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
-position = Vector2(-75, 300)
+position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.025, 0.1)
+scale = Vector2(0.1, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -346,15 +346,15 @@ texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
 [node name="Line" type="BoxContainer" parent="."]
-offset_left = -157.0
-offset_top = -602.0
-offset_right = -57.0
-offset_bottom = 98.0
+offset_left = -109.0
+offset_top = -600.0
+offset_right = -93.0
+offset_bottom = 100.0
 script = ExtResource("7_140gw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Line"]
 modulate = Color(1, 1, 1, 0.368627)
-position = Vector2(49, 344)
+position = Vector2(8, 344)
 scale = Vector2(-13.4057, 648.086)
 texture = SubResource("PlaceholderTexture2D_st583")
 

@@ -35,6 +35,8 @@ public partial class Player : CharacterBody2D
 				mouseDownPosition = mouseEvent.Position;
 				mouseDownTime = Time.GetTicksMsec();
 
+				// Need this to trigger on click but NOT on release	
+				HandleClick();
 			}
 		}
 		else if (@event is InputEventMouseButton mouseEventUp && !mouseEventUp.Pressed)
@@ -53,15 +55,11 @@ public partial class Player : CharacterBody2D
 				//also built in info about input from touch screens on mobile 
 				//example:
 
-				if (timePressed < LONG_PRESS_THRESHOLD)
-				{
-					HandleClick();
-				}
-				else if (distance > SWIPE_THRESHOLD)
+				if (distance > SWIPE_THRESHOLD)
 				{
 					HandleSwipe();
 				}
-				else
+				else if (timePressed > LONG_PRESS_THRESHOLD)
 				{
 					HandleLongPress();
 				}
@@ -78,7 +76,6 @@ public partial class Player : CharacterBody2D
 		if (lineDetector.CheckTap())
 		{
 			ui.DisplayHit();
-			GD.Print("Note Detected");
 		}
 		else {
 			ui.DisplayMiss();
@@ -91,7 +88,6 @@ public partial class Player : CharacterBody2D
 		if (lineDetector.CheckHold())
 		{
 			ui.DisplayHit();
-			GD.Print("Note Detected");
 		}
 		else {
 			ui.DisplayMiss();
@@ -103,7 +99,6 @@ public partial class Player : CharacterBody2D
 		if (lineDetector.CheckSwipe())
 		{
 			ui.DisplayHit();
-			GD.Print("Note Detected");
 		}
 		else {
 			ui.DisplayMiss();

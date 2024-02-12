@@ -21,16 +21,17 @@ public partial class Line : Container
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+
 	}
 
 	// Returns false if there is no note detected after checking tap
 	public bool CheckTap()
 	{
-		
 		foreach (Note n in noteController.existingNotes)
 		{
-			if (n is RegNote && n.active && n.GlobalPosition.X >= (GlobalPosition.X - Size.X) && n.GlobalPosition.X <= (GlobalPosition.X + Size.X))
+			// Check if the note is a regular note, if its active, 
+			//	and if the line is at all within the bounds of the note (AABB, but only one axis)
+			if (n is RegNote && n.CheckNoteHit())
 			{
 				return true;
 			}
@@ -42,7 +43,9 @@ public partial class Line : Container
 	{
 		foreach (Note n in noteController.existingNotes)
 		{
-			if (n is HoldNote && n.active && n.GlobalPosition.X >= (GlobalPosition.X - Size.X) && n.GlobalPosition.X <= (GlobalPosition.X + Size.X))
+			// Check if the note is a hold note, if its active, 
+			//	and if the line is at all within the bounds of the note (AABB, but only one axis)
+			if (n is HoldNote && n.CheckNoteHit())
 			{
 				return true;
 			}
@@ -54,7 +57,9 @@ public partial class Line : Container
 	{
 		foreach (Note n in noteController.existingNotes)
 		{
-			if (n is SwipeNote && n.active && n.GlobalPosition.X >= (GlobalPosition.X - Size.X) && n.GlobalPosition.X <= (GlobalPosition.X + Size.X))
+			// Check if the note is a swipe note, if its active, 
+			//	and if the line is at all within the bounds of the note (AABB, but only one axis)
+			if (n is SwipeNote && n.CheckNoteHit())
 			{
 				return true;
 			}
