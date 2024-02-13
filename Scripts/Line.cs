@@ -3,12 +3,9 @@ using System;
 
 public partial class Line : Container
 {
-	// When click/tap/hold, check if there is a note touching the line
-	//	Check if it is within the perfect segment
-	// 	If so, give perfect feedback, if just in regular line bounds give regular feedback
-	//  
-
 	private NoteController noteController;
+
+	public Note hitNote;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,6 +30,7 @@ public partial class Line : Container
 			//	and if the line is at all within the bounds of the note (AABB, but only one axis)
 			if (n is RegNote && n.CheckNoteHit())
 			{
+				hitNote = n;
 				return true;
 			}
 		}
@@ -47,6 +45,7 @@ public partial class Line : Container
 			//	and if the line is at all within the bounds of the note (AABB, but only one axis)
 			if (n is HoldNote && n.CheckNoteHit())
 			{
+				hitNote = n;
 				return true;
 			}
 		}
@@ -61,6 +60,7 @@ public partial class Line : Container
 			//	and if the line is at all within the bounds of the note (AABB, but only one axis)
 			if (n is SwipeNote && n.CheckNoteHit())
 			{
+				hitNote = n;
 				return true;
 			}
 		}

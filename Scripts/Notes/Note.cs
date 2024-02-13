@@ -10,8 +10,12 @@ public partial class Note : Sprite2D
 	public float rightBound;
 	public float leftBound;
 	protected float speed = 10.0f;
-
 	protected Color baseColor;
+
+	// Change in each note definition, default is middle of screen
+	protected float ySpawnPos = 300;
+	protected float xSpawnPos = 400;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -54,8 +58,7 @@ public partial class Note : Sprite2D
 			//GD.Print("Move " + Name + " by " + move + " to " + GlobalPosition);
 			if (GlobalPosition.X > 1200)
 			{
-				active = false;
-				GlobalPosition = new Vector2(-100, 300);
+				DisableNote();
 			}
 		}
     }
@@ -75,6 +78,18 @@ public partial class Note : Sprite2D
 			return true;
 		}
 		return false;
+	}
+
+	public void EnableNote()
+	{
+		active = true;
+		GlobalPosition = new Vector2(xSpawnPos, ySpawnPos);
+	}
+
+	public void DisableNote()
+	{
+		active = false;
+		GlobalPosition = new Vector2(xSpawnPos, ySpawnPos);
 	}
 
 	/// <summary>

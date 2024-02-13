@@ -7,9 +7,11 @@ public partial class NoteController : Container
 {
 	public Godot.Collections.Array existingNotes;
 	private double time;
-	const double NOTE_SPAWN_INTERVAL = 0.4;	//how often to spawn a note in seconds
+	private double currentNoteSpawnInterval;
+	const double DEFAULT_NOTE_SPAWN_INTERVAL = 0.4;	//how often to spawn ANY note in seconds
+	const double HOLD_NOTE_SPAWN_INTERVAL = 1.1; //how often to spawn a HOLD note in seconds
 	const double SWIPE_SPAWN_CHANCE = .25;	//a % base chance to spawn a swipe note each time a note is spawned
-	const double HOLD_SPAWN_CHANCE = .05;	//a % base chance to spawn a hold note each time a note is spawned
+	const double HOLD_SPAWN_CHANCE = .10;	//a % base chance to spawn a hold note each time a note is spawned
 	private Random random = new();
 	
 	// Called when the node enters the scene tree for the first time.
@@ -34,30 +36,32 @@ public partial class NoteController : Container
 		{
 			if (n.GetType() == type && n.active == false)
 			{
-				n.active = true;
+				n.EnableNote();
 				break;
 			}
 		}
-	
 	}
 
 	public void HandleNodeSpawning(double delta) {
 		time += delta;
 
-		if (time > NOTE_SPAWN_INTERVAL)
+		if (time > currentNoteSpawnInterval)
 		{
 			time = 0;
 			int randomNumber = random.Next(0, 100);
 			if (randomNumber < HOLD_SPAWN_CHANCE * 100)
 			{
+				currentNoteSpawnInterval = HOLD_NOTE_SPAWN_INTERVAL;
 				SpawnNote(typeof(HoldNote));
 			}
 			else if (randomNumber < SWIPE_SPAWN_CHANCE * 100)
 			{
+				currentNoteSpawnInterval = DEFAULT_NOTE_SPAWN_INTERVAL;
 				SpawnNote(typeof(SwipeNote));
 			}
 			else
 			{
+				currentNoteSpawnInterval = DEFAULT_NOTE_SPAWN_INTERVAL;
 				SpawnNote(typeof(RegNote));
 			}
 		}

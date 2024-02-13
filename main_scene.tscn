@@ -324,24 +324,24 @@ script = ExtResource("9_jp07v")
 [node name="HoldNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
-position = Vector2(-74.9543, 300)
-scale = Vector2(0.15, 0.025)
+position = Vector2(-304, 299)
+scale = Vector2(0.473693, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
 [node name="HoldNote2" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
-position = Vector2(-74.9543, 300)
-scale = Vector2(0.15, 0.025)
+position = Vector2(-304, 299)
+scale = Vector2(0.473693, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
 [node name="HoldNote3" parent="NoteController" instance=ExtResource("9_xr7yv")]
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
-position = Vector2(-74.9543, 300)
-scale = Vector2(0.15, 0.025)
+position = Vector2(-304, 299)
+scale = Vector2(0.473693, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 

@@ -75,6 +75,7 @@ public partial class Player : CharacterBody2D
 		GD.Print("Click");
 		if (lineDetector.CheckTap())
 		{
+			lineDetector.hitNote.DisableNote();
 			ui.DisplayHit();
 		}
 		else {
@@ -87,6 +88,7 @@ public partial class Player : CharacterBody2D
 		GD.Print("Long press");
 		if (lineDetector.CheckHold())
 		{
+			lineDetector.hitNote.DisableNote();
 			ui.DisplayHit();
 		}
 		else {
@@ -98,6 +100,7 @@ public partial class Player : CharacterBody2D
 		GD.Print("Swipe");
 		if (lineDetector.CheckSwipe())
 		{
+			lineDetector.hitNote.DisableNote();
 			ui.DisplayHit();
 		}
 		else {
