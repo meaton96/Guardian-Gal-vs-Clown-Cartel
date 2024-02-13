@@ -1,7 +1,9 @@
+using System.Reflection.Metadata;
 using Godot;
 
 public partial class Player : CharacterBody2D
 {
+	private const bool DEBUG_ENABLED = true;
 	private AnimatedSprite2D sprite;
 	private Vector2 mouseDownPosition;
 
@@ -23,28 +25,84 @@ public partial class Player : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+		//something touch screen related
+		HandleTouchInput(@event);
+		//something mouse button related
+		HandleMouseInput(@event);
+
+		if (DEBUG_ENABLED) {
+			HandleKeyboardInput(@event);	
+		}
+
+	}
+	private void HandleKeyboardInput(InputEvent @event) {
+		if (@event is InputEventKey keyEvent) {
+			if (keyEvent.Pressed) {
+				if (keyEvent.Keycode == Key.Escape) {
+					ui.ClearInput();
+				}
+			}
+		}
+	}
+	
+	private void HandleTouchInput(InputEvent @event)
+	{
+		if (@event is InputEventScreenTouch screenTouch)
 		{
-			if (mouseEvent.ButtonIndex == MouseButton.Left)
+			ui.SetFeedback("screen touch");
+			if (screenTouch.Pressed)
 			{
+				mouseDownPosition = screenTouch.Position;
+				mouseDownTime = Time.GetTicksMsec();
+			}
+			else
+			{
+				var timePressed = Time.GetTicksMsec() - mouseDownTime;
+
+				if (timePressed > LONG_PRESS_THRESHOLD)
+				{
+					HandleLongPress();
+				}
+				else
+				{
+					HandleClick();
+				}
+			}
+		}
+		else if (@event is InputEventScreenDrag screenDrag)
+		{
+			
+			ui.SetFeedback("screen drag");
+			if (screenDrag.Relative.Length() > SWIPE_THRESHOLD)
+			{
+				HandleSwipe();
+			}
+		}
+	}
+	private void HandleMouseInput(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton mouseEvent)
+		{
+			ui.SetFeedback("mouse down");
+			if (mouseEvent.ButtonIndex != MouseButton.Left) return;
+			//mouse down
+			if (mouseEvent.Pressed)
+			{
+
 				mouseDownPosition = mouseEvent.Position;
 				mouseDownTime = Time.GetTicksMsec();
 
-				// Need this to trigger on click but NOT on release	
-				HandleClick();
 			}
-		}
-		else if (@event is InputEventMouseButton mouseEventUp && !mouseEventUp.Pressed)
-		{
-
-			if (mouseEventUp.ButtonIndex == MouseButton.Left)
+			//mouse up
+			else if (!mouseEvent.Pressed)
 			{
-				var mouseUpPosition = mouseEventUp.Position;
+				ui.SetFeedback("mouse up");
+				var mouseUpPosition = mouseEvent.Position;
 				var distance = mouseDownPosition.DistanceTo(mouseUpPosition);
 				var timePressed = Time.GetTicksMsec() - mouseDownTime;
 
@@ -63,48 +121,54 @@ public partial class Player : CharacterBody2D
 				{
 					HandleLongPress();
 				}
-
-
-				//	GD.Print($"Left button was released at {mouseEventUp.Position} distance: {distance} time: {timePressed}");
+				else
+				{
+					HandleClick();
+				}
 			}
 		}
 	}
-
 	private void HandleClick()
 	{
-		GD.Print("Click");
+		//	GD.Print("Click");
+		ui.AddInput("Click");
 		if (lineDetector.CheckTap())
 		{
 			lineDetector.hitNote.DisableNote();
-			ui.DisplayHit();
+			//ui.DisplayHit();
 		}
-		else {
-			ui.DisplayMiss();
-		
+		else
+		{
+			//ui.DisplayMiss();
+
 		}
 	}
 	private void HandleLongPress()
 	{
-		GD.Print("Long press");
+		//	GD.Print("Long press");
+		ui.AddInput("Long press");
 		if (lineDetector.CheckHold())
 		{
 			lineDetector.hitNote.DisableNote();
-			ui.DisplayHit();
+			//ui.DisplayHit();
 		}
-		else {
-			ui.DisplayMiss();
+		else
+		{
+			//ui.DisplayMiss();
 		}
 	}
 	private void HandleSwipe()
 	{
-		GD.Print("Swipe");
+		//	GD.Print("Swipe");
+		ui.AddInput("Swipe");
 		if (lineDetector.CheckSwipe())
 		{
 			lineDetector.hitNote.DisableNote();
-			ui.DisplayHit();
+			//ui.DisplayHit();
 		}
-		else {
-			ui.DisplayMiss();
+		else
+		{
+			//ui.DisplayMiss();
 		}
 	}
 }

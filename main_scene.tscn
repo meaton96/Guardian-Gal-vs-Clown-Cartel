@@ -195,16 +195,18 @@ position = Vector2(1093, 578)
 script = ExtResource("1_e3qmu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.74, 1.95313)
+position = Vector2(1165, 185)
+scale = Vector2(2.65176, 2.97656)
 sprite_frames = SubResource("SpriteFrames_nse0a")
 animation = &"attack1_ph"
 autoplay = "idle_ph"
 
 [node name="NoteController" type="Container" parent="."]
-offset_left = -1109.0
-offset_top = -573.0
-offset_right = 91.0
-offset_bottom = 77.0
+offset_left = -1081.0
+offset_top = -582.0
+offset_right = -201.0
+offset_bottom = 42.0
+scale = Vector2(2.08742, 1.74007)
 script = ExtResource("10_jxbjw")
 
 [node name="RegNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
@@ -212,7 +214,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -221,7 +223,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -230,7 +232,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -239,7 +241,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -248,7 +250,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -257,7 +259,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -266,7 +268,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -275,7 +277,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -284,7 +286,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -293,7 +295,7 @@ modulate = Color(0.188235, 0.568627, 0.156863, 1)
 z_index = 5
 position = Vector2(-80, 299)
 rotation = 0.0
-scale = Vector2(0.1, 0.02)
+scale = Vector2(0.05, 0.02)
 texture = ExtResource("8_qldeg")
 script = ExtResource("8_oig1r")
 
@@ -301,7 +303,7 @@ script = ExtResource("8_oig1r")
 modulate = Color(0.00784314, 0, 0.152941, 1)
 z_index = 5
 position = Vector2(-74.9543, 300)
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.04, 0.05)
 texture = ExtResource("8_qldeg")
 script = ExtResource("9_jp07v")
 
@@ -309,7 +311,7 @@ script = ExtResource("9_jp07v")
 modulate = Color(0.00784314, 0, 0.152941, 1)
 z_index = 5
 position = Vector2(-74.9543, 300)
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.04, 0.05)
 texture = ExtResource("8_qldeg")
 script = ExtResource("9_jp07v")
 
@@ -317,7 +319,7 @@ script = ExtResource("9_jp07v")
 modulate = Color(0.00784314, 0, 0.152941, 1)
 z_index = 5
 position = Vector2(-74.9543, 300)
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.04, 0.05)
 texture = ExtResource("8_qldeg")
 script = ExtResource("9_jp07v")
 
@@ -325,7 +327,7 @@ script = ExtResource("9_jp07v")
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
 position = Vector2(-304, 299)
-scale = Vector2(0.473693, 0.025)
+scale = Vector2(0.25, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
@@ -333,7 +335,7 @@ script = ExtResource("10_bhsgm")
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
 position = Vector2(-304, 299)
-scale = Vector2(0.473693, 0.025)
+scale = Vector2(0.25, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
@@ -341,33 +343,44 @@ script = ExtResource("10_bhsgm")
 modulate = Color(1, 0.32549, 1, 1)
 z_index = 5
 position = Vector2(-304, 299)
-scale = Vector2(0.473693, 0.025)
+scale = Vector2(0.25, 0.025)
 texture = ExtResource("8_qldeg")
 script = ExtResource("10_bhsgm")
 
 [node name="Line" type="BoxContainer" parent="."]
-offset_left = -109.0
-offset_top = -600.0
-offset_right = -93.0
-offset_bottom = 100.0
+offset_left = 1008.0
+offset_top = -800.0
+offset_right = 1024.0
+offset_bottom = -100.0
+scale = Vector2(1, 2.44)
 script = ExtResource("7_140gw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Line"]
 modulate = Color(1, 1, 1, 0.368627)
-position = Vector2(8, 344)
-scale = Vector2(-13.4057, 648.086)
+position = Vector2(7.99975, 315.785)
+scale = Vector2(-13.4052, 454.262)
 texture = SubResource("PlaceholderTexture2D_st583")
 
 [node name="UserInterface" type="VBoxContainer" parent="."]
-offset_left = -575.0
-offset_top = -440.0
-offset_right = -535.0
-offset_bottom = -400.0
+offset_left = -1084.0
+offset_top = -581.0
+offset_right = -503.0
+offset_bottom = -264.0
 scale = Vector2(4.12, 3.4)
+size_flags_horizontal = 4
 script = ExtResource("13_natsi")
 
 [node name="FeedbackLabel" type="Label" parent="UserInterface"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_xh16i")
 theme_override_font_sizes/font_size = 13
+text = "miss"
+label_settings = SubResource("LabelSettings_lvbaq")
+horizontal_alignment = 1
+
+[node name="InputLabel" type="Label" parent="UserInterface"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_xh16i")
+theme_override_font_sizes/font_size = 13
+text = "Swipe"
 label_settings = SubResource("LabelSettings_lvbaq")

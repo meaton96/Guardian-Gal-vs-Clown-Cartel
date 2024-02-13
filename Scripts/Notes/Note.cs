@@ -56,7 +56,7 @@ public partial class Note : Sprite2D
 
 			// print information for testing
 			//GD.Print("Move " + Name + " by " + move + " to " + GlobalPosition);
-			if (GlobalPosition.X > 1200)
+			if (GlobalPosition.X > GetViewportRect().Size.X + 100)
 			{
 				DisableNote();
 			}
