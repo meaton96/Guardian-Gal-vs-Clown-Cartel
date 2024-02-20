@@ -7,23 +7,20 @@ public partial class Interface : VBoxContainer
 	Label inputText;
 
 	Button button;
+	Label platformLabel;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		text = GetNode<Label>("FeedbackLabel");
 		inputText = GetNode<Label>("InputLabel");
+		platformLabel = GetNode<Label>("../PlatformNode/PlatformLabel");
+		platformLabel.Text = "Platform: " + OS.GetName();
 		CreateButton();
 	}
 	private void CreateButton()
 	{
 		button = GetNode<Button>("../Button/ResetButton");
-		
-		button.Pressed += OnButtonPressed;
-		//GD.Print(button);
-	}
-	private void OnButtonPressed()
-	{
-		inputText.Text = "";
+		button.Pressed += ClearInput;
 	}
 
 

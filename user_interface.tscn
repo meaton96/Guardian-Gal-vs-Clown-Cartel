@@ -19,7 +19,8 @@ script = ExtResource("1_k730o")
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_e5lcd")
 theme_override_font_sizes/font_size = 13
-text = "miss"
+text = "
+"
 label_settings = SubResource("LabelSettings_reqr5")
 horizontal_alignment = 1
 
@@ -39,3 +40,11 @@ offset_top = 6.0
 offset_right = 595.5
 offset_bottom = 59.0
 text = "Reset"
+
+[node name="PlatformNode" type="Node2D" parent="."]
+position = Vector2(-7.25, 248.5)
+
+[node name="PlatformLabel" type="Label" parent="PlatformNode"]
+offset_left = 9.0
+offset_right = 40.0
+offset_bottom = 23.0
