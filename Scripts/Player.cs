@@ -18,7 +18,8 @@ public partial class Player : CharacterBody2D
 	{
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		lineDetector = GetNode<Line>("Line");
-		ui = GetNode<Interface>("UserInterface");
+		ui = GetNode<Node2D>("UserInterface").GetNode<Interface>("UserInterface");
+		GD.Print(ui);
 		//GD.Print(lineDetector);
 	}
 

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bntghcjqmpkaa"]
+
+[ext_resource type="Script" path="res://Scripts/Interface.cs" id="1_k730o"]
+
+[sub_resource type="SystemFont" id="SystemFont_e5lcd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_reqr5"]
+
+[node name="UI" type="Node2D"]
+scale = Vector2(4, 4)
+
+[node name="UserInterface" type="VBoxContainer" parent="."]
+offset_left = 3.0
+offset_right = 523.0
+offset_bottom = 271.0
+script = ExtResource("1_k730o")
+
+[node name="FeedbackLabel" type="Label" parent="UserInterface"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_e5lcd")
+theme_override_font_sizes/font_size = 13
+text = "miss"
+label_settings = SubResource("LabelSettings_reqr5")
+horizontal_alignment = 1
+
+[node name="InputLabel" type="Label" parent="UserInterface"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_e5lcd")
+theme_override_font_sizes/font_size = 13
+label_settings = SubResource("LabelSettings_reqr5")
+
+[node name="Button" type="Node2D" parent="."]
+position = Vector2(298.5, 1.75)
+scale = Vector2(0.5, 0.5)
+
+[node name="ResetButton" type="Button" parent="Button"]
+offset_left = 447.5
+offset_top = 6.0
+offset_right = 595.5
+offset_bottom = 59.0
+text = "Reset"
