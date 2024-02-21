@@ -11,6 +11,7 @@ public partial class Note : Sprite2D
 	public float leftBound;
 	protected float speed = 10.0f;
 	protected Color baseColor;
+	protected Control bounds;
 
 	// Change in each note definition, default is middle of screen
 	protected float ySpawnPos = 300;
@@ -22,6 +23,7 @@ public partial class Note : Sprite2D
 	{
 		lineDetector = GetNode<Line>("../../Line");
 		active = false;
+		bounds = GetNode<Control>("Bounds");
 
 		baseColor = Modulate;
 	}
@@ -30,12 +32,13 @@ public partial class Note : Sprite2D
 	public override void _Process(double delta)
 	{
 		// Update bound locations
-		rightBound = GlobalPosition.X + (XSize() * 1/2);
-		leftBound = GlobalPosition.X - (XSize() * 1/2);
+		rightBound = GlobalPosition.X + GetXSize();
+		leftBound = GlobalPosition.X - GetXSize();
 
+		// Hit effect
 		if (CheckNoteHit())
 		{
-			Modulate = new Color(1, 1, 1);
+			Modulate = new Color(0, 1, 0);
 		}
 		else
 		{
@@ -56,7 +59,7 @@ public partial class Note : Sprite2D
 
 			// print information for testing
 			//GD.Print("Move " + Name + " by " + move + " to " + GlobalPosition);
-			if (GlobalPosition.X > GetViewportRect().Size.X + 100)
+			if (GlobalPosition.X > GetViewportRect().Size.X + 200)
 			{
 				DisableNote();
 			}
@@ -92,12 +95,8 @@ public partial class Note : Sprite2D
 		GlobalPosition = new Vector2(xSpawnPos, ySpawnPos);
 	}
 
-	/// <summary>
-	/// Gets the X size (width) of the note
-	/// </summary>
-	/// <returns> Width/XSize of note </returns>
-	private float XSize()
+	private float GetXSize()
 	{
-		return Texture.GetSize().X * Scale.X;
+		return bounds.Size.X * Scale.X;
 	}
 }
