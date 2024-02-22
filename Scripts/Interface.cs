@@ -5,6 +5,7 @@ public partial class Interface : VBoxContainer
 {
 	Label text;
 	Label inputText;
+	Label scoreText;
 
 	Button button;
 	Label platformLabel;
@@ -13,6 +14,7 @@ public partial class Interface : VBoxContainer
 	{
 		text = GetNode<Label>("FeedbackLabel");
 		inputText = GetNode<Label>("InputLabel");
+		scoreText = GetNode<Label>("ScoreLabel");
 		platformLabel = GetNode<Label>("../PlatformNode/PlatformLabel");
 		platformLabel.Text = "Platform: " + OS.GetName();
 		CreateButton();
@@ -44,13 +46,33 @@ public partial class Interface : VBoxContainer
 		text.Text = feedback;
 	}
 
-	public void DisplayHit()
+	/*public void DisplayHit()
 	{
 		text.Text = "Hit :)";
-	}
+	}*/
 
 	public void DisplayMiss()
 	{
 		text.Text = "Miss :(";
+	}
+
+	public void DisplayPerfect()
+	{
+		text.Text = "PERFECT!! :D";
+	}
+
+	public void DisplayGreat()
+	{
+		text.Text = "Great!";
+	}
+
+	public void DisplayGood()
+	{
+		text.Text = "good";
+	}
+
+	public void DisplayScore(int score)
+	{
+		scoreText.Text = score;
 	}
 }

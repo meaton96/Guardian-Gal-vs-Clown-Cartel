@@ -3,7 +3,8 @@ using Godot;
 public partial class Note : Sprite2D
 {
 	// References
-	private Line lineDetector;
+	private Line lineDetector;																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
+	private PointHandling points;
 
 	// Fields
 	public bool active; // If true, note is moving across scene, else it is wating in the pool
@@ -24,6 +25,7 @@ public partial class Note : Sprite2D
 		lineDetector = GetNode<Line>("../../Line");
 		active = false;
 		bounds = GetNode<Control>("Bounds");
+		points = GetNode<Control>("../../PointController");
 
 		baseColor = Modulate;
 	}
@@ -78,6 +80,7 @@ public partial class Note : Sprite2D
 			rightBound >= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1/2)) && 
 			leftBound <= (lineDetector.GlobalPosition.X + (lineDetector.Size.X * 1/2)))
 		{
+			points.HandleScore(this, lineDetector.GlobalPosition.X, lineDetector.Size.X);
 			return true;
 		}
 		return false;

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Interface.cs" id="1_k730o"]
 
 [sub_resource type="SystemFont" id="SystemFont_e5lcd"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_reqr5"]
 
@@ -29,6 +30,9 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_e5lcd")
 theme_override_font_sizes/font_size = 13
 label_settings = SubResource("LabelSettings_reqr5")
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 2
 
 [node name="Button" type="Node2D" parent="."]
 position = Vector2(298.5, 1.75)
