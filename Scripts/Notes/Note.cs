@@ -25,7 +25,7 @@ public partial class Note : Sprite2D
 		lineDetector = GetNode<Line>("../../Line");
 		active = false;
 		bounds = GetNode<Control>("Bounds");
-		points = GetNode<Control>("../../PointController");
+		points = GetNode<PointHandling>("../../PointController");
 
 		baseColor = Modulate;
 	}

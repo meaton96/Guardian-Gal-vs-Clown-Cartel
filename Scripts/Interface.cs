@@ -73,6 +73,6 @@ public partial class Interface : VBoxContainer
 
 	public void DisplayScore(int score)
 	{
-		scoreText.Text = score;
+		scoreText.Text = score.ToString();
 	}
 }
