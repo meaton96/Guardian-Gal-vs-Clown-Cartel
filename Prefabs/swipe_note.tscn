@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0ri1p6oy3xva"]
+
+[ext_resource type="Texture2D" uid="uid://c33iocego80tk" path="res://Sprites/CannonballSprite.png" id="1_rbcsi"]
+[ext_resource type="Script" path="res://Scripts/Notes/SwipeNote.cs" id="2_504dh"]
+
+[node name="SwipeNote" type="Sprite2D"]
+position = Vector2(-151.383, 89.6516)
+texture = ExtResource("1_rbcsi")
+script = ExtResource("2_504dh")
+
+[node name="Bounds" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2

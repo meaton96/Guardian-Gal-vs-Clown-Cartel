@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://m6502aymcibt"]
+
+[ext_resource type="Texture2D" uid="uid://boglkyw6lnpvq" path="res://Sprites/NoteSprite.png" id="1_l3adn"]
+[ext_resource type="Script" path="res://Scripts/Notes/HoldNote.cs" id="2_uefll"]
+
+[node name="HoldNote" type="Sprite2D"]
+position = Vector2(-136.053, 43.6764)
+scale = Vector2(0.206086, 0.0057569)
+texture = ExtResource("1_l3adn")
+script = ExtResource("2_uefll")
+
+[node name="Bounds" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

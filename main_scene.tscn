@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=35 format=3 uid="uid://b2vfgihr8uqcs"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_e3qmu"]
 [ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="1_feimn"]
@@ -6,14 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bebfm7vbvdp4x" path="res://PlaceholderCharacter/Attack_KG_2.png" id="2_4uvb4"]
 [ext_resource type="Texture2D" uid="uid://dignm8vagpq3n" path="res://PlaceholderCharacter/Attack_KG_4.png" id="3_m7r27"]
 [ext_resource type="Script" path="res://Scripts/Line.cs" id="7_140gw"]
-[ext_resource type="Texture2D" uid="uid://dsde8evbcg3ob" path="res://Sprites/ArrowSprite.png" id="8_m4v2o"]
-[ext_resource type="Script" path="res://Scripts/Notes/RegNote.cs" id="8_oig1r"]
-[ext_resource type="Texture2D" uid="uid://boglkyw6lnpvq" path="res://Sprites/NoteSprite.png" id="8_qldeg"]
-[ext_resource type="Script" path="res://Scripts/Notes/SwipeNote.cs" id="9_jp07v"]
-[ext_resource type="PackedScene" uid="uid://dj6gsqwrnxp4p" path="res://Prefabs/note.tscn" id="9_xr7yv"]
-[ext_resource type="Script" path="res://Scripts/Notes/HoldNote.cs" id="10_bhsgm"]
+[ext_resource type="PackedScene" uid="uid://ce2hpman0tn6f" path="res://Prefabs/tap_note.tscn" id="7_getb6"]
+[ext_resource type="PackedScene" uid="uid://d0ri1p6oy3xva" path="res://Prefabs/swipe_note.tscn" id="8_js670"]
+[ext_resource type="PackedScene" uid="uid://m6502aymcibt" path="res://Prefabs/hold_note.tscn" id="10_fdqxs"]
 [ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="10_jxbjw"]
-[ext_resource type="Texture2D" uid="uid://c33iocego80tk" path="res://Sprites/CannonballSprite.png" id="10_mq3bb"]
 [ext_resource type="PackedScene" path="res://user_interface.tscn" id="14_me7xa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
@@ -207,245 +203,37 @@ offset_bottom = 42.0
 scale = Vector2(2.08742, 1.74007)
 script = ExtResource("10_jxbjw")
 
-[node name="RegNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
+[node name="HoldNote" parent="NoteController" instance=ExtResource("10_fdqxs")]
 
-[node name="Bounds" type="Control" parent="NoteController/RegNote"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HoldNote2" parent="NoteController" instance=ExtResource("10_fdqxs")]
 
-[node name="RegNote2" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
+[node name="HoldNote3" parent="NoteController" instance=ExtResource("10_fdqxs")]
 
-[node name="Bounds" type="Control" parent="NoteController/RegNote2"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SwipeNote" parent="NoteController" instance=ExtResource("8_js670")]
 
-[node name="RegNote3" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
+[node name="SwipeNote2" parent="NoteController" instance=ExtResource("8_js670")]
 
-[node name="Bounds" type="Control" parent="NoteController/RegNote3"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SwipeNote3" parent="NoteController" instance=ExtResource("8_js670")]
 
-[node name="RegNote4" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
+[node name="TapNote" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="Bounds" type="Control" parent="NoteController/RegNote4"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TapNote2" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="RegNote5" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
+[node name="TapNote3" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="Bounds" type="Control" parent="NoteController/RegNote5"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TapNote4" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="RegNote6" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
+[node name="TapNote5" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="Bounds" type="Control" parent="NoteController/RegNote6"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TapNote6" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="RegNote7" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
+[node name="TapNote7" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="Bounds" type="Control" parent="NoteController/RegNote7"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TapNote8" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="RegNote8" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
+[node name="TapNote9" parent="NoteController" instance=ExtResource("7_getb6")]
 
-[node name="Bounds" type="Control" parent="NoteController/RegNote8"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RegNote9" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
-
-[node name="Bounds" type="Control" parent="NoteController/RegNote9"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RegNote10" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-128.388, 259.76)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("8_m4v2o")
-script = ExtResource("8_oig1r")
-
-[node name="Bounds" type="Control" parent="NoteController/RegNote10"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -16.0
-offset_right = -32.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SwipeNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
-z_index = 5
-position = Vector2(-74.9543, 300)
-rotation = 0.0
-scale = Vector2(1, 1)
-texture = ExtResource("10_mq3bb")
-script = ExtResource("9_jp07v")
-
-[node name="Bounds" type="Control" parent="NoteController/SwipeNote"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HoldNote" parent="NoteController" instance=ExtResource("9_xr7yv")]
-modulate = Color(1, 0.32549, 1, 1)
-z_index = 5
-position = Vector2(-285.52, 319.527)
-scale = Vector2(0.25, 0.025)
-texture = ExtResource("8_qldeg")
-script = ExtResource("10_bhsgm")
-
-[node name="Bounds" type="Control" parent="NoteController/HoldNote"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -600.0
-offset_top = -600.0
-offset_right = -600.0
-offset_bottom = -600.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TapNote10" parent="NoteController" instance=ExtResource("7_getb6")]
 
 [node name="Line" type="BoxContainer" parent="."]
 offset_left = 1008.0
