@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=32 format=3 uid="uid://b2vfgihr8uqcs"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_e3qmu"]
 [ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="1_feimn"]
@@ -6,11 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bebfm7vbvdp4x" path="res://PlaceholderCharacter/Attack_KG_2.png" id="2_4uvb4"]
 [ext_resource type="Texture2D" uid="uid://dignm8vagpq3n" path="res://PlaceholderCharacter/Attack_KG_4.png" id="3_m7r27"]
 [ext_resource type="Script" path="res://Scripts/Line.cs" id="7_140gw"]
-[ext_resource type="PackedScene" uid="uid://ce2hpman0tn6f" path="res://Prefabs/tap_note.tscn" id="7_getb6"]
-[ext_resource type="PackedScene" uid="uid://d0ri1p6oy3xva" path="res://Prefabs/swipe_note.tscn" id="8_js670"]
-[ext_resource type="PackedScene" uid="uid://m6502aymcibt" path="res://Prefabs/hold_note.tscn" id="10_fdqxs"]
 [ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="10_jxbjw"]
-[ext_resource type="PackedScene" path="res://user_interface.tscn" id="14_me7xa"]
+[ext_resource type="PackedScene" uid="uid://bntghcjqmpkaa" path="res://user_interface.tscn" id="14_me7xa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
 atlas = ExtResource("1_jgql2")
@@ -202,38 +199,6 @@ offset_right = -201.0
 offset_bottom = 42.0
 scale = Vector2(2.08742, 1.74007)
 script = ExtResource("10_jxbjw")
-
-[node name="HoldNote" parent="NoteController" instance=ExtResource("10_fdqxs")]
-
-[node name="HoldNote2" parent="NoteController" instance=ExtResource("10_fdqxs")]
-
-[node name="HoldNote3" parent="NoteController" instance=ExtResource("10_fdqxs")]
-
-[node name="SwipeNote" parent="NoteController" instance=ExtResource("8_js670")]
-
-[node name="SwipeNote2" parent="NoteController" instance=ExtResource("8_js670")]
-
-[node name="SwipeNote3" parent="NoteController" instance=ExtResource("8_js670")]
-
-[node name="TapNote" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote2" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote3" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote4" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote5" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote6" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote7" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote8" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote9" parent="NoteController" instance=ExtResource("7_getb6")]
-
-[node name="TapNote10" parent="NoteController" instance=ExtResource("7_getb6")]
 
 [node name="Line" type="BoxContainer" parent="."]
 offset_left = 1008.0

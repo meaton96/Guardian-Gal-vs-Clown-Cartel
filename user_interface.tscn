@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Interface.cs" id="1_k730o"]
 
 [sub_resource type="SystemFont" id="SystemFont_e5lcd"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_reqr5"]
 
