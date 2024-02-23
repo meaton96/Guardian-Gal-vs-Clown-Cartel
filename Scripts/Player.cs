@@ -151,13 +151,14 @@ public partial class Player : CharacterBody2D
 				timePressed = Time.GetTicksMsec() - mouseDownTime;
 
 
-				if (distance > SWIPE_THRESHOLD)
-				{
-					HandleSwipe();
-				}
-				else if (timePressed > LONG_PRESS_THRESHOLD)
+				if (timePressed > LONG_PRESS_THRESHOLD)
 				{
 					HandleLongPress();
+					
+				}
+				else if (distance > SWIPE_THRESHOLD)
+				{
+					HandleSwipe();
 				}
 				else
 				{

@@ -6,10 +6,12 @@ public partial class HoldNote : Note
 	// Fields
 
 
+	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		xSpawnPos = -320;
+		//xSpawnPos = -320;
 		base._Ready();
 	}
 
@@ -17,5 +19,12 @@ public partial class HoldNote : Note
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
+	}
+	public override void EnableNote()
+	{
+
+		active = true;
+		GlobalPosition = new Vector2(xSpawnPos - 300, ySpawnPos);
+		
 	}
 }
