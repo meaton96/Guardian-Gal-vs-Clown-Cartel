@@ -5,6 +5,7 @@ public partial class PointHandling : Node
 {
 	// references
 	private Interface ui;
+	private Line lineDetector;
 
 	//fields
 	private int perfect = 5;
@@ -18,6 +19,7 @@ public partial class PointHandling : Node
 	{
 		PlayerScore = 0;
 		ui = GetNode<Interface>("../UserInterface/UserInterface");
+		lineDetector = GetNode<Line>("../Line");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,17 +28,20 @@ public partial class PointHandling : Node
 		ui.DisplayScore(PlayerScore);
 	}
 
-	public void HandleScore(Note note, float lineLocation, float lineSize)
+	public void HandleScore(Note note)
 	{
+		// TODO: MAKE SEPERATE METHOD FOR SWIPE
+		//if (lineDetector.CheckHold() || lineDetector.CheckTap() || lineDetector.CheckSwipe())
+		//{
 		// the fractions change where each notes is detected
-		if(note.rightBound >= (lineLocation - (lineSize * 1/4)) && 
-			note.leftBound <= (lineLocation+ (lineSize * 1/4)))
+		if (note.rightBound >= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 2)) &&
+			note.leftBound <= (lineDetector.GlobalPosition.X + (lineDetector.Size.X * 1 / 4)))
 		{
 			PlayerScore += perfect;
 			ui.DisplayPerfect();
 		}
-		else if(note.rightBound >= (lineLocation - (lineSize * 1/3)) && 
-			note.leftBound <= (lineLocation+ (lineSize * 1/3)))
+		else if (note.rightBound >= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 2)) &&
+			note.leftBound <= (lineDetector.GlobalPosition.X + (lineDetector.Size.X * 1 / 3)))
 		{
 			PlayerScore += great;
 			ui.DisplayGreat();
@@ -46,5 +51,7 @@ public partial class PointHandling : Node
 			PlayerScore += good;
 			ui.DisplayGood();
 		}
+		//}
+
 	}
 }

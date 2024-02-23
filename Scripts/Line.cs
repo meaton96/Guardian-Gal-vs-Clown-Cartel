@@ -4,6 +4,7 @@ using System;
 public partial class Line : Container
 {
 	private NoteController noteController;
+	private PointHandling pointController;
 
 	public Note hitNote;
 
@@ -12,6 +13,7 @@ public partial class Line : Container
 	{
 		
 		noteController = GetNode<NoteController>("../NoteController");
+		pointController = GetNode<PointHandling>("../PointController");
 		
 	}
 
@@ -31,6 +33,7 @@ public partial class Line : Container
 			if (n is RegNote && n.CheckNoteHit())
 			{
 				hitNote = n;
+				pointController.HandleScore(n);
 				return true;
 			}
 		}
@@ -46,6 +49,7 @@ public partial class Line : Container
 			if (n is HoldNote && n.CheckNoteHit())
 			{
 				hitNote = n;
+				pointController.HandleScore(n);
 				return true;
 			}
 		}
@@ -61,6 +65,7 @@ public partial class Line : Container
 			if (n is SwipeNote && n.CheckNoteHit())
 			{
 				hitNote = n;
+				pointController.HandleScore(n);
 				return true;
 			}
 		}

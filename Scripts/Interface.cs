@@ -43,7 +43,7 @@ public partial class Interface : VBoxContainer
 	}
 	public void SetFeedback(string feedback)
 	{
-		text.Text = feedback;
+		//text.Text = feedback;
 	}
 
 	/*public void DisplayHit()
