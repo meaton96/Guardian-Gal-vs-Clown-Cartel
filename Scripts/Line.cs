@@ -36,6 +36,10 @@ public partial class Line : Container
 				pointController.HandleScore(n);
 				return true;
 			}
+			/*else if (n is RegNote && !n.CheckNoteHit())
+			{
+				pointController.Miss();
+			}*/
 		}
 		return false;
 	}
@@ -52,6 +56,10 @@ public partial class Line : Container
 				pointController.HandleScore(n);
 				return true;
 			}
+			/*else if (n is HoldNote && !n.CheckNoteHit())
+			{
+				pointController.Miss();
+			}*/
 		}
 		return false;
 	}
@@ -68,6 +76,10 @@ public partial class Line : Container
 				pointController.HandleScore(n);
 				return true;
 			}
+			/*else if (n is SwipeNote && !n.CheckNoteHit())
+			{
+				pointController.Miss();
+			}*/
 		}
 		return false;
 	}

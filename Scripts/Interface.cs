@@ -34,7 +34,7 @@ public partial class Interface : VBoxContainer
 	public void AddInput(string input)
 	{
 
-		inputText.Text = $"{input}\n{inputText.Text}";
+		//inputText.Text = $"{input}\n{inputText.Text}";
 
 	}
 	public void ClearInput()

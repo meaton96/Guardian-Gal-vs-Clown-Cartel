@@ -26,22 +26,20 @@ public partial class PointHandling : Node
 	public override void _Process(double delta)
 	{
 		ui.DisplayScore(PlayerScore);
+		Miss();
 	}
 
 	public void HandleScore(Note note)
 	{
 		// TODO: MAKE SEPERATE METHOD FOR SWIPE
-		//if (lineDetector.CheckHold() || lineDetector.CheckTap() || lineDetector.CheckSwipe())
-		//{
-		// the fractions change where each notes is detected
 		if (note.rightBound >= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 2)) &&
-			note.leftBound <= (lineDetector.GlobalPosition.X + (lineDetector.Size.X * 1 / 4)))
+			note.leftBound <= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 3)))
 		{
 			PlayerScore += perfect;
 			ui.DisplayPerfect();
 		}
 		else if (note.rightBound >= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 2)) &&
-			note.leftBound <= (lineDetector.GlobalPosition.X + (lineDetector.Size.X * 1 / 3)))
+			note.leftBound <= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 4)))
 		{
 			PlayerScore += great;
 			ui.DisplayGreat();
@@ -51,7 +49,11 @@ public partial class PointHandling : Node
 			PlayerScore += good;
 			ui.DisplayGood();
 		}
-		//}
 
+	}
+
+	public void Miss() // TODO: Move this somewhere else once lives are implemented
+	{
+		ui.DisplayMiss();
 	}
 }
