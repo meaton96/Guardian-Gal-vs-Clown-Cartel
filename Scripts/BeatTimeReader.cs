@@ -10,39 +10,41 @@ public partial class BeatTimeReader : Control
     const string PYTHON_PATH = @"audio_importer\pythonEnvLib\Scripts\python.exe";
     const string SCRIPT_PATH = @"audio_importer\createTimestamps.py";
 
+    const string AUDIO_FOLDER_PATH_EDITOR = @"audio";
+
+    const string AUDIO_FOLDER_PATH_RELEASE = @"";
+
+    private List<string> songs = new();
+
     Button openFileExplorerButton;
     Button confirmButton;
 
+
     public override void _Ready()
     {
-      //  string audioFilePath = @"audio\8-bit-circus.wav";
-     //   ExecutePythonScript(audioFilePath);
-        // float[] beatTimes = ReadBeatTimes();
-        //  GD.Print(beatTimes);
+
+
         openFileExplorerButton = GetNode<Button>("box/OpenFileExplorerButton");
-        openFileExplorerButton.Pressed += OpenFileExplorer;
+        openFileExplorerButton.Pressed += CheckForNewSongs;
     }
 
-    public void OpenFileExplorer() {
-        var dialog = new FileDialog
-        {
-            Mode = FileDialog.ModeEnum.Windowed,
-            CurrentDir = "res://audio",
-            Filters = new string[] { "*.wav" }
-        };
-        dialog.PopupCentered();
+    private void CheckForNewSongs()
+    {
+        // Check if the audio folder exists
+
+        //check for new songs in the audio folder
+
+        //if new songs are found, add them to the list of songs
+
+        //call python script for each new song
     }
-    // public partial class OpenFileDialog : FileDialog
-    // {
-    //     public override void _Ready()
-    //     {
-    //         Mode = ModeEnum.Windowed;
-    //         Access = AccessEnum.Filesystem;
-    //         Filters = new string[] { "*.wav", "*.mp3" };
-    //         PopupCentered();
-    //     }
-    // }
-    public void OnFileDialogFileSelected(string path)
+
+    private void OnFileSelected(string path)
+    {
+        GD.Print("Selected file: " + path);
+        // Here, add the logic to handle the selected file, like loading the song
+    }
+    public void OpenFileExplorerButton(string path)
     {
         GD.Print("Selected file: " + path);
         ExecutePythonScript(path);

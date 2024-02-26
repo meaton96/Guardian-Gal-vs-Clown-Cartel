@@ -18,7 +18,7 @@ offset_bottom = 40.0
 
 [node name="OpenFileExplorerButton" type="Button" parent="box"]
 layout_mode = 2
-text = "Choose File"
+text = "Add New Songs"
 
 [node name="ConfirmButton" type="Button" parent="box"]
 layout_mode = 2
