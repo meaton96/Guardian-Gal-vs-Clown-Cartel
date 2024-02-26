@@ -14,8 +14,11 @@ public partial class NoteController : Container
 	const double SWIPE_SPAWN_CHANCE = .25;  //a % base chance to spawn a swipe note each time a note is spawned
 	const double HOLD_SPAWN_CHANCE = .10;   //a % base chance to spawn a hold note each time a note is spawned
 
+
 	private bool justSpawnedHold = false;
 	private Random random = new();
+
+	private Player player;
 
 
 	//notes
@@ -27,6 +30,7 @@ public partial class NoteController : Container
 	public override void _Ready()
 	{
 		existingNotes = new();
+		player = GetNode<Player>("../");
 		// for (int i = 0; i < GetChildCount(); i++)
 		// {
 		// 	existingNotes.Add(GetChild(i));

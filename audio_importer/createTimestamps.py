@@ -5,7 +5,7 @@ import os  # Import the os module
 
 # Initialize a dictionary for output
 output = {}
-
+beat_frames = []
 try:
     # Check if an argument is passed
     if len(sys.argv) < 2:
@@ -34,3 +34,8 @@ json_filename = os.path.splitext(filename)[0] + '.json'
 # Write the output dictionary to a JSON file
 with open(json_filename, 'w') as f:
     json.dump(output, f)
+
+# Read the JSON file and print its contents
+with open(json_filename, 'r') as f:
+    json_data = json.load(f)
+    print(json_data)

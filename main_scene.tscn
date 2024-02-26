@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=34 format=3 uid="uid://b2vfgihr8uqcs"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_e3qmu"]
 [ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="1_feimn"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://Scripts/Line.cs" id="7_140gw"]
 [ext_resource type="PackedScene" uid="uid://27sterys2r35" path="res://music_player.tscn" id="10_4274k"]
 [ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="10_jxbjw"]
-[ext_resource type="PackedScene" uid="uid://bwgvmivw7nb1p" path="res://AudioImporter.tscn" id="11_knwna"]
 [ext_resource type="PackedScene" uid="uid://bntghcjqmpkaa" path="res://user_interface.tscn" id="14_me7xa"]
 [ext_resource type="Script" path="res://Scripts/PointHandling.cs" id="16_0338x"]
 
@@ -226,15 +225,3 @@ offset_bottom = 40.0
 script = ExtResource("16_0338x")
 
 [node name="MusicPlayer" parent="." instance=ExtResource("10_4274k")]
-
-[node name="Control" parent="." instance=ExtResource("11_knwna")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -87.0
-offset_top = -454.0
-offset_right = -87.0
-offset_bottom = -454.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(2, 2)

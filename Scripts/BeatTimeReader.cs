@@ -3,6 +3,7 @@ using Godot;
 using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 public partial class BeatTimeReader : Control
@@ -26,6 +27,8 @@ public partial class BeatTimeReader : Control
 
         openFileExplorerButton = GetNode<Button>("box/OpenFileExplorerButton");
         openFileExplorerButton.Pressed += CheckForNewSongs;
+
+
     }
 
     private void CheckForNewSongs()
@@ -37,6 +40,8 @@ public partial class BeatTimeReader : Control
         //if new songs are found, add them to the list of songs
 
         //call python script for each new song
+
+        ExecutePythonScript("audio\\8-bit-circus.wav");
     }
 
     private void OnFileSelected(string path)
@@ -44,51 +49,50 @@ public partial class BeatTimeReader : Control
         GD.Print("Selected file: " + path);
         // Here, add the logic to handle the selected file, like loading the song
     }
-    public void OpenFileExplorerButton(string path)
-    {
-        GD.Print("Selected file: " + path);
-        ExecutePythonScript(path);
-    }
+
 
     public static void ExecutePythonScript(string audioFilePath)
     {
-        GD.Print("Current directory: " + Directory.GetCurrentDirectory());
+        //  GD.Print("Current directory: " + Directory.GetCurrentDirectory());
         GD.Print("Executing python script");
-        ProcessStartInfo start = new()
+        ProcessStartInfo start = new ProcessStartInfo
         {
             FileName = PYTHON_PATH,
-            Arguments = string.Format("\"{0}\" \"{1}\"", SCRIPT_PATH, audioFilePath),
+            Arguments = $"\"{SCRIPT_PATH}\" \"{audioFilePath}\"",
             UseShellExecute = false,
             RedirectStandardOutput = true,
             CreateNoWindow = true
         };
-        using Process process = Process.Start(start);
-        string result = process.StandardOutput.ReadToEnd();
-        process.WaitForExit();
 
-        // Parse the JSON output
-        var output = JObject.Parse(result);
-
-        // Check if the operation was successful
-        if (output["success"].Value<bool>())
+        using (Process process = Process.Start(start))
         {
-            // Process was successful, handle beat times
-            var beatTimes = output["beat_times"].ToObject<float[]>();
-            GD.Print("Beat Times: ", String.Join(", ", beatTimes));
-        }
-        else
-        {
-            // An error occurred, handle accordingly
-            var errorMessage = output["error_message"].ToString();
-            GD.Print("Error: " + errorMessage);
-        }
+            // Wait for the Python script to exit
+            process.WaitForExit(); // This will block until the Python script is finished
+
+            // Now that the process has finished, you can read the output
+            string result = process.StandardOutput.ReadToEnd();
+            string trimmedResult = result.Trim().ToLower();
+            var output = JObject.Parse(trimmedResult);
+           // GD.Print("Output: ", output);
+
+            // Parse the JSON output
+           // var output = JObject.Parse(result);
+
+            // Check if the operation was successful
+            if (output["success"].Value<bool>())
+            {
+                // Process was successful, handle beat times
+                var beatTimes = output["beat_times"].ToObject<float[]>();
+                GD.Print("Beat Times: ", String.Join(", ", beatTimes));
+            }
+            else
+            {
+                // An error occurred, handle accordingly
+                var errorMessage = output["error_message"].ToString();
+                GD.Print("Error: " + errorMessage);
+            }
+        } // The using statement ensures the process is properly disposed of after use
 
 
-    }
-
-    public static float[] ReadBeatTimes()
-    {
-        var json = File.ReadAllText("beat_times.json");
-        return JsonConvert.DeserializeObject<float[]>(json);
     }
 }
