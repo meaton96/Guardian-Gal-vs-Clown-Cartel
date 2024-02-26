@@ -69,7 +69,7 @@ public partial class NoteController : Container
 			(instance as Note).EnableNote();
 			existingNotes.Add(instance as Note);
 
-			GD.Print($"Spawned a {instance.GetType()}");
+		//	GD.Print($"Spawned a {instance.GetType()}");
 		}
 	}
 	public void HandleNoteRemoving() {

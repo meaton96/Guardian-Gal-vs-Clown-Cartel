@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://27sterys2r35"]
+
+[ext_resource type="Script" path="res://Scripts/MusicPlayer.cs" id="1_a00b0"]
+[ext_resource type="AudioStream" uid="uid://o8h5p165vt8v" path="res://audio/8-bit-circus.wav" id="1_qc5d3"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_qc5d3")
+volume_db = -16.553
+script = ExtResource("1_a00b0")
