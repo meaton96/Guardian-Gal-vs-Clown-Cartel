@@ -18,15 +18,18 @@ public partial class BeatTimeReader : Control
     private List<string> songs = new();
 
     Button openFileExplorerButton;
-    Button confirmButton;
+    Button loadButton;
 
 
     public override void _Ready()
     {
 
 
-        openFileExplorerButton = GetNode<Button>("box/OpenFileExplorerButton");
+        openFileExplorerButton = GetNode<Button>("AddNewSongsButton");
         openFileExplorerButton.Pressed += CheckForNewSongs;
+
+        loadButton = GetNode<Button>("LoadSongButton");
+        loadButton.Pressed += OnLoadSongPressed;
 
 
     }
@@ -42,6 +45,11 @@ public partial class BeatTimeReader : Control
         //call python script for each new song
 
         ExecutePythonScript("audio\\8-bit-circus.wav");
+    }
+
+    public void OnLoadSongPressed() {
+        //open new menu to select song
+        //new menu is new scene that will create a little button for each .json file in the audio folder
     }
 
     private void OnFileSelected(string path)

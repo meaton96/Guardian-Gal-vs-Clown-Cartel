@@ -27,7 +27,7 @@ public partial class Interface : VBoxContainer
 		pauseButton = GetNode<Button>("../PauseButton/PauseButton");
 		pauseButton.Pressed += PauseGame;
 
-		resumeButton = GetNode<Button>("PauseMenu/PauseContainer/PauseBG/ResumeButton");
+		resumeButton = GetNode<Button>("PauseMenu/PauseContainer/ResumeButton");
 		resumeButton.Pressed += OnCloseButtonPressed;
 
 	}
