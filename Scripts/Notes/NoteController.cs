@@ -63,7 +63,6 @@ public partial class NoteController : Container
 		};
 		if (scene != null)
 		{
-
 			var instance = scene.Instantiate();
 			AddChild(instance);
 			(instance as Note).EnableNote();
@@ -72,6 +71,7 @@ public partial class NoteController : Container
 			GD.Print($"Spawned a {instance.GetType()}");
 		}
 	}
+	
 	public void HandleNoteRemoving() {
 		var nodesToRemove = existingNotes.FindAll(note => !note.active);
 		

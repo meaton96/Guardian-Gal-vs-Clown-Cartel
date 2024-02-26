@@ -10,12 +10,13 @@ script = ExtResource("2_504dh")
 
 [node name="Bounds" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchor_left = -0.781
+anchor_top = -0.052
+anchor_right = 1.719
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = -16.0
+offset_left = -16.008
+offset_top = -14.336
+offset_right = -16.008
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
