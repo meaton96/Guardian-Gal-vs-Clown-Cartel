@@ -23,6 +23,8 @@ public partial class Player : CharacterBody2D
 
 	private bool dragged = false;
 
+	private bool mouseDown;
+
 
 	private float timePressed;
 
@@ -86,12 +88,14 @@ public partial class Player : CharacterBody2D
 				if (screenTouch.Pressed)
 				{
 					//get the position and time of the press
+					mouseDown = true;
 					mouseDownPosition = screenTouch.Position;
 					mouseDownTime = Time.GetTicksMsec();
 				}
 				//release press
 				else
 				{
+					mouseDown = false;
 					timePressed = Time.GetTicksMsec() - mouseDownTime;
 					IsLongPressing = false;
 					if (timePressed > LONG_PRESS_THRESHOLD)
@@ -153,17 +157,18 @@ public partial class Player : CharacterBody2D
 			{
 				ui.SetFeedback("mouse down");
 				if (mouseEvent.ButtonIndex != MouseButton.Left) return;
+					
 				//mouse down
-				if (mouseEvent.Pressed)
+				if (mouseEvent.Pressed && !mouseDown)
 				{
-
+					mouseDown = true;
 					mouseDownPosition = mouseEvent.Position;
 					mouseDownTime = Time.GetTicksMsec();
-
 				}
 				//mouse up
-				else if (!mouseEvent.Pressed)
+				else if (!mouseEvent.Pressed && mouseDown)
 				{
+					mouseDown = false;
 					ui.SetFeedback("mouse up");
 					var mouseUpPosition = mouseEvent.Position;
 					var distance = mouseDownPosition.DistanceTo(mouseUpPosition);
@@ -203,8 +208,6 @@ public partial class Player : CharacterBody2D
 				{
 					IsLongPressing = true;
 				}
-
-
 			}
 		}
 		else

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class HoldNote : Note
 {
@@ -19,6 +20,7 @@ public partial class HoldNote : Note
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
+
 	}
 	public override void EnableNote()
 	{
@@ -27,4 +29,11 @@ public partial class HoldNote : Note
 		GlobalPosition = new Vector2(xSpawnPos - 300, ySpawnPos);
 		
 	}
+
+    protected override void ConstantHitEffect()
+    {
+        base.ConstantHitEffect();
+		
+		// Do point stuff
+    }
 }
