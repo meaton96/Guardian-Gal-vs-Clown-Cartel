@@ -95,13 +95,65 @@ public partial class Player : CharacterBody2D
 				}
 				else
 				{
+<<<<<<< Updated upstream
+=======
+					mouseDown = false;
+					timePressed = Time.GetTicksMsec() - mouseDownTime;
+					IsLongPressing = false;
+					if (timePressed > LONG_PRESS_THRESHOLD)
+					{
+						HoldNote noteType = new HoldNote();
+						HandleNoteDetection(noteType);
+					}
+					else
+					{
+						if (!dragged)
+						{
+							RegNote noteType = new RegNote();
+							HandleNoteDetection(noteType);
+						}
+					}
+					dragged = false;
+				}
+			}
+			else if (@event is InputEventScreenDrag screenDrag)
+			{
+				//get the duration of press
+				timePressed = Time.GetTicksMsec() - mouseDownTime;
+				//need to differentiate between drag and swipe
+				//if swipe is long enough its a long press and drag for hold note
+				ui.SetFeedback("screen drag");
+				if (timePressed > LONG_PRESS_THRESHOLD)
+				{
+					//long press + screen drag = hold note
+					//set the position of the touch
+					IsLongPressing = true;
+					TouchPosition = screenDrag.Position;
+
+				}
+				else if (screenDrag.Relative.Length() > SWIPE_THRESHOLD)
+				{
+>>>>>>> Stashed changes
 					if (!dragged)
 						HandleClick();
 
+<<<<<<< Updated upstream
+=======
+						// Swipe note detection
+						SwipeNote noteType = new SwipeNote();
+						HandleNoteDetection(noteType);
+					}
+
+>>>>>>> Stashed changes
 				}
 				dragged = false;
 			}
+			else
+			{
+				pointController.Miss();
+			}
 		}
+<<<<<<< Updated upstream
 		else if (@event is InputEventScreenDrag screenDrag)
 		{
 			//get the duration of press
@@ -127,6 +179,9 @@ public partial class Player : CharacterBody2D
 				
 			}
 		}
+=======
+
+>>>>>>> Stashed changes
 	}
 	private void HandleMouseInput(InputEvent @event)
 	{
@@ -137,10 +192,51 @@ public partial class Player : CharacterBody2D
 			//mouse down
 			if (mouseEvent.Pressed)
 			{
+<<<<<<< Updated upstream
+=======
+				ui.SetFeedback("mouse down");
+				if (mouseEvent.ButtonIndex != MouseButton.Left) return;
+
+				//mouse down
+				if (mouseEvent.Pressed && !mouseDown)
+				{
+					mouseDown = true;
+					mouseDownPosition = mouseEvent.Position;
+					mouseDownTime = Time.GetTicksMsec();
+				}
+				//mouse up
+				else if (!mouseEvent.Pressed && mouseDown)
+				{
+					mouseDown = false;
+					ui.SetFeedback("mouse up");
+					var mouseUpPosition = mouseEvent.Position;
+					var distance = mouseDownPosition.DistanceTo(mouseUpPosition);
+					timePressed = Time.GetTicksMsec() - mouseDownTime;
+>>>>>>> Stashed changes
 
 				mouseDownPosition = mouseEvent.Position;
 				mouseDownTime = Time.GetTicksMsec();
 
+<<<<<<< Updated upstream
+=======
+					if (timePressed > LONG_PRESS_THRESHOLD)
+					{
+						HoldNote noteType = new HoldNote();
+						HandleNoteDetection(noteType);
+
+					}
+					else if (distance > SWIPE_THRESHOLD)
+					{
+						SwipeNote noteType = new SwipeNote();
+						HandleNoteDetection(noteType);
+					}
+					else
+					{
+						RegNote noteType = new RegNote();
+						HandleNoteDetection(noteType);
+					}
+				}
+>>>>>>> Stashed changes
 			}
 			//mouse up
 			else if (!mouseEvent.Pressed)
@@ -191,6 +287,7 @@ public partial class Player : CharacterBody2D
 		ui.AddInput("tap");
 		if (lineDetector.CheckTap())
 		{
+			pointController.HandleScore(noteType);
 			lineDetector.hitNote.DisableNote();
 			//ui.DisplayHit();
 		}

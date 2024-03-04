@@ -26,12 +26,11 @@ public partial class PointHandling : Node
 	public override void _Process(double delta)
 	{
 		ui.DisplayScore(PlayerScore);
-		Miss();
 	}
 
 	public void HandleScore(Note note)
 	{
-		// TODO: MAKE SEPERATE METHOD FOR SWIPE
+		// TODO: MAKE SEPERATE METHOD FOR HOLD
 		if (note.rightBound >= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 2)) &&
 			note.leftBound <= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 3)))
 		{
@@ -39,7 +38,7 @@ public partial class PointHandling : Node
 			ui.DisplayPerfect();
 		}
 		else if (note.rightBound >= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 2)) &&
-			note.leftBound <= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 4)))
+			note.leftBound <= (lineDetector.GlobalPosition.X + (lineDetector.Size.X * 1 / 4)))
 		{
 			PlayerScore += great;
 			ui.DisplayGreat();
