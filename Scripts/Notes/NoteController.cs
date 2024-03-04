@@ -37,14 +37,10 @@ public partial class NoteController : Container
 		player = GetNode<Player>("../");
 
 
-		beatTimesList = GetSongFromJson("./audio/red-lips.json").
+		beatTimesList = GetSongFromJson("./audio/8-bit-circus.json").
 							AsGodotDictionary()["beat_times"].
 							AsFloat32Array().
 							ToList();
-
-
-
-
 	}
 
 	public static Variant GetSongFromJson(string path)

@@ -63,7 +63,7 @@ public partial class BeatTimeReader : Control
 
         //call python script for each new song
 
-        ExecutePythonScript("audio\\red-lips.mp3");
+        ExecutePythonScript("audio\\8-bit-circus.mp3");
         
         //songNames.ForEach(songName => ExecutePythonScript($"audio\\{songName}.mp3"));
     }
