@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bntghcjqmpkaa"]
+[gd_scene load_steps=6 format=3 uid="uid://bntghcjqmpkaa"]
 
 [ext_resource type="Script" path="res://Scripts/Interface.cs" id="1_k730o"]
+[ext_resource type="Texture2D" uid="uid://4kti6im0hcve" path="res://Sprites/pauseMenu.png" id="2_ehb6q"]
+[ext_resource type="Script" path="res://Scripts/BeatTimeReader.cs" id="3_j5rqn"]
 
 [sub_resource type="SystemFont" id="SystemFont_e5lcd"]
 subpixel_positioning = 0
@@ -34,6 +36,34 @@ label_settings = SubResource("LabelSettings_reqr5")
 [node name="ScoreLabel" type="Label" parent="UserInterface"]
 layout_mode = 2
 
+[node name="PauseMenu" type="Node2D" parent="UserInterface"]
+process_mode = 2
+visible = false
+
+[node name="PauseBG" type="Sprite2D" parent="UserInterface/PauseMenu"]
+position = Vector2(295.75, 125.5)
+scale = Vector2(0.3375, 0.3375)
+texture = ExtResource("2_ehb6q")
+
+[node name="PauseContainer" type="VBoxContainer" parent="UserInterface/PauseMenu"]
+offset_left = 231.75
+offset_top = 47.75
+offset_right = 359.75
+offset_bottom = 183.75
+script = ExtResource("3_j5rqn")
+
+[node name="ResumeButton" type="Button" parent="UserInterface/PauseMenu/PauseContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="AddNewSongsButton" type="Button" parent="UserInterface/PauseMenu/PauseContainer"]
+layout_mode = 2
+text = "Add New Songs"
+
+[node name="LoadSongButton" type="Button" parent="UserInterface/PauseMenu/PauseContainer"]
+layout_mode = 2
+text = "Load Song"
+
 [node name="Button" type="Node2D" parent="."]
 position = Vector2(298.5, 1.75)
 scale = Vector2(0.5, 0.5)
@@ -45,10 +75,13 @@ offset_right = 595.5
 offset_bottom = 59.0
 text = "Reset"
 
-[node name="PlatformNode" type="Node2D" parent="."]
+[node name="PauseButton" type="Node2D" parent="."]
 position = Vector2(-7.25, 248.5)
+scale = Vector2(0.5, 0.5)
 
-[node name="PlatformLabel" type="Label" parent="PlatformNode"]
-offset_left = 9.0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="PauseButton" type="Button" parent="PauseButton"]
+offset_left = 17.0
+offset_top = 4.0
+offset_right = 115.0
+offset_bottom = 39.0
+text = "Pause"

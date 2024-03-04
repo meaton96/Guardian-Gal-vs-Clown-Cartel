@@ -4,27 +4,45 @@ using System;
 public partial class Interface : VBoxContainer
 {
 	Label text;
-	Label inputText;
+	//Label inputText;
 	Label scoreText;
 
-	Button button;
-	Label platformLabel;
+	Button resetButton, pauseButton, resumeButton;
+
+	Node2D pauseMenu;
+	//Label platformLabel;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		text = GetNode<Label>("FeedbackLabel");
-		inputText = GetNode<Label>("InputLabel");
 		scoreText = GetNode<Label>("ScoreLabel");
-		platformLabel = GetNode<Label>("../PlatformNode/PlatformLabel");
-		platformLabel.Text = "Platform: " + OS.GetName();
+		pauseMenu = GetNode<Node2D>("PauseMenu");
 		CreateButton();
 	}
 	private void CreateButton()
 	{
-		button = GetNode<Button>("../Button/ResetButton");
-		button.Pressed += ClearInput;
-	}
+		resetButton = GetNode<Button>("../Button/ResetButton");
+		resetButton.Pressed += ClearInput;
 
+		pauseButton = GetNode<Button>("../PauseButton/PauseButton");
+		pauseButton.Pressed += PauseGame;
+
+		resumeButton = GetNode<Button>("PauseMenu/PauseContainer/ResumeButton");
+		resumeButton.Pressed += OnCloseButtonPressed;
+
+	}
+	public void PauseGame()
+	{
+		GD.Print("PauseGame");
+		GetTree().Paused = !GetTree().Paused;
+		pauseMenu.Show();
+	}
+	private void OnCloseButtonPressed()
+	{
+		GD.Print("OnCloseButtonPressed");
+		GetTree().Paused = false;
+		pauseMenu.Hide();
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -39,17 +57,8 @@ public partial class Interface : VBoxContainer
 	}
 	public void ClearInput()
 	{
-		inputText.Text = "";
+		//inputText.Text = "";
 	}
-	public void SetFeedback(string feedback)
-	{
-		//text.Text = feedback;
-	}
-
-	/*public void DisplayHit()
-	{
-		text.Text = "Hit :)";
-	}*/
 
 	public void DisplayMiss()
 	{

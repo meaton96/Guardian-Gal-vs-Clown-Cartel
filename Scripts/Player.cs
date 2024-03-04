@@ -1,3 +1,4 @@
+using System;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using Godot;
@@ -12,6 +13,7 @@ public partial class Player : CharacterBody2D
 	private const float LONG_PRESS_THRESHOLD = 200;
 
 	private Line lineDetector;
+	private PointHandling pointController;
 	private Interface ui;
 	private float mouseDownTime;
 	private string platform;
@@ -21,6 +23,9 @@ public partial class Player : CharacterBody2D
 
 	private bool dragged = false;
 
+	private bool mouseDown;
+
+	//public bool IsPaused = false;
 
 	private float timePressed;
 
@@ -31,7 +36,7 @@ public partial class Player : CharacterBody2D
 		lineDetector = GetNode<Line>("Line");
 		platform = OS.GetName();
 		ui = GetNode<Interface>("UserInterface/UserInterface");
-
+		pointController = GetNode<PointHandling>("PointController");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -168,29 +173,31 @@ public partial class Player : CharacterBody2D
 				IsLongPressing = true;
 				TouchPosition = screenDrag.Position;
 
-			}
-			else if (screenDrag.Relative.Length() > SWIPE_THRESHOLD)
-			{
-				if (!dragged)
-				{
-					dragged = true;
-					HandleSwipe();
 				}
-				
+				else if (screenDrag.Relative.Length() > SWIPE_THRESHOLD)
+				{
+					if (!dragged)
+					{
+						dragged = true;
+
+						// Swipe note detection
+						SwipeNote noteType = new SwipeNote();
+						HandleNoteDetection(noteType);
+					}
+					
+				}
 			}
 		}
 =======
 
 >>>>>>> Stashed changes
 	}
+
 	private void HandleMouseInput(InputEvent @event)
 	{
-		if (@event is InputEventMouseButton mouseEvent)
+		if (lineDetector.CheckNoteDetection())
 		{
-			ui.SetFeedback("mouse down");
-			if (mouseEvent.ButtonIndex != MouseButton.Left) return;
-			//mouse down
-			if (mouseEvent.Pressed)
+			if (@event is InputEventMouseButton mouseEvent)
 			{
 <<<<<<< Updated upstream
 =======
@@ -247,45 +254,51 @@ public partial class Player : CharacterBody2D
 				timePressed = Time.GetTicksMsec() - mouseDownTime;
 
 
+					if (timePressed > LONG_PRESS_THRESHOLD)
+					{
+						HoldNote noteType = new HoldNote();
+						HandleNoteDetection(noteType);
+						
+					}
+					else if (distance > SWIPE_THRESHOLD)
+					{
+						SwipeNote noteType = new SwipeNote();
+						HandleNoteDetection(noteType);
+					}
+					else
+					{
+						RegNote noteType = new RegNote();
+						HandleNoteDetection(noteType);
+					}
+				}
+			}
+			else if (@event is InputEventMouseMotion mouseMotion)
+			{
+				//mouse motion
+				//ui.SetFeedback("mouse motion");
+				if (!mouseMotion.ButtonMask.HasFlag(MouseButtonMask.Left)) return;
+				timePressed = Time.GetTicksMsec() - mouseDownTime;
+				//if the time pressed is greater than the long press threshold
+
+
+				TouchPosition = mouseMotion.Position;
+
 				if (timePressed > LONG_PRESS_THRESHOLD)
 				{
-					HandleLongPress();
-					
-				}
-				else if (distance > SWIPE_THRESHOLD)
-				{
-					HandleSwipe();
-				}
-				else
-				{
-					HandleClick();
+					IsLongPressing = true;
 				}
 			}
 		}
-		else if (@event is InputEventMouseMotion mouseMotion)
+		else
 		{
-			//mouse motion
-			ui.SetFeedback("mouse motion");
-			if (!mouseMotion.ButtonMask.HasFlag(MouseButtonMask.Left)) return;
-			timePressed = Time.GetTicksMsec() - mouseDownTime;
-			//if the time pressed is greater than the long press threshold
-
-
-			TouchPosition = mouseMotion.Position;
-
-			if (timePressed > LONG_PRESS_THRESHOLD)
-			{
-				IsLongPressing = true;
-			}
-
-
+			pointController.Miss();
 		}
 	}
-	private void HandleClick()
+	private void HandleNoteDetection(Note noteType)
 	{
 		//	GD.Print("Click");
 		ui.AddInput("tap");
-		if (lineDetector.CheckTap())
+		if (lineDetector.hitNote.GetType() == noteType.GetType())
 		{
 			pointController.HandleScore(noteType);
 			lineDetector.hitNote.DisableNote();
@@ -297,32 +310,32 @@ public partial class Player : CharacterBody2D
 
 		}
 	}
-	private void HandleLongPress()
-	{
-		//	GD.Print("Long press");
-		ui.AddInput("Long press");
-		if (lineDetector.CheckHold())
-		{
-			lineDetector.hitNote.DisableNote();
-			//ui.DisplayHit();
-		}
-		else
-		{
-			//ui.DisplayMiss();
-		}
-	}
-	private void HandleSwipe()
-	{
-		//	GD.Print("Swipe");
-		ui.AddInput("Swipe");
-		if (lineDetector.CheckSwipe())
-		{
-			lineDetector.hitNote.DisableNote();
-			//ui.DisplayHit();
-		}
-		else
-		{
-			//ui.DisplayMiss();
-		}
-	}
+	// private void HandleLongPress()
+	// {
+	// 	//	GD.Print("Long press");
+	// 	ui.AddInput("Long press");
+	// 	if (lineDetector.CheckNotes())
+	// 	{
+	// 		lineDetector.hitNote.DisableNote();
+	// 		//ui.DisplayHit();
+	// 	}
+	// 	else
+	// 	{
+	// 		//ui.DisplayMiss();
+	// 	}
+	// }
+	// private void HandleSwipe()
+	// {
+	// 	//	GD.Print("Swipe");
+	// 	ui.AddInput("Swipe");
+	// 	if (lineDetector.CheckNotes())
+	// 	{
+	// 		lineDetector.hitNote.DisableNote();
+	// 		//ui.DisplayHit();
+	// 	}
+	// 	else
+	// 	{
+	// 		//ui.DisplayMiss();
+	// 	}
+	// }
 }

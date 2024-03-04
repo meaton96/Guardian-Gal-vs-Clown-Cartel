@@ -12,6 +12,7 @@ public partial class Note : Sprite2D
 	protected float speed = 8.0f;
 	protected Color baseColor;
 	protected Control bounds;
+	private float timer = 0;
 
 	// Change in each note definition, default is middle of screen
 	protected float ySpawnPos = 300;
@@ -34,10 +35,13 @@ public partial class Note : Sprite2D
 		rightBound = GlobalPosition.X + GetXSize();
 		leftBound = GlobalPosition.X - GetXSize();
 
+		timer += (float)delta;
 		// Hit effect
 		if (CheckNoteHit())
 		{
+			GD.Print(timer);
 			Modulate = new Color(0, 1, 0);
+			ConstantHitEffect();
 		}
 		else
 		{
@@ -66,12 +70,17 @@ public partial class Note : Sprite2D
 		}
 	}
 
+	protected virtual void ConstantHitEffect()
+	{
+		// Does nothing, will be overridden in child classes
+	}
+
 
 	/// <summary>
 	/// Checks if the note is touching the line detector at all
 	/// </summary>
 	/// <returns> True if a detection is found, false otherwise </returns>
-	public bool CheckNoteHit()
+	public virtual bool CheckNoteHit()
 	{
 		// If note is active and AABB (but only on x-axis) is true
 		if (active &&
