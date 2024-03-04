@@ -30,7 +30,7 @@ public partial class MusicPlayer : AudioStreamPlayer
 
 
 
-		//Play();
+		Play();
 
 		//Draw();
 

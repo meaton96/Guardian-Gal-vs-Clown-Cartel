@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=35 format=3 uid="uid://b2vfgihr8uqcs"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_e3qmu"]
 [ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="1_feimn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Line.cs" id="7_140gw"]
 [ext_resource type="PackedScene" uid="uid://27sterys2r35" path="res://music_player.tscn" id="10_4274k"]
 [ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="10_jxbjw"]
+[ext_resource type="AudioStream" uid="uid://bp7yjs8oyt8lo" path="res://audio/red-lips.mp3" id="11_hkcpn"]
 [ext_resource type="PackedScene" uid="uid://bntghcjqmpkaa" path="res://user_interface.tscn" id="14_me7xa"]
 [ext_resource type="Script" path="res://Scripts/PointHandling.cs" id="16_0338x"]
 
@@ -225,3 +226,5 @@ offset_bottom = 40.0
 script = ExtResource("16_0338x")
 
 [node name="MusicPlayer" parent="." instance=ExtResource("10_4274k")]
+stream = ExtResource("11_hkcpn")
+volume_db = -18.488

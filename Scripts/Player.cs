@@ -84,7 +84,7 @@ public partial class Player : CharacterBody2D
 			//touch input
 			if (@event is InputEventScreenTouch screenTouch)
 			{
-				ui.SetFeedback("screen touch");
+				//ui.SetFeedback("screen touch");
 				//press down
 				if (screenTouch.Pressed)
 				{
@@ -121,7 +121,7 @@ public partial class Player : CharacterBody2D
 				timePressed = Time.GetTicksMsec() - mouseDownTime;
 				//need to differentiate between drag and swipe
 				//if swipe is long enough its a long press and drag for hold note
-				ui.SetFeedback("screen drag");
+				//ui.SetFeedback("screen drag");
 				if (timePressed > LONG_PRESS_THRESHOLD)
 				{
 					//long press + screen drag = hold note
@@ -156,7 +156,7 @@ public partial class Player : CharacterBody2D
 		{
 			if (@event is InputEventMouseButton mouseEvent)
 			{
-				ui.SetFeedback("mouse down");
+				//ui.SetFeedback("mouse down");
 				if (mouseEvent.ButtonIndex != MouseButton.Left) return;
 					
 				//mouse down
@@ -170,7 +170,7 @@ public partial class Player : CharacterBody2D
 				else if (!mouseEvent.Pressed && mouseDown)
 				{
 					mouseDown = false;
-					ui.SetFeedback("mouse up");
+					//ui.SetFeedback("mouse up");
 					var mouseUpPosition = mouseEvent.Position;
 					var distance = mouseDownPosition.DistanceTo(mouseUpPosition);
 					timePressed = Time.GetTicksMsec() - mouseDownTime;
@@ -197,7 +197,7 @@ public partial class Player : CharacterBody2D
 			else if (@event is InputEventMouseMotion mouseMotion)
 			{
 				//mouse motion
-				ui.SetFeedback("mouse motion");
+				//ui.SetFeedback("mouse motion");
 				if (!mouseMotion.ButtonMask.HasFlag(MouseButtonMask.Left)) return;
 				timePressed = Time.GetTicksMsec() - mouseDownTime;
 				//if the time pressed is greater than the long press threshold

@@ -20,6 +20,25 @@ public partial class BeatTimeReader : Control
     Button openFileExplorerButton;
     Button loadButton;
 
+    private List<string> songNames = new(){
+        "afterhours",
+        "baldurs",
+        "ditto",
+        "dont-leave",
+        "ftw",
+        "glades",
+        "insane",
+        "lost-in-space",
+        "missing-home",
+        "moments",
+        "monsters",
+        "no-money",
+        "no-tears",
+        "oceans",
+        "raccoon",
+        "red-lips"
+    };
+
 
     public override void _Ready()
     {
@@ -44,7 +63,9 @@ public partial class BeatTimeReader : Control
 
         //call python script for each new song
 
-        ExecutePythonScript("audio\\8-bit-circus.wav");
+        ExecutePythonScript("audio\\red-lips.mp3");
+        
+        //songNames.ForEach(songName => ExecutePythonScript($"audio\\{songName}.mp3"));
     }
 
     public void OnLoadSongPressed() {
@@ -72,34 +93,34 @@ public partial class BeatTimeReader : Control
             CreateNoWindow = true
         };
 
-        using (Process process = Process.Start(start))
+        using Process process = Process.Start(start);
+        // Wait for the Python script to exit
+        process.WaitForExit(); // This will block until the Python script is finished
+
+        // Now that the process has finished, you can read the output
+        string result = process.StandardOutput.ReadToEnd();
+        string trimmedResult = result.Trim().ToLower();
+        var output = JObject.Parse(trimmedResult);
+         GD.Print("Output: ", output);
+
+        // Parse the JSON output
+        // var output = JObject.Parse(result);
+
+        // Check if the operation was successful
+        if (output["success"].Value<bool>())
         {
-            // Wait for the Python script to exit
-            process.WaitForExit(); // This will block until the Python script is finished
+            // Process was successful, handle beat times
+            var beatTimes = output["beat_times"].ToObject<float[]>();
+            GD.Print("Beat Times: ", String.Join(", ", beatTimes));
+        }
+        else
+        {
+            // An error occurred, handle accordingly
+            var errorMessage = output["error_message"].ToString();
+            GD.Print("Error: " + errorMessage);
+        }
+        // The using statement ensures the process is properly disposed of after use
 
-            // Now that the process has finished, you can read the output
-            string result = process.StandardOutput.ReadToEnd();
-            string trimmedResult = result.Trim().ToLower();
-            var output = JObject.Parse(trimmedResult);
-           // GD.Print("Output: ", output);
-
-            // Parse the JSON output
-           // var output = JObject.Parse(result);
-
-            // Check if the operation was successful
-            if (output["success"].Value<bool>())
-            {
-                // Process was successful, handle beat times
-                var beatTimes = output["beat_times"].ToObject<float[]>();
-                GD.Print("Beat Times: ", String.Join(", ", beatTimes));
-            }
-            else
-            {
-                // An error occurred, handle accordingly
-                var errorMessage = output["error_message"].ToString();
-                GD.Print("Error: " + errorMessage);
-            }
-        } // The using statement ensures the process is properly disposed of after use
 
 
     }
