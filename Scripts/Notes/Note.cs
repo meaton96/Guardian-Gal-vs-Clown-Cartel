@@ -38,6 +38,7 @@ public partial class Note : Sprite2D
 		if (CheckNoteHit())
 		{
 			Modulate = new Color(0, 1, 0);
+			ConstantHitEffect();
 		}
 		else
 		{
@@ -66,12 +67,17 @@ public partial class Note : Sprite2D
 		}
 	}
 
+	protected virtual void ConstantHitEffect()
+	{
+		// Does nothing, will be overridden in child classes
+	}
+
 
 	/// <summary>
 	/// Checks if the note is touching the line detector at all
 	/// </summary>
 	/// <returns> True if a detection is found, false otherwise </returns>
-	public bool CheckNoteHit()
+	public virtual bool CheckNoteHit()
 	{
 		// If note is active and AABB (but only on x-axis) is true
 		if (active &&
