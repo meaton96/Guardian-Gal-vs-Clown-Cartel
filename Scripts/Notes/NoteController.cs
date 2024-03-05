@@ -34,9 +34,7 @@ public partial class NoteController : Container
 	public override void _Ready()
 	{
 		existingNotes = new();
-		player = GetNode<Player>("../");
-
-
+		player = GetNode<Player>("../Player");
 		beatTimesList = GetSongFromJson("./audio/8-bit-circus.json").
 							AsGodotDictionary()["beat_times"].
 							AsFloat32Array().

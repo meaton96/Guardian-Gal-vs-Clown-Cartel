@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="6_bgj8b"]
 [ext_resource type="Script" path="res://Scripts/Line.cs" id="7_i3gw4"]
 [ext_resource type="PackedScene" uid="uid://bntghcjqmpkaa" path="res://Scenes/user_interface.tscn" id="8_umv5j"]
-[ext_resource type="Script" path="res://Scripts/PointHandling.cs" id="9_hdnet"]
 [ext_resource type="PackedScene" uid="uid://27sterys2r35" path="res://Scenes/music_player.tscn" id="10_4dffj"]
+[ext_resource type="Script" path="res://Scripts/PointHandling.cs" id="10_ht7m7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
 atlas = ExtResource("2_akdtg")
@@ -183,11 +183,13 @@ animations = [{
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_st583"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(1093, 578)
 script = ExtResource("1_nbgm6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(1165, 185)
 scale = Vector2(2.65176, 2.97656)
 sprite_frames = SubResource("SpriteFrames_nse0a")
@@ -195,19 +197,19 @@ animation = &"attack1_ph"
 autoplay = "idle_ph"
 
 [node name="NoteController" type="Container" parent="."]
-offset_left = -1081.0
-offset_top = -582.0
-offset_right = -201.0
-offset_bottom = 42.0
+offset_left = 12.0
+offset_top = -4.0
+offset_right = 892.0
+offset_bottom = 620.0
 scale = Vector2(2.08742, 1.74007)
 script = ExtResource("6_bgj8b")
 metadata/_edit_use_anchors_ = true
 
 [node name="Line" type="BoxContainer" parent="."]
-offset_left = 1008.0
-offset_top = -800.0
-offset_right = 1024.0
-offset_bottom = -100.0
+offset_left = 2101.0
+offset_top = -222.0
+offset_right = 2117.0
+offset_bottom = 478.0
 scale = Vector2(1, 2.44)
 script = ExtResource("7_i3gw4")
 metadata/_edit_use_anchors_ = true
@@ -219,14 +221,13 @@ scale = Vector2(-13.4052, 454.262)
 texture = SubResource("PlaceholderTexture2D_st583")
 
 [node name="UserInterface" parent="." instance=ExtResource("8_umv5j")]
-position = Vector2(-1095, -574)
-
-[node name="PointController" type="Container" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("9_hdnet")
-metadata/_edit_use_anchors_ = true
+position = Vector2(-2, 4)
 
 [node name="MusicPlayer" parent="." instance=ExtResource("10_4dffj")]
 stream = null
 volume_db = -18.488
+
+[node name="PointController" type="Container" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_ht7m7")

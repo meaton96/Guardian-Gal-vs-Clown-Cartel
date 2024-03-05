@@ -1,9 +1,193 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4rajfyoot80k"]
+[gd_scene load_steps=38 format=3 uid="uid://c4rajfyoot80k"]
 
 [ext_resource type="Script" path="res://Scripts/Line.cs" id="1_87fgd"]
 [ext_resource type="Script" path="res://Scripts/Tutorial/TutorialManager.cs" id="1_mcdg2"]
+[ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="3_mbrlb"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="4_vqfk8"]
+[ext_resource type="Texture2D" uid="uid://2sutc3r5t0g6" path="res://PlaceholderCharacter/Attack_KG_1.png" id="5_fbrfc"]
+[ext_resource type="Texture2D" uid="uid://bebfm7vbvdp4x" path="res://PlaceholderCharacter/Attack_KG_2.png" id="6_cic6y"]
+[ext_resource type="Texture2D" uid="uid://dignm8vagpq3n" path="res://PlaceholderCharacter/Attack_KG_4.png" id="7_hm5ud"]
+[ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="8_8qqgy"]
+[ext_resource type="PackedScene" uid="uid://d0ri1p6oy3xva" path="res://Prefabs/swipe_note.tscn" id="9_ecbae"]
+[ext_resource type="PackedScene" uid="uid://ce2hpman0tn6f" path="res://Prefabs/tap_note.tscn" id="10_chumd"]
+[ext_resource type="PackedScene" uid="uid://m6502aymcibt" path="res://Prefabs/hold_note.tscn" id="11_yxjfp"]
+[ext_resource type="Script" path="res://Scripts/PointHandling.cs" id="12_tn516"]
+[ext_resource type="PackedScene" uid="uid://bntghcjqmpkaa" path="res://Scenes/user_interface.tscn" id="13_rgayl"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qp4h2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xfe00"]
+font_size = 30
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
+atlas = ExtResource("5_fbrfc")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdrtc"]
+atlas = ExtResource("5_fbrfc")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u2bh"]
+atlas = ExtResource("5_fbrfc")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a11dj"]
+atlas = ExtResource("5_fbrfc")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvjb0"]
+atlas = ExtResource("5_fbrfc")
+region = Rect2(400, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sdy1"]
+atlas = ExtResource("5_fbrfc")
+region = Rect2(500, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cisan"]
+atlas = ExtResource("6_cic6y")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlbwt"]
+atlas = ExtResource("6_cic6y")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2idm4"]
+atlas = ExtResource("6_cic6y")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b7ag"]
+atlas = ExtResource("6_cic6y")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cduww"]
+atlas = ExtResource("6_cic6y")
+region = Rect2(400, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_focyl"]
+atlas = ExtResource("6_cic6y")
+region = Rect2(500, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tafae"]
+atlas = ExtResource("7_hm5ud")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpy0r"]
+atlas = ExtResource("7_hm5ud")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fdp1"]
+atlas = ExtResource("7_hm5ud")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hha1u"]
+atlas = ExtResource("7_hm5ud")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b6ue"]
+atlas = ExtResource("7_hm5ud")
+region = Rect2(400, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm4t3"]
+atlas = ExtResource("8_8qqgy")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oo4o"]
+atlas = ExtResource("8_8qqgy")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h83wh"]
+atlas = ExtResource("8_8qqgy")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwokl"]
+atlas = ExtResource("8_8qqgy")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4y4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jhbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdrtc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u2bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a11dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvjb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sdy1")
+}],
+"loop": false,
+"name": &"attack1_ph",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cisan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlbwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2idm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b7ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cduww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_focyl")
+}],
+"loop": false,
+"name": &"attack2_ph",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tafae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpy0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fdp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hha1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b6ue")
+}],
+"loop": false,
+"name": &"attack3_ph",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm4t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oo4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h83wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwokl")
+}],
+"loop": true,
+"name": &"idle_ph",
+"speed": 4.0
+}]
 
 [node name="TutorialManager" type="Node2D"]
 script = ExtResource("1_mcdg2")
@@ -24,13 +208,78 @@ scale = Vector2(-13.4052, 454.262)
 texture = SubResource("PlaceholderTexture2D_qp4h2")
 
 [node name="UI" type="Node2D" parent="."]
-position = Vector2(0, -16)
 
 [node name="Text" type="VBoxContainer" parent="UI"]
-offset_top = 24.0
-offset_right = 2408.0
-offset_bottom = 1120.0
+offset_left = 91.0
+offset_top = 114.0
+offset_right = 2002.0
+offset_bottom = 1085.0
 
 [node name="TutorialTextLabel" type="Label" parent="UI/Text"]
 layout_mode = 2
 text = "Tutorial Text Goes Here"
+label_settings = SubResource("LabelSettings_xfe00")
+autowrap_mode = 3
+
+[node name="Buttons" type="Node2D" parent="UI"]
+
+[node name="ProgressTutorial" type="Button" parent="UI/Buttons"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 868.0
+offset_top = 1001.0
+offset_right = 1323.0
+offset_bottom = 1049.0
+grow_horizontal = 0
+action_mode = 0
+text = "Got it!"
+
+[node name="NoteController" type="Container" parent="."]
+process_mode = 4
+visible = false
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 881.0
+offset_bottom = 626.0
+scale = Vector2(2.08742, 1.74007)
+script = ExtResource("3_mbrlb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(1093, 578)
+script = ExtResource("4_vqfk8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(1165, 185)
+scale = Vector2(2.65176, 2.97656)
+sprite_frames = SubResource("SpriteFrames_k4y4x")
+animation = &"attack1_ph"
+autoplay = "idle_ph"
+
+[node name="NoteSprites" type="Node" parent="."]
+
+[node name="TapNote" parent="NoteSprites" instance=ExtResource("10_chumd")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="SwipeNote" parent="NoteSprites" instance=ExtResource("9_ecbae")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="HoldNote" parent="NoteSprites" instance=ExtResource("11_yxjfp")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="PointController" type="Container" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_tn516")
+
+[node name="UserInterface" parent="." instance=ExtResource("13_rgayl")]
+visible = false
+position = Vector2(-2, 4)

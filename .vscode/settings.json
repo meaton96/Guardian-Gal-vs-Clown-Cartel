@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "GGvsCC.sln"
+    "dotnet.defaultSolution": "GGvsCC.sln",
+    "godotTools.editorPath.godot4": "c:\\Users\\brods\\Downloads\\Godot_v4.2.1-stable_mono_win64\\Godot_v4.2.1-stable_mono_win64\\Godot_v4.2.1-stable_mono_win64.exe"
 }

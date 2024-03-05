@@ -31,6 +31,7 @@ public partial class PointHandling : Node
 
 	public void HandleScore(Note note)
 	{
+		GD.Print("Point");
 		// TODO: MAKE SEPERATE METHOD FOR SWIPE
 		if (note.rightBound >= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 2)) &&
 			note.leftBound <= (lineDetector.GlobalPosition.X - (lineDetector.Size.X * 1 / 3)))

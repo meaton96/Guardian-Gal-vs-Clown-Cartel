@@ -33,10 +33,10 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		lineDetector = GetNode<Line>("Line");
+		lineDetector = GetNode<Line>("../Line");
 		platform = OS.GetName();
-		ui = GetNode<Interface>("UserInterface/UserInterface");
-		pointController = GetNode<PointHandling>("PointController");
+		pointController = GetNode<PointHandling>("../PointController");
+		ui = GetNode<Interface>("../UserInterface/UserInterface");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,6 +62,7 @@ public partial class Player : CharacterBody2D
 		}
 
 	}
+	
 	private void HandleKeyboardInput(InputEvent @event)
 	{
 		if (@event is InputEventKey keyEvent)
