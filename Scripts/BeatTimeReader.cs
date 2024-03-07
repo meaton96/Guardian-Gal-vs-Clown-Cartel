@@ -8,9 +8,9 @@ using Newtonsoft.Json.Linq;
 
 public partial class BeatTimeReader : Control
 {
-    const string PYTHON_PATH = @"audio_importer\env\Scripts\python.exe";
-    const string ENV_A = @"audio_importer\env\Scripts\activate";
-    const string SCRIPT_PATH = @"audio_importer\createTimestamps.py";
+    const string PYTHON_PATH = @"c:\audio_importer\env\Scripts\python.exe";
+   
+    const string SCRIPT_PATH = @"c:\audio_importer\createTimestamps.py";
 
     const string AUDIO_FOLDER_PATH_EDITOR = @"audio";
 
