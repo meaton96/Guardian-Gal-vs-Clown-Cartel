@@ -2,5 +2,7 @@
 .godot/
 
 build/*
-.vscode/settings.json
-.vscode/settings.json
+
+
+/audio_importer/env/Lib/site-packages/__pycache__
+/.vscode
