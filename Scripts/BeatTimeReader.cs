@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 public partial class BeatTimeReader : Control
 {
-    const string PYTHON_PATH = @"audio_importer\pythonEnvLib\Scripts\python.exe";
+    const string PYTHON_PATH = @"audio_importer\env\Scripts\python.exe";
     const string SCRIPT_PATH = @"audio_importer\createTimestamps.py";
 
     const string AUDIO_FOLDER_PATH_EDITOR = @"audio";
@@ -20,24 +20,7 @@ public partial class BeatTimeReader : Control
     Button openFileExplorerButton;
     Button loadButton;
 
-    private List<string> songNames = new(){
-        "afterhours",
-        "baldurs",
-        "ditto",
-        "dont-leave",
-        "ftw",
-        "glades",
-        "insane",
-        "lost-in-space",
-        "missing-home",
-        "moments",
-        "monsters",
-        "no-money",
-        "no-tears",
-        "oceans",
-        "raccoon",
-        "red-lips"
-    };
+
 
 
     public override void _Ready()
@@ -51,6 +34,7 @@ public partial class BeatTimeReader : Control
         loadButton.Pressed += OnLoadSongPressed;
 
 
+        //CheckForNewSongs();
     }
 
     private void CheckForNewSongs()
@@ -63,12 +47,13 @@ public partial class BeatTimeReader : Control
 
         //call python script for each new song
 
-        ExecutePythonScript("audio\\8-bit-circus.mp3");
-        
+        ExecutePythonScript("audio\\8-bit-circus.wav");
+
         //songNames.ForEach(songName => ExecutePythonScript($"audio\\{songName}.mp3"));
     }
 
-    public void OnLoadSongPressed() {
+    public void OnLoadSongPressed()
+    {
         //open new menu to select song
         //new menu is new scene that will create a little button for each .json file in the audio folder
     }
@@ -90,8 +75,10 @@ public partial class BeatTimeReader : Control
             Arguments = $"\"{SCRIPT_PATH}\" \"{audioFilePath}\"",
             UseShellExecute = false,
             RedirectStandardOutput = true,
+            RedirectStandardError = true,
             CreateNoWindow = true
         };
+        // GD.Print("Arguments: " + start.Arguments);
 
         using Process process = Process.Start(start);
         // Wait for the Python script to exit
@@ -99,9 +86,13 @@ public partial class BeatTimeReader : Control
 
         // Now that the process has finished, you can read the output
         string result = process.StandardOutput.ReadToEnd();
+        string errorOutput = process.StandardError.ReadToEnd();
+        // GD.Print("Error Output: " + errorOutput);
+        //  GD.Print("string result: " + result);
         string trimmedResult = result.Trim().ToLower();
+
         var output = JObject.Parse(trimmedResult);
-         GD.Print("Output: ", output);
+        GD.Print("Output: ", output);
 
         // Parse the JSON output
         // var output = JObject.Parse(result);
@@ -111,7 +102,9 @@ public partial class BeatTimeReader : Control
         {
             // Process was successful, handle beat times
             var beatTimes = output["beat_times"].ToObject<float[]>();
+            var noteTypes = output["note_types"].ToObject<int[]>();
             GD.Print("Beat Times: ", String.Join(", ", beatTimes));
+            GD.Print("Beat Times: ", String.Join(", ", noteTypes));
         }
         else
         {

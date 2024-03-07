@@ -61,7 +61,7 @@ public partial class TutorialManager : Node
 
     public override void _Process(double delta)
     {
-		GD.Print("Tuto Prog C: " + tutorialProgressCount);
+		//GD.Print("Tuto Prog C: " + tutorialProgressCount);
 
 		switch (tutorialProgressCount)
 		{

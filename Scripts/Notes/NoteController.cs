@@ -27,7 +27,7 @@ public partial class NoteController : Container
 	private PackedScene holdNoteScene = GD.Load<PackedScene>("res://Prefabs/hold_note.tscn");
 	private PackedScene swipeNoteScene = GD.Load<PackedScene>("res://Prefabs/swipe_note.tscn");
 
-	private List<float> beatTimesList = new();
+	private System.Collections.Generic.Dictionary<float, int> notes = new();
 	private int index = 0;
 
 	// Called when the node enters the scene tree for the first time.
@@ -35,10 +35,19 @@ public partial class NoteController : Container
 	{
 		existingNotes = new();
 		player = GetNode<Player>("../Player");
-		beatTimesList = GetSongFromJson("./audio/8-bit-circus.json").
+
+		var song = GetSongFromJson("./audio/8-bit-circus.json");
+		var beatTimesList = song.
 							AsGodotDictionary()["beat_times"].
 							AsFloat32Array().
 							ToList();
+
+		//GD.Print(song);
+		var noteTypesList = song.AsGodotDictionary()["note_types"].AsInt32Array().ToList();	
+
+		for (int x = 0; x < beatTimesList.Count; x++) {
+			notes.Add(beatTimesList[x], noteTypesList[x]);
+		}
 	}
 
 	public static Variant GetSongFromJson(string path)
@@ -58,6 +67,8 @@ public partial class NoteController : Container
 			GD.Print("Exception: " + e.Message);
 
 		}
+
+		GD.Print("json: " + json);
 
 
 		return Json.ParseString(json);
@@ -134,10 +145,18 @@ public partial class NoteController : Container
 	public void HandleNoteSpawning(double delta)
 	{
 		time += delta;
-		if (index < beatTimesList.Count && time >= beatTimesList[index])
+
+		if (index < notes.Keys.Count && time >= notes.ElementAt(index).Key)
 		{
 			//currentNoteSpawnInterval = DEFAULT_NOTE_SPAWN_INTERVAL;
-			SpawnNote(typeof(RegNote));
+			switch (notes[notes.ElementAt(index).Key]) {
+				case 0: SpawnNote(typeof(RegNote));
+				break;
+				case 1: SpawnNote(typeof(SwipeNote));
+				break;
+				case 2: SpawnNote(typeof(HoldNote));
+				break;
+			}
 			index++;
 		}
 	}

@@ -46,6 +46,7 @@ scale = Vector2(0.3375, 0.3375)
 texture = ExtResource("2_ehb6q")
 
 [node name="PauseContainer" type="VBoxContainer" parent="UserInterface/PauseMenu"]
+process_mode = 3
 offset_left = 231.75
 offset_top = 47.75
 offset_right = 359.75

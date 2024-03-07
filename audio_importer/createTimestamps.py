@@ -2,6 +2,7 @@ import librosa
 import sys
 import json
 import os  # Import the os module
+import numpy as np
 
 # Initialize a dictionary for output
 output = {}
@@ -18,8 +19,12 @@ try:
     tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr)
     beat_times = librosa.frames_to_time(beat_frames, sr=sr)
 
+    note_types = [0] * len(beat_times)
+
+
     # If successful, store the results in the output dictionary
     output['beat_times'] = beat_times.tolist()
+    output['note_types'] = note_types
     output['tempo'] = tempo
     output['success'] = True
 
