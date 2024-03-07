@@ -203,6 +203,9 @@ sprite_frames = SubResource("SpriteFrames_nse0a")
 animation = &"attack1_ph"
 autoplay = "idle_ph"
 
+[node name="UserInterface" parent="." instance=ExtResource("8_umv5j")]
+position = Vector2(-2, 4)
+
 [node name="NoteController" type="Container" parent="."]
 offset_left = 12.0
 offset_top = -4.0
@@ -226,9 +229,6 @@ modulate = Color(1, 1, 1, 0.368627)
 position = Vector2(7.99975, 315.785)
 scale = Vector2(-13.4052, 454.262)
 texture = SubResource("PlaceholderTexture2D_st583")
-
-[node name="UserInterface" parent="." instance=ExtResource("8_umv5j")]
-position = Vector2(-2, 4)
 
 [node name="MusicPlayer" parent="." instance=ExtResource("10_4dffj")]
 stream = null

@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\meato\Documents\GitHub\Guardian-Gal-vs-Clown-Cartel\audio_importer\env
+set VIRTUAL_ENV=C:\Users\Mike\Documents\GitHub\Guardian-Gal-vs-Clown-Cartel\audio_importer\env
 
 if not defined PROMPT set PROMPT=$P$G
 

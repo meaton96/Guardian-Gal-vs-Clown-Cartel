@@ -34,7 +34,7 @@ public partial class BeatTimeReader : Control
         loadButton.Pressed += OnLoadSongPressed;
 
 
-        //CheckForNewSongs();
+        CheckForNewSongs();
     }
 
     private void CheckForNewSongs()
@@ -78,7 +78,8 @@ public partial class BeatTimeReader : Control
             RedirectStandardError = true,
             CreateNoWindow = true
         };
-        // GD.Print("Arguments: " + start.Arguments);
+        GD.Print("running command: \n" + 
+            $"{PYTHON_PATH} {SCRIPT_PATH} {audioFilePath}");
 
         using Process process = Process.Start(start);
         // Wait for the Python script to exit

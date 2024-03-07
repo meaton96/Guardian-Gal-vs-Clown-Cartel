@@ -68,7 +68,7 @@ public partial class NoteController : Container
 
 		}
 
-		GD.Print("json: " + json);
+	//	GD.Print("json: " + json);
 
 
 		return Json.ParseString(json);
