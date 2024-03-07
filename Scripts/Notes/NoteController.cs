@@ -15,20 +15,20 @@ public partial class NoteController : Container
 	const double SWIPE_SPAWN_CHANCE = .25;  //a % base chance to spawn a swipe note each time a note is spawned
 	const double HOLD_SPAWN_CHANCE = .10;   //a % base chance to spawn a hold note each time a note is spawned
 
-
+	// CHANGE THIS AFTER TESTING
+	public bool disableNoteSpawning = true;
 	private bool justSpawnedHold = false;
 	private Random random = new();
 
+	// References
 	private Player player;
-
-	private List<float> beatTimesList = new();
-	private int index = 0;
-
-
 	//notes
 	private PackedScene tapNoteScene = GD.Load<PackedScene>("res://Prefabs/tap_note.tscn");
 	private PackedScene holdNoteScene = GD.Load<PackedScene>("res://Prefabs/hold_note.tscn");
 	private PackedScene swipeNoteScene = GD.Load<PackedScene>("res://Prefabs/swipe_note.tscn");
+
+	private List<float> beatTimesList = new();
+	private int index = 0;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -72,7 +72,10 @@ public partial class NoteController : Container
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		HandleNoteSpawning(delta);
+		if (disableNoteSpawning == false)
+		{
+			HandleNoteSpawning(delta);
+		}
 		HandleNoteRemoving();
 	}
 
@@ -99,10 +102,11 @@ public partial class NoteController : Container
 		{
 			var instance = scene.Instantiate();
 			AddChild(instance);
+			(instance as Note).Visible = true;
 			(instance as Note).EnableNote();
 			existingNotes.Add(instance as Note);
 
-			//	GD.Print($"Spawned a {instance.GetType()}");
+			GD.Print($"Spawned a {instance.GetType()}");
 		}
 	}
 
@@ -116,6 +120,26 @@ public partial class NoteController : Container
 			note.QueueFree();
 		});
 
+	}
+
+	public void RemoveAllNotes()
+	{
+		foreach(Note n in existingNotes)
+		{
+			n.QueueFree();
+		}
+		existingNotes.Clear();
+	}
+
+	public void HandleNoteSpawning(double delta)
+	{
+		time += delta;
+		if (index < beatTimesList.Count && time >= beatTimesList[index])
+		{
+			//currentNoteSpawnInterval = DEFAULT_NOTE_SPAWN_INTERVAL;
+			SpawnNote(typeof(RegNote));
+			index++;
+		}
 	}
 
 
@@ -152,14 +176,4 @@ public partial class NoteController : Container
 	// 		}
 	// 	}
 	// }
-	public void HandleNoteSpawning(double delta)
-	{
-		time += delta;
-		if (index < beatTimesList.Count && time >= beatTimesList[index])
-		{
-			//currentNoteSpawnInterval = DEFAULT_NOTE_SPAWN_INTERVAL;
-			SpawnNote(typeof(RegNote));
-			index++;
-		}
-	}
 }

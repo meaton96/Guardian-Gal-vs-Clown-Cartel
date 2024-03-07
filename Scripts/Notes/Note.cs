@@ -16,7 +16,7 @@ public partial class Note : Sprite2D
 
 	// Change in each note definition, default is middle of screen
 	protected float ySpawnPos = 300;
-	protected float xSpawnPos = -100;
+	protected float xSpawnPos = 0;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -31,6 +31,8 @@ public partial class Note : Sprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		GD.Print("Note Pos: " + GlobalPosition);
+
 		// Update bound locations
 		rightBound = GlobalPosition.X + GetXSize();
 		leftBound = GlobalPosition.X - GetXSize();
@@ -94,17 +96,13 @@ public partial class Note : Sprite2D
 
 	public virtual void EnableNote()
 	{
-
 		active = true;
 		GlobalPosition = new Vector2(xSpawnPos, ySpawnPos);
-		
 	}
 
 	public void DisableNote()
 	{
-		
 		active = false;
-
 		//GlobalPosition = new Vector2(xSpawnPos, ySpawnPos);
 	}
 

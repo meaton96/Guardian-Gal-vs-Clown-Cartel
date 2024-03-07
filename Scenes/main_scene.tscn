@@ -1,5 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=39 format=3 uid="uid://b2vfgihr8uqcs"]
 
+[ext_resource type="Script" path="res://Scripts/Tutorial/TutorialManager.cs" id="1_a7pyt"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_nbgm6"]
 [ext_resource type="Texture2D" uid="uid://2sutc3r5t0g6" path="res://PlaceholderCharacter/Attack_KG_1.png" id="2_akdtg"]
 [ext_resource type="Texture2D" uid="uid://bebfm7vbvdp4x" path="res://PlaceholderCharacter/Attack_KG_2.png" id="3_i6i1j"]
@@ -10,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bntghcjqmpkaa" path="res://Scenes/user_interface.tscn" id="8_umv5j"]
 [ext_resource type="PackedScene" uid="uid://27sterys2r35" path="res://Scenes/music_player.tscn" id="10_4dffj"]
 [ext_resource type="Script" path="res://Scripts/PointHandling.cs" id="10_ht7m7"]
+[ext_resource type="PackedScene" uid="uid://ce2hpman0tn6f" path="res://Prefabs/tap_note.tscn" id="11_8fd4a"]
+[ext_resource type="PackedScene" uid="uid://d0ri1p6oy3xva" path="res://Prefabs/swipe_note.tscn" id="12_dxvkw"]
+[ext_resource type="PackedScene" uid="uid://m6502aymcibt" path="res://Prefabs/hold_note.tscn" id="13_he02o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
 atlas = ExtResource("2_akdtg")
@@ -183,6 +187,9 @@ animations = [{
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_st583"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_2vgcy"]
+font_size = 30
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -231,3 +238,51 @@ volume_db = -18.488
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("10_ht7m7")
+
+[node name="TutorialManager" type="Node2D" parent="."]
+script = ExtResource("1_a7pyt")
+
+[node name="NoteSprites" type="Node" parent="TutorialManager"]
+
+[node name="TapNote" parent="TutorialManager/NoteSprites" instance=ExtResource("11_8fd4a")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="SwipeNote" parent="TutorialManager/NoteSprites" instance=ExtResource("12_dxvkw")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="HoldNote" parent="TutorialManager/NoteSprites" instance=ExtResource("13_he02o")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="TutorialUI" type="Node2D" parent="TutorialManager"]
+
+[node name="Text" type="VBoxContainer" parent="TutorialManager/TutorialUI"]
+offset_left = 91.0
+offset_top = 114.0
+offset_right = 2002.0
+offset_bottom = 165.0
+
+[node name="TutorialTextLabel" type="Label" parent="TutorialManager/TutorialUI/Text"]
+layout_mode = 2
+text = "Tutorial Text Goes Here"
+label_settings = SubResource("LabelSettings_2vgcy")
+autowrap_mode = 3
+
+[node name="Buttons" type="Node2D" parent="TutorialManager/TutorialUI"]
+
+[node name="ProgressTutorial" type="Button" parent="TutorialManager/TutorialUI/Buttons"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 868.0
+offset_top = 1001.0
+offset_right = 1323.0
+offset_bottom = 1049.0
+grow_horizontal = 0
+action_mode = 0
+text = "Got it!"
