@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 public partial class BeatTimeReader : Control
 {
     const string PYTHON_PATH = @"audio_importer\env\Scripts\python.exe";
+    const string ENV_A = @"audio_importer\env\Scripts\activate";
     const string SCRIPT_PATH = @"audio_importer\createTimestamps.py";
 
     const string AUDIO_FOLDER_PATH_EDITOR = @"audio";
@@ -68,7 +69,21 @@ public partial class BeatTimeReader : Control
     public static void ExecutePythonScript(string audioFilePath)
     {
         //  GD.Print("Current directory: " + Directory.GetCurrentDirectory());
+        GD.Print("Activating python env");
+        ProcessStartInfo activateEnv = new ProcessStartInfo
+        {
+            FileName = "cmd.exe",
+            Arguments = $"/C {ENV_A}",
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+
+        using Process activateProcess = Process.Start(activateEnv);
+        activateProcess.WaitForExit();
         GD.Print("Executing python script");
+
+
+
         ProcessStartInfo start = new ProcessStartInfo
         {
             FileName = PYTHON_PATH,
@@ -78,8 +93,8 @@ public partial class BeatTimeReader : Control
             RedirectStandardError = true,
             CreateNoWindow = true
         };
-        GD.Print("running command: \n" + 
-            $"{PYTHON_PATH} {SCRIPT_PATH} {audioFilePath}");
+        // GD.Print("running command: \n" +
+        //     $"{PYTHON_PATH} {SCRIPT_PATH} {audioFilePath}");
 
         using Process process = Process.Start(start);
         // Wait for the Python script to exit
@@ -104,8 +119,9 @@ public partial class BeatTimeReader : Control
             // Process was successful, handle beat times
             var beatTimes = output["beat_times"].ToObject<float[]>();
             var noteTypes = output["note_types"].ToObject<int[]>();
-            GD.Print("Beat Times: ", String.Join(", ", beatTimes));
-            GD.Print("Beat Times: ", String.Join(", ", noteTypes));
+            // GD.Print("Beat Times: ", String.Join(", ", beatTimes));
+            //  GD.Print("Beat Times: ", String.Join(", ", noteTypes));
+            GD.Print("success");
         }
         else
         {
