@@ -68,18 +68,7 @@ public partial class BeatTimeReader : Control
 
     public static void ExecutePythonScript(string audioFilePath)
     {
-        //  GD.Print("Current directory: " + Directory.GetCurrentDirectory());
-        GD.Print("Activating python env");
-        ProcessStartInfo activateEnv = new ProcessStartInfo
-        {
-            FileName = "cmd.exe",
-            Arguments = $"/C {ENV_A}",
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
-
-        using Process activateProcess = Process.Start(activateEnv);
-        activateProcess.WaitForExit();
+        
         GD.Print("Executing python script");
 
 
