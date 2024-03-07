@@ -4,5 +4,5 @@
 build/*
 
 
-/audio_importer/env/Lib/site-packages/__pycache__
+
 /.vscode
