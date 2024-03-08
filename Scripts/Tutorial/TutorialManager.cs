@@ -201,8 +201,10 @@ public partial class TutorialManager : Node
 	private void EndTutorial()
 	{
 		GD.Print("ENDING");
+
 		uiParent.Visible = true;
 		noteController.disableNoteSpawning = false;
+		noteController.StartLevel();
 		QueueFree();
 	}
 }

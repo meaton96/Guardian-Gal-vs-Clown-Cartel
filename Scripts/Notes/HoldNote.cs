@@ -22,7 +22,7 @@ public partial class HoldNote : Note
 		base._Process(delta);
 
 	}
-	public override void EnableNote()
+	public override void EnableNote(float spawnPosY = 300)
 	{
 
 		active = true;

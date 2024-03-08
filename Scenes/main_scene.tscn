@@ -231,7 +231,6 @@ scale = Vector2(-13.4052, 454.262)
 texture = SubResource("PlaceholderTexture2D_st583")
 
 [node name="MusicPlayer" parent="." instance=ExtResource("10_4dffj")]
-stream = null
 volume_db = -18.488
 
 [node name="PointController" type="Container" parent="."]

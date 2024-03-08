@@ -14,41 +14,37 @@ public partial class MusicPlayer : AudioStreamPlayer
 
 	const int MIN_DB = 60;
 
-//	AudioEffectInstance audioInstance;
+	//	AudioEffectInstance audioInstance;
 
 	public override void _Ready()
 	{
-		//_timeBegin = Time.GetTicksUsec();
-	//	_timeDelay = AudioServer.GetTimeToNextMix() + AudioServer.GetOutputLatency();
+		//creates a 4600ms delay
+		//
+        var delay_effect = new AudioEffectDelay
+        {
+            FeedbackActive = true,
+            FeedbackDelayMs = 0.3f, 	//??
+            Tap1DelayMs = 4600,			//actual play delay
+            Tap2DelayMs = 4600,
+            Dry = 0						//play 0% of the original audio
 
-		//GD.Print($"Stream: {Stream}");
-		//GD.Print($"beat count: {Stream._GetBeatCount()}");
-		//GD.Print($"BBM: {Stream._GetBpm()}");
-
-
-	//	audioInstance = AudioServer.GetBusEffectInstance(0, 0);
-
-
-
-		Play();
-
-		//Draw();
+        };
+        var bus_idx = AudioServer.GetBusIndex("Master");
+		AudioServer.AddBusEffect(bus_idx, delay_effect);	
 
 
-
+		_timeBegin = Time.GetTicksUsec();
+		_timeDelay = AudioServer.GetTimeToNextMix() + 
+				AudioServer.GetOutputLatency();
+		
 	}
+	public void PlayMusic() {Play();}
+
 
 	public override void _Process(double delta)
 	{
-
-		//https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html#introduction
-		//double time = (Time.GetTicksUsec() - _timeBegin) / 1000000.0d;
-		//time = Math.Max(0.0d, time - _timeDelay);
+		double time = (Time.GetTicksUsec() - _timeBegin) / 1000000.0d;
+		time = Math.Max(0.0d, time - _timeDelay);
 		//GD.Print(string.Format("Time is: {0}", time));
-	//	PrintBusVolume();
 	}
-
-
-
-
 }

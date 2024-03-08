@@ -31,7 +31,7 @@ public partial class Note : Sprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		GD.Print("Note Pos: " + GlobalPosition);
+	//	GD.Print("Note Pos: " + GlobalPosition);
 
 		// Update bound locations
 		rightBound = GlobalPosition.X + GetXSize();
@@ -41,7 +41,7 @@ public partial class Note : Sprite2D
 		// Hit effect
 		if (CheckNoteHit())
 		{
-			GD.Print(timer);
+		//	GD.Print(timer);
 			Modulate = new Color(0, 1, 0);
 			ConstantHitEffect();
 		}
@@ -94,10 +94,10 @@ public partial class Note : Sprite2D
 		return false;
 	}
 
-	public virtual void EnableNote()
+	public virtual void EnableNote(float spawnPosY = 300)
 	{
 		active = true;
-		GlobalPosition = new Vector2(xSpawnPos, ySpawnPos);
+		GlobalPosition = new Vector2(xSpawnPos, spawnPosY);
 	}
 
 	public void DisableNote()

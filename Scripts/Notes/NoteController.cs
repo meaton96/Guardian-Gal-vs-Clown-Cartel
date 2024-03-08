@@ -20,12 +20,17 @@ public partial class NoteController : Container
 	private bool justSpawnedHold = false;
 	private Random random = new();
 
+	private float ySpawnPos = 300;
+	private bool spawningUp = true;
+
 	// References
 	private Player player;
 	//notes
 	private PackedScene tapNoteScene = GD.Load<PackedScene>("res://Prefabs/tap_note.tscn");
 	private PackedScene holdNoteScene = GD.Load<PackedScene>("res://Prefabs/hold_note.tscn");
 	private PackedScene swipeNoteScene = GD.Load<PackedScene>("res://Prefabs/swipe_note.tscn");
+
+	private MusicPlayer musicPlayer;
 
 	private System.Collections.Generic.Dictionary<float, int> notes = new();
 	private int index = 0;
@@ -35,6 +40,7 @@ public partial class NoteController : Container
 	{
 		existingNotes = new();
 		player = GetNode<Player>("../Player");
+		musicPlayer = GetNode<MusicPlayer>("../MusicPlayer");
 
 		var song = GetSongFromJson("./audio/8-bit-circus.json");
 		var beatTimesList = song.
@@ -43,9 +49,10 @@ public partial class NoteController : Container
 							ToList();
 
 		//GD.Print(song);
-		var noteTypesList = song.AsGodotDictionary()["note_types"].AsInt32Array().ToList();	
+		var noteTypesList = song.AsGodotDictionary()["note_types"].AsInt32Array().ToList();
 
-		for (int x = 0; x < beatTimesList.Count; x++) {
+		for (int x = 0; x < beatTimesList.Count; x++)
+		{
 			notes.Add(beatTimesList[x], noteTypesList[x]);
 		}
 	}
@@ -68,7 +75,7 @@ public partial class NoteController : Container
 
 		}
 
-	//	GD.Print("json: " + json);
+		//	GD.Print("json: " + json);
 
 
 		return Json.ParseString(json);
@@ -114,11 +121,24 @@ public partial class NoteController : Container
 			var instance = scene.Instantiate();
 			AddChild(instance);
 			(instance as Note).Visible = true;
-			(instance as Note).EnableNote();
+
+
+
+			ySpawnPos += spawningUp ? 30 : -30;
+			if (ySpawnPos >= GetViewportRect().Size.Y - 100 || ySpawnPos <= 100)
+			{
+				// start decreasing spawnPosY
+				spawningUp = !spawningUp;
+			}
+			(instance as Note).EnableNote(ySpawnPos);
 			existingNotes.Add(instance as Note);
 
-			GD.Print($"Spawned a {instance.GetType()}");
+			//GD.Print($"Spawned a {instance.GetType()}");
 		}
+	}
+	public void StartLevel()
+	{
+		musicPlayer.PlayMusic();
 	}
 
 	public void HandleNoteRemoving()
@@ -135,7 +155,7 @@ public partial class NoteController : Container
 
 	public void RemoveAllNotes()
 	{
-		foreach(Note n in existingNotes)
+		foreach (Note n in existingNotes)
 		{
 			n.QueueFree();
 		}
@@ -149,13 +169,17 @@ public partial class NoteController : Container
 		if (index < notes.Keys.Count && time >= notes.ElementAt(index).Key)
 		{
 			//currentNoteSpawnInterval = DEFAULT_NOTE_SPAWN_INTERVAL;
-			switch (notes[notes.ElementAt(index).Key]) {
-				case 0: SpawnNote(typeof(RegNote));
-				break;
-				case 1: SpawnNote(typeof(SwipeNote));
-				break;
-				case 2: SpawnNote(typeof(HoldNote));
-				break;
+			switch (notes[notes.ElementAt(index).Key])
+			{
+				case 0:
+					SpawnNote(typeof(RegNote));
+					break;
+				case 1:
+					SpawnNote(typeof(SwipeNote));
+					break;
+				case 2:
+					SpawnNote(typeof(HoldNote));
+					break;
 			}
 			index++;
 		}
