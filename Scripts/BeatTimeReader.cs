@@ -5,11 +5,15 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using NAudio;
+using NAudioBPM;
+using System.Globalization;
+using NAudio.Wave;
 
 public partial class BeatTimeReader : Control
 {
     const string PYTHON_PATH = @"c:\audio_importer\env\Scripts\python.exe";
-   
+
     const string SCRIPT_PATH = @"c:\audio_importer\createTimestamps.py";
 
     const string AUDIO_FOLDER_PATH_EDITOR = @"audio";
@@ -35,7 +39,7 @@ public partial class BeatTimeReader : Control
         loadButton.Pressed += OnLoadSongPressed;
 
 
-       // CheckForNewSongs();
+        CheckForNewSongs();
     }
 
     private void CheckForNewSongs()
@@ -48,10 +52,44 @@ public partial class BeatTimeReader : Control
 
         //call python script for each new song
 
-        ExecutePythonScript("audio\\8-bit-circus.wav");
+        // ExecutePythonScript("audio\\8-bit-circus.wav");
+
+        string file = @"audio\8-bit-circus.wav";
+        int start = 0;
+        int length = new AudioFileReader(file).TotalTime.Seconds;
+
+        BPMDetector bpmDetector = new BPMDetector(file, start, length);
+
+        if (bpmDetector.Groups.Length > 0)
+        {
+            List<float> beatTimings = bpmDetector.BeatPositions;
+            List<int> beatsWithZeros = new List<int>(new int[beatTimings.Count]);
+
+            // Serialize beatTimings and note_types to JSON
+            JObject json = new()
+            {
+                ["beat_times"] = JArray.FromObject(beatTimings),
+                ["note_types"] = new JArray(beatsWithZeros),
+                ["tempo"] = bpmDetector.Groups[0].Tempo
+            };
+
+            // Convert JSON object to string
+            string jsonString = json.ToString();
+
+            // Print the JSON string
+            GD.Print("JSON: " + jsonString);
+
+            // Dump JSON text to a .json file
+            string jsonFilePath = Path.ChangeExtension(file, ".json");
+            File.WriteAllText(jsonFilePath, jsonString);
+        }
+
+
 
         //songNames.ForEach(songName => ExecutePythonScript($"audio\\{songName}.mp3"));
     }
+    // Define a function to get beat timings from a file path
+    
 
     public void OnLoadSongPressed()
     {
@@ -68,7 +106,7 @@ public partial class BeatTimeReader : Control
 
     public static void ExecutePythonScript(string audioFilePath)
     {
-        
+
         GD.Print("Executing python script");
 
 
@@ -119,8 +157,6 @@ public partial class BeatTimeReader : Control
             GD.Print("Error: " + errorMessage);
         }
         // The using statement ensures the process is properly disposed of after use
-
-
 
     }
 }
