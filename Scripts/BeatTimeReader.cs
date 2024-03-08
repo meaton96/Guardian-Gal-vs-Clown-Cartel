@@ -35,7 +35,7 @@ public partial class BeatTimeReader : Control
         loadButton.Pressed += OnLoadSongPressed;
 
 
-        CheckForNewSongs();
+       // CheckForNewSongs();
     }
 
     private void CheckForNewSongs()
