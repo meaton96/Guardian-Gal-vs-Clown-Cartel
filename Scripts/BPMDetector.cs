@@ -46,21 +46,6 @@ namespace NAudioBPM
 
         private Peak[] getPeaks(float[] data)
         {
-            // What we're going to do here, is to divide up our audio into parts.
-
-            // We will then identify, for each part, what the loudest sample is in that
-            // part.
-
-            // It's implied that that sample would represent the most likely 'beat'
-            // within that part.
-
-            // Each part is 0.5 seconds long
-
-            // This will give us 60 'beats' - we will only take the loudest half of
-            // those.
-
-            // This will allow us to ignore breaks, and allow us to address tracks with
-            // a BPM below 120.
 
             int partSize = sampleRate / 2;
             int parts = data.Length / channels / partSize;
@@ -117,14 +102,7 @@ namespace NAudioBPM
 
         private BPMGroup[] getIntervals(Peak[] peaks)
         {
-            // What we now do is get all of our peaks, and then measure the distance to
-            // other peaks, to create intervals.  Then based on the distance between
-            // those peaks (the distance of the intervals) we can calculate the BPM of
-            // that particular interval.
-
-            // The interval that is seen the most should have the BPM that corresponds
-            // to the track itself.
-
+            
             List<BPMGroup> groups = new List<BPMGroup>();
 
             for (int index = 0; index < peaks.Length; ++index)
