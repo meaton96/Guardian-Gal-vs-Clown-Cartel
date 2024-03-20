@@ -258,10 +258,8 @@ public partial class Player : CharacterBody2D
 	// 	}
 	// }
 	private void HandleNoteDetection(Type noteType)
-	{
-		//	GD.Print("Click");
-		ui.AddInput("tap");
-		if (lineDetector.hitNote.GetType() == noteType)
+	{	
+		if (lineDetector.hitNote.GetType() == noteType && lineDetector.hitNote.active)
 		{
 			int scoreCategory = lineDetector.hitNote.DisableNote(true);
 			switch (scoreCategory)

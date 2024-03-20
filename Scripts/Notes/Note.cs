@@ -112,11 +112,12 @@ public partial class Note : Sprite2D
 
 	public int DisableNote(bool hit = false)
 	{
-		if (hit) {
+		if (hit && active) {
 			float xDistance = Mathf.Abs(rightBound - lineDetector.GlobalPosition.X);
 			float percentOfSize = xDistance / (GetXSize() * 2);
 
 			int index = hitBreakpoints.FindIndex(bp => percentOfSize < bp);
+			active = false;
 			return index >= 0 ? index : -1;
 
 		}
