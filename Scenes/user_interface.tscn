@@ -15,7 +15,7 @@ scale = Vector2(4, 4)
 [node name="UserInterface" type="VBoxContainer" parent="."]
 offset_left = 3.0
 offset_right = 523.0
-offset_bottom = 271.0
+offset_bottom = 248.0
 script = ExtResource("1_k730o")
 
 [node name="FeedbackLabel" type="Label" parent="UserInterface"]
@@ -81,6 +81,7 @@ position = Vector2(-7.25, 248.5)
 scale = Vector2(0.5, 0.5)
 
 [node name="PauseButton" type="Button" parent="PauseButton"]
+process_mode = 3
 offset_left = 17.0
 offset_top = 4.0
 offset_right = 115.0

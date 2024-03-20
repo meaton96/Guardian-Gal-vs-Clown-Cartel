@@ -20,17 +20,17 @@ public partial class MusicPlayer : AudioStreamPlayer
 	{
 		//creates a 4600ms delay
 		//
-        var delay_effect = new AudioEffectDelay
-        {
-            FeedbackActive = true,
-            FeedbackDelayMs = 0.3f, 	//??
-            Tap1DelayMs = 4600,			//actual play delay
-            Tap2DelayMs = 4600,
-            Dry = 0						//play 0% of the original audio
+        // var delay_effect = new AudioEffectDelay
+        // {
+        //     FeedbackActive = true,
+        //     FeedbackDelayMs = 0.0f, 	//??
+        //     Tap1DelayMs = 4600,			//actual play delay
+        //     Tap2DelayMs = 4600,
+        //     Dry = 0						//play 0% of the original audio
 
-        };
-        var bus_idx = AudioServer.GetBusIndex("Master");
-		AudioServer.AddBusEffect(bus_idx, delay_effect);	
+        // };
+        // var bus_idx = AudioServer.GetBusIndex("Master");
+		// AudioServer.AddBusEffect(bus_idx, delay_effect);	
 
 
 		_timeBegin = Time.GetTicksUsec();
@@ -38,7 +38,7 @@ public partial class MusicPlayer : AudioStreamPlayer
 				AudioServer.GetOutputLatency();
 		
 	}
-	public void PlayMusic() {Play();}
+	//public void PlayMusic() {Play();}
 
 
 	public override void _Process(double delta)

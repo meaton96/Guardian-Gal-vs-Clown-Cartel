@@ -9,6 +9,8 @@ public partial class Interface : VBoxContainer
 
 	Button resetButton, pauseButton, resumeButton;
 
+	MusicPlayer musicPlayer;
+
 	Node2D pauseMenu;
 	//Label platformLabel;
 	// Called when the node enters the scene tree for the first time.
@@ -17,6 +19,7 @@ public partial class Interface : VBoxContainer
 		text = GetNode<Label>("FeedbackLabel");
 		scoreText = GetNode<Label>("ScoreLabel");
 		pauseMenu = GetNode<Node2D>("PauseMenu");
+		musicPlayer = GetNode<MusicPlayer>("../../MusicPlayer");
 		CreateButton();
 	}
 	private void CreateButton()
@@ -34,8 +37,10 @@ public partial class Interface : VBoxContainer
 	public void PauseGame()
 	{
 		GD.Print("PauseGame");
-		GetTree().Paused = !GetTree().Paused;
-		pauseMenu.Show();
+		var paused = GetTree().Paused;
+		//musicPlayer.StreamPaused = !paused;
+		GetTree().Paused = !paused;
+		pauseMenu.Visible = !paused;
 	}
 	private void OnCloseButtonPressed()
 	{

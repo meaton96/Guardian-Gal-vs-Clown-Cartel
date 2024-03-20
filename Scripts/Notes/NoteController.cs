@@ -10,6 +10,8 @@ public partial class NoteController : Container
 	public List<Note> existingNotes;
 	private double time;
 	private double currentNoteSpawnInterval;
+
+	private const float MUSIC_DELAY = 4600; //milliseconds
 	const double DEFAULT_NOTE_SPAWN_INTERVAL = 0.6; //how often to spawn ANY note in seconds
 	const double HOLD_NOTE_SPAWN_INTERVAL = 1.1; //how often to spawn a HOLD note in seconds
 	const double SWIPE_SPAWN_CHANCE = .25;  //a % base chance to spawn a swipe note each time a note is spawned
@@ -55,6 +57,12 @@ public partial class NoteController : Container
 		{
 			notes.Add(beatTimesList[x], noteTypesList[x]);
 		}
+	}
+	private async void WaitForSeconds(float seconds, Action action)
+	{
+		
+		await ToSignal(GetTree().CreateTimer(seconds), "timeout");
+		action();
 	}
 
 	public static Variant GetSongFromJson(string path)
@@ -138,7 +146,10 @@ public partial class NoteController : Container
 	}
 	public void StartLevel()
 	{
-		musicPlayer.PlayMusic();
+		WaitForSeconds(MUSIC_DELAY / 1000, () =>
+		{
+			musicPlayer.Play();
+		});
 	}
 
 	public void HandleNoteRemoving()

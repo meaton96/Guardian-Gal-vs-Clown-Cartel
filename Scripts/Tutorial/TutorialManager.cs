@@ -40,6 +40,8 @@ public partial class TutorialManager : Node
 		// Initialize
 		noteSprites = new List<Sprite2D>();
 
+		GD.Print(GetTree());
+
 		// Get References
 		tutorialTextLabel = GetNode<Label>("TutorialUI/Text/TutorialTextLabel");
 		uiParent = GetNode<Node2D>("../UserInterface");
