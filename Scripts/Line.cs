@@ -92,10 +92,14 @@ public partial class Line : Container
 			if (n.CheckNoteHit())
 			{
 				hitNote = n;
-				GD.Print("HIT NOTE DETECTED");
+				//GD.Print("HIT NOTE DETECTED");
 				return true;
 			}
 		}
 		return false;
+	}
+	public Type GetActivteNoteType() {
+		if (hitNote != null) return hitNote.GetType();
+		return null;
 	}
 }

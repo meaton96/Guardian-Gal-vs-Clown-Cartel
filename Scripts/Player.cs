@@ -54,7 +54,7 @@ public partial class Player : CharacterBody2D
 		if (platform == "Android")
 			HandleTouchInput(@event);
 		else
-			HandleMouseInput(@event);
+			HandleMouseInputNew(@event);
 
 		if (DEBUG_ENABLED)
 		{
@@ -62,7 +62,7 @@ public partial class Player : CharacterBody2D
 		}
 
 	}
-	
+
 	private void HandleKeyboardInput(InputEvent @event)
 	{
 		if (@event is InputEventKey keyEvent)
@@ -102,15 +102,15 @@ public partial class Player : CharacterBody2D
 					IsLongPressing = false;
 					if (timePressed > LONG_PRESS_THRESHOLD)
 					{
-						HoldNote noteType = new HoldNote();
-						HandleNoteDetection(noteType);
+						//HoldNote noteType = new HoldNote();
+						HandleNoteDetection(typeof(HoldNote));
 					}
 					else
 					{
 						if (!dragged)
 						{
-							RegNote noteType = new RegNote();
-							HandleNoteDetection(noteType);							
+							//RegNote noteType = new RegNote();
+							HandleNoteDetection(typeof(RegNote));
 						}
 					}
 					dragged = false;
@@ -138,16 +138,53 @@ public partial class Player : CharacterBody2D
 						dragged = true;
 
 						// Swipe note detection
-						SwipeNote noteType = new SwipeNote();
-						HandleNoteDetection(noteType);
+						//SwipeNote noteType = new SwipeNote();
+						HandleNoteDetection(typeof(SwipeNote));
 					}
-					
+
 				}
 			}
 		}
 		else
 		{
 			pointController.Miss();
+		}
+	}
+	private void HandleMouseInputNew(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton mouseEvent)
+		{
+			//left mouse down
+			if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
+			{
+
+				if (lineDetector.CheckNoteDetection())
+				{
+					//check for regular note
+					HandleNoteDetection(typeof(RegNote));
+				}
+				else {
+					//lose points?
+					//clicked when no note was present
+				}
+			}
+
+		}
+		else if (@event is InputEventMouseMotion mouseMotionEvent)
+		{
+			//if the left mouse button is pressed
+			if (mouseMotionEvent.ButtonMask.HasFlag(MouseButtonMask.Left))
+			{
+
+				if (lineDetector.CheckNoteDetection())
+				{
+					if (lineDetector.GetActivteNoteType() == typeof(SwipeNote))
+						HandleNoteDetection(typeof(SwipeNote));
+					else
+						HandleNoteDetection(typeof(HoldNote));
+				}
+			}
+
 		}
 	}
 
@@ -159,13 +196,14 @@ public partial class Player : CharacterBody2D
 			{
 				//ui.SetFeedback("mouse down");
 				if (mouseEvent.ButtonIndex != MouseButton.Left) return;
-					
+
 				//mouse down
 				if (mouseEvent.Pressed && !mouseDown)
 				{
 					mouseDown = true;
 					mouseDownPosition = mouseEvent.Position;
 					mouseDownTime = Time.GetTicksMsec();
+
 				}
 				//mouse up
 				else if (!mouseEvent.Pressed && mouseDown)
@@ -179,19 +217,19 @@ public partial class Player : CharacterBody2D
 
 					if (timePressed > LONG_PRESS_THRESHOLD)
 					{
-						HoldNote noteType = new HoldNote();
-						HandleNoteDetection(noteType);
-						
+						//HoldNote noteType = new HoldNote();
+						HandleNoteDetection(typeof(HoldNote));
+
 					}
 					else if (distance > SWIPE_THRESHOLD)
 					{
-						SwipeNote noteType = new SwipeNote();
-						HandleNoteDetection(noteType);
+						//SwipeNote noteType = new SwipeNote();
+						HandleNoteDetection(typeof(SwipeNote));
 					}
 					else
 					{
-						RegNote noteType = new RegNote();
-						HandleNoteDetection(noteType);
+						//RegNote noteType = new RegNote();
+						HandleNoteDetection(typeof(RegNote));
 					}
 				}
 			}
@@ -217,11 +255,11 @@ public partial class Player : CharacterBody2D
 			pointController.Miss();
 		}
 	}
-	private void HandleNoteDetection(Note noteType)
+	private void HandleNoteDetection(Type noteType)
 	{
 		//	GD.Print("Click");
 		ui.AddInput("tap");
-		if (lineDetector.hitNote.GetType() == noteType.GetType())
+		if (lineDetector.hitNote.GetType() == noteType)
 		{
 			lineDetector.hitNote.DisableNote();
 			//ui.DisplayHit();
