@@ -12,15 +12,10 @@ public partial class NoteController : Container
 	private double currentNoteSpawnInterval;
 
 	private const float MUSIC_DELAY = 4600; //milliseconds
-	const double DEFAULT_NOTE_SPAWN_INTERVAL = 0.6; //how often to spawn ANY note in seconds
-	const double HOLD_NOTE_SPAWN_INTERVAL = 1.1; //how often to spawn a HOLD note in seconds
-	const double SWIPE_SPAWN_CHANCE = .25;  //a % base chance to spawn a swipe note each time a note is spawned
-	const double HOLD_SPAWN_CHANCE = .10;   //a % base chance to spawn a hold note each time a note is spawned
 
 	// CHANGE THIS AFTER TESTING
 	public bool disableNoteSpawning = true;
 	private bool justSpawnedHold = false;
-	private Random random = new();
 
 	private float ySpawnPos = 300;
 	private bool spawningUp = true;

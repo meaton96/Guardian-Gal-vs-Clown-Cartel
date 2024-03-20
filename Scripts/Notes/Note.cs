@@ -1,15 +1,25 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 
 public partial class Note : Sprite2D
 {
 	// References
-	private Line lineDetector;																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				
+	private Line lineDetector;		
+
+	private readonly List<float> hitBreakpoints = new() {
+		0.2f,
+		0.5f,
+		0.75f,
+		1.01f
+	};
+
 
 	// Fields
 	public bool active; // If true, note is moving across scene, else it is wating in the pool
 	public float rightBound;
 	public float leftBound;
-	protected float speed = 8.0f;
+	protected float speed = 4.0f;
 	protected Color baseColor;
 	protected Control bounds;
 	private float timer = 0;
@@ -100,9 +110,20 @@ public partial class Note : Sprite2D
 		GlobalPosition = new Vector2(xSpawnPos, spawnPosY);
 	}
 
-	public void DisableNote()
+	public int DisableNote(bool hit = false)
 	{
+		if (hit) {
+			float xDistance = Mathf.Abs(rightBound - lineDetector.GlobalPosition.X);
+			float percentOfSize = xDistance / (GetXSize() * 2);
+
+			int index = hitBreakpoints.FindIndex(bp => percentOfSize < bp);
+			return index >= 0 ? index : -1;
+
+		}
+		
+
 		active = false;
+		return -1;
 		//GlobalPosition = new Vector2(xSpawnPos, ySpawnPos);
 	}
 

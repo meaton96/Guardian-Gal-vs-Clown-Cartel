@@ -26,7 +26,7 @@ public partial class PointHandling : Node
 	public override void _Process(double delta)
 	{
 		ui.DisplayScore(PlayerScore);
-		Miss();
+		//Miss();
 	}
 
 	public void HandleScore(Note note)
@@ -55,6 +55,18 @@ public partial class PointHandling : Node
 
 	public void Miss() // TODO: Move this somewhere else once lives are implemented
 	{
-		ui.DisplayMiss();
+		GD.Print("Miss");
+	}
+	public void Perfect() {
+		GD.Print("Perfect");
+	}
+	public void Great() {
+		GD.Print("Great");
+	}
+	public void Good() {
+		GD.Print("Good");
+	}
+	public void OK() {
+		GD.Print("OK");
 	}
 }

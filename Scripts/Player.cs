@@ -147,6 +147,7 @@ public partial class Player : CharacterBody2D
 		}
 		else
 		{
+			//GD.Print("what");
 			pointController.Miss();
 		}
 	}
@@ -163,7 +164,8 @@ public partial class Player : CharacterBody2D
 					//check for regular note
 					HandleNoteDetection(typeof(RegNote));
 				}
-				else {
+				else
+				{
 					//lose points?
 					//clicked when no note was present
 				}
@@ -188,80 +190,99 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	private void HandleMouseInput(InputEvent @event)
-	{
-		if (lineDetector.CheckNoteDetection())
-		{
-			if (@event is InputEventMouseButton mouseEvent)
-			{
-				//ui.SetFeedback("mouse down");
-				if (mouseEvent.ButtonIndex != MouseButton.Left) return;
+	// private void HandleMouseInput(InputEvent @event)
+	// {
+	// 	if (lineDetector.CheckNoteDetection())
+	// 	{
+	// 		if (@event is InputEventMouseButton mouseEvent)
+	// 		{
+	// 			//ui.SetFeedback("mouse down");
+	// 			if (mouseEvent.ButtonIndex != MouseButton.Left) return;
 
-				//mouse down
-				if (mouseEvent.Pressed && !mouseDown)
-				{
-					mouseDown = true;
-					mouseDownPosition = mouseEvent.Position;
-					mouseDownTime = Time.GetTicksMsec();
+	// 			//mouse down
+	// 			if (mouseEvent.Pressed && !mouseDown)
+	// 			{
+	// 				mouseDown = true;
+	// 				mouseDownPosition = mouseEvent.Position;
+	// 				mouseDownTime = Time.GetTicksMsec();
 
-				}
-				//mouse up
-				else if (!mouseEvent.Pressed && mouseDown)
-				{
-					mouseDown = false;
-					//ui.SetFeedback("mouse up");
-					var mouseUpPosition = mouseEvent.Position;
-					var distance = mouseDownPosition.DistanceTo(mouseUpPosition);
-					timePressed = Time.GetTicksMsec() - mouseDownTime;
-
-
-					if (timePressed > LONG_PRESS_THRESHOLD)
-					{
-						//HoldNote noteType = new HoldNote();
-						HandleNoteDetection(typeof(HoldNote));
-
-					}
-					else if (distance > SWIPE_THRESHOLD)
-					{
-						//SwipeNote noteType = new SwipeNote();
-						HandleNoteDetection(typeof(SwipeNote));
-					}
-					else
-					{
-						//RegNote noteType = new RegNote();
-						HandleNoteDetection(typeof(RegNote));
-					}
-				}
-			}
-			else if (@event is InputEventMouseMotion mouseMotion)
-			{
-				//mouse motion
-				//ui.SetFeedback("mouse motion");
-				if (!mouseMotion.ButtonMask.HasFlag(MouseButtonMask.Left)) return;
-				timePressed = Time.GetTicksMsec() - mouseDownTime;
-				//if the time pressed is greater than the long press threshold
+	// 			}
+	// 			//mouse up
+	// 			else if (!mouseEvent.Pressed && mouseDown)
+	// 			{
+	// 				mouseDown = false;
+	// 				//ui.SetFeedback("mouse up");
+	// 				var mouseUpPosition = mouseEvent.Position;
+	// 				var distance = mouseDownPosition.DistanceTo(mouseUpPosition);
+	// 				timePressed = Time.GetTicksMsec() - mouseDownTime;
 
 
-				TouchPosition = mouseMotion.Position;
+	// 				if (timePressed > LONG_PRESS_THRESHOLD)
+	// 				{
+	// 					//HoldNote noteType = new HoldNote();
+	// 					HandleNoteDetection(typeof(HoldNote));
 
-				if (timePressed > LONG_PRESS_THRESHOLD)
-				{
-					IsLongPressing = true;
-				}
-			}
-		}
-		else
-		{
-			pointController.Miss();
-		}
-	}
+	// 				}
+	// 				else if (distance > SWIPE_THRESHOLD)
+	// 				{
+	// 					//SwipeNote noteType = new SwipeNote();
+	// 					HandleNoteDetection(typeof(SwipeNote));
+	// 				}
+	// 				else
+	// 				{
+	// 					//RegNote noteType = new RegNote();
+	// 					HandleNoteDetection(typeof(RegNote));
+	// 				}
+	// 			}
+	// 		}
+	// 		else if (@event is InputEventMouseMotion mouseMotion)
+	// 		{
+	// 			//mouse motion
+	// 			//ui.SetFeedback("mouse motion");
+	// 			if (!mouseMotion.ButtonMask.HasFlag(MouseButtonMask.Left)) return;
+	// 			timePressed = Time.GetTicksMsec() - mouseDownTime;
+	// 			//if the time pressed is greater than the long press threshold
+
+
+	// 			TouchPosition = mouseMotion.Position;
+
+	// 			if (timePressed > LONG_PRESS_THRESHOLD)
+	// 			{
+	// 				IsLongPressing = true;
+	// 			}
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		pointController.Miss();
+	// 	}
+	// }
 	private void HandleNoteDetection(Type noteType)
 	{
 		//	GD.Print("Click");
 		ui.AddInput("tap");
 		if (lineDetector.hitNote.GetType() == noteType)
 		{
-			lineDetector.hitNote.DisableNote();
+			int scoreCategory = lineDetector.hitNote.DisableNote(true);
+			switch (scoreCategory)
+			{
+				case 0:
+					pointController.Perfect();
+					break;
+				case 1:
+					pointController.Great();
+					break;
+				case 2:
+					pointController.Good();
+					break;
+				case 3:
+					pointController.OK();
+					break;
+				default:
+					pointController.Miss();
+					break;
+
+			}
 			//ui.DisplayHit();
 		}
 		else
