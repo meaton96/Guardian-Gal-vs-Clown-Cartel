@@ -6,6 +6,9 @@ public partial class Note : Sprite2D
 {
 	// References
 	private Line lineDetector;		
+	private NoteOverlay noteOverlay;
+	public const bool DISPLAY_OVERLAY = true;
+
 
 	private readonly List<float> hitBreakpoints = new() {
 		0.2f,
@@ -36,6 +39,12 @@ public partial class Note : Sprite2D
 		//active = false;
 		bounds = GetNode<Control>("Bounds");
 		baseColor = Modulate;
+
+		if (DISPLAY_OVERLAY) {
+			noteOverlay = GetNode<NoteOverlay>("NoteOverlay");
+			noteOverlay.AdjustOverlay(bounds.Size.X, hitBreakpoints);
+			noteOverlay.Visible = true;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

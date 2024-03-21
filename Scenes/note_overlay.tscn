@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://yfnh50hrx335"]
+
+[ext_resource type="Script" path="res://Scripts/NoteOverlay.cs" id="1_5j884"]
+[ext_resource type="Texture2D" uid="uid://bc8atsmikb6jn" path="res://Sprites/overlay_ok.png" id="2_sgshe"]
+[ext_resource type="Texture2D" uid="uid://cm3smbyc8rhw3" path="res://Sprites/overlay_good.png" id="3_7gvqp"]
+[ext_resource type="Texture2D" uid="uid://bhcgqp5ykj13e" path="res://Sprites/overlay_great.png" id="4_i4dr0"]
+[ext_resource type="Texture2D" uid="uid://jcaam5x0ofil" path="res://Sprites/overlay_perfect.png" id="5_kc8wq"]
+
+[node name="overlay" type="Node2D"]
+position = Vector2(0, -64)
+script = ExtResource("1_5j884")
+
+[node name="OverlayOk" type="Sprite2D" parent="."]
+texture = ExtResource("2_sgshe")
+centered = false
+
+[node name="OverlayGood" type="Sprite2D" parent="."]
+position = Vector2(128, 0)
+texture = ExtResource("3_7gvqp")
+centered = false
+
+[node name="OverlayGreat" type="Sprite2D" parent="."]
+position = Vector2(256, 0)
+texture = ExtResource("4_i4dr0")
+centered = false
+
+[node name="OverlayPerfect" type="Sprite2D" parent="."]
+position = Vector2(384, 0)
+texture = ExtResource("5_kc8wq")
+centered = false

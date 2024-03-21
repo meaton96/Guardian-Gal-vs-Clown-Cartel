@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce2hpman0tn6f"]
+[gd_scene load_steps=4 format=3 uid="uid://ce2hpman0tn6f"]
 
 [ext_resource type="Texture2D" uid="uid://dsde8evbcg3ob" path="res://Sprites/ArrowSprite.png" id="1_bmi61"]
 [ext_resource type="Script" path="res://Scripts/Notes/RegNote.cs" id="2_1arrg"]
+[ext_resource type="PackedScene" uid="uid://yfnh50hrx335" path="res://Scenes/note_overlay.tscn" id="3_o5f3s"]
 
 [node name="TapNote" type="Sprite2D"]
 position = Vector2(-147.551, 43.6764)
 texture = ExtResource("1_bmi61")
 script = ExtResource("2_1arrg")
+
+[node name="NoteOverlay" parent="." instance=ExtResource("3_o5f3s")]
+visible = false
+position = Vector2(-32.449, -8.6764)
 
 [node name="Bounds" type="Control" parent="."]
 layout_mode = 3
