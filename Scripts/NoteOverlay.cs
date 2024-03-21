@@ -19,39 +19,21 @@ public partial class NoteOverlay : Node2D
 	{
 	}
 	public void AdjustOverlay(float width, List<float> breakpoints)
-	{
-		float totalWidth = width;
-		float remainingWidth = totalWidth;
+    {
+        float totalWidth = width;
+        float currentPosition = 0;
 
-		for (int x = 0; x < overlays.Length; x++)
-		{
-			float breakpoint;
-			if (x == overlays.Length - 1)
-			{
-				breakpoint = breakpoints[^1];
-			}
-			else
-			{
-				var curBreakpoint = breakpoints[breakpoints.Count - 1 - x];
-				var nextBreakpoint = breakpoints[breakpoints.Count - 2 - x];
+        for (int x = 0; x < overlays.Length; x++)
+        {
+            float breakpoint = breakpoints[x];
+            float goalWidth = totalWidth * breakpoint;
 
-				var breakpointDiff = nextBreakpoint - curBreakpoint;
-				breakpoint = breakpointDiff;
+            overlays[x].Scale = new Vector2(goalWidth / overlays[x].Texture.GetSize().X, 1);
+            overlays[x].Position = new Vector2(currentPosition, -64);
 
-			}
-			float goalWidth = totalWidth * breakpoint;
-
-			
-			GD.Print(OverlayToString(x) + ": " + goalWidth);
-
-
-			
-
-			overlays[x].Scale = new Vector2(goalWidth / overlays[x].Texture.GetSize().X, 1);
-			remainingWidth -= overlays[x].Texture.GetSize().X;
-			overlays[x].Position = new Vector2(remainingWidth, -64);
-		}
-	}
+            currentPosition += goalWidth;
+        }
+    }
 	public static string OverlayToString(int index)
 	{
 		return index switch

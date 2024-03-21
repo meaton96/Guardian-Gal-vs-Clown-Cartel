@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dsde8evbcg3ob" path="res://Sprites/ArrowSprite.png" id="1_bmi61"]
 [ext_resource type="Script" path="res://Scripts/Notes/RegNote.cs" id="2_1arrg"]
-[ext_resource type="PackedScene" uid="uid://yfnh50hrx335" path="res://Scenes/note_overlay.tscn" id="3_o5f3s"]
+[ext_resource type="PackedScene" uid="uid://mak7tghr7w8t" path="res://Scenes/note_overlay.tscn" id="3_o5f3s"]
 
 [node name="TapNote" type="Sprite2D"]
+clip_children = 2
 position = Vector2(-147.551, 43.6764)
 texture = ExtResource("1_bmi61")
 script = ExtResource("2_1arrg")

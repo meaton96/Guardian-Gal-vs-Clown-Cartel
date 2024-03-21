@@ -16,6 +16,14 @@ public partial class Note : Sprite2D
 		0.75f,
 		1.01f
 	};
+	//change when changing breakpoints //backwards index from hitBreakpoints
+	private readonly List<float> overlaySizes = new() {
+		0.25f,
+		0.25f,
+		0.3f,
+		0.2f
+	};
+	
 
 
 	// Fields
@@ -42,7 +50,7 @@ public partial class Note : Sprite2D
 
 		if (DISPLAY_OVERLAY) {
 			noteOverlay = GetNode<NoteOverlay>("NoteOverlay");
-			noteOverlay.AdjustOverlay(bounds.Size.X, hitBreakpoints);
+			noteOverlay.AdjustOverlay(bounds.Size.X, overlaySizes);
 			noteOverlay.Visible = true;
 		}
 	}

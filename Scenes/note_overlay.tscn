@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://yfnh50hrx335"]
+[gd_scene load_steps=6 format=3 uid="uid://mak7tghr7w8t"]
 
 [ext_resource type="Script" path="res://Scripts/NoteOverlay.cs" id="1_5j884"]
 [ext_resource type="Texture2D" uid="uid://bc8atsmikb6jn" path="res://Sprites/overlay_ok.png" id="2_sgshe"]
