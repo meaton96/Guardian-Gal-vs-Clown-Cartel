@@ -18,29 +18,50 @@ public partial class NoteOverlay : Node2D
 	public override void _Process(double delta)
 	{
 	}
-	public void AdjustOverlay(float width, List<float> breakpoints) {
+	public void AdjustOverlay(float width, List<float> breakpoints)
+	{
 		float totalWidth = width;
 		float remainingWidth = totalWidth;
 
-		for (int x = 0; x < overlays.Length; x++) {
+		for (int x = 0; x < overlays.Length; x++)
+		{
 			float breakpoint;
-			if (x == overlays.Length - 1) {
+			if (x == overlays.Length - 1)
+			{
 				breakpoint = breakpoints[^1];
 			}
-			else {
+			else
+			{
 				var curBreakpoint = breakpoints[breakpoints.Count - 1 - x];
 				var nextBreakpoint = breakpoints[breakpoints.Count - 2 - x];
 
 				var breakpointDiff = nextBreakpoint - curBreakpoint;
 				breakpoint = breakpointDiff;
-			}
-			
 
+			}
 			float goalWidth = totalWidth * breakpoint;
 
-			overlays[x].Scale = new Vector2(goalWidth / overlays[x].Texture.GetSize().X, 1);
+			
+			GD.Print(OverlayToString(x) + ": " + goalWidth);
 
+
+			
+
+			overlays[x].Scale = new Vector2(goalWidth / overlays[x].Texture.GetSize().X, 1);
+			remainingWidth -= overlays[x].Texture.GetSize().X;
+			overlays[x].Position = new Vector2(remainingWidth, -64);
 		}
+	}
+	public static string OverlayToString(int index)
+	{
+		return index switch
+		{
+			0 => "Ok",
+			1 => "Good",
+			2 => "Great",
+			3 => "Perfect",
+			_ => "Error",
+		};
 	}
 	public void AdjustOverlay(float width, List<float> breakpoints, bool used)
 	{
