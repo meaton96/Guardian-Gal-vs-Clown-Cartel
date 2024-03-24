@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxgpjn1ijxl3i"]
+
+[ext_resource type="Script" path="res://Scripts/SongSelectionButton.cs" id="1_baayq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pj8bo"]
+bg_color = Color(0.0784314, 0.411765, 0.623529, 1)
+
+[node name="SongSelectionButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pj8bo")
+toggle_mode = true
+script = ExtResource("1_baayq")

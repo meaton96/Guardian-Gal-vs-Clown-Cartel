@@ -22,21 +22,23 @@ public partial class BeatTimeReader : Control
 
     private List<string> songs = new();
 
-    Button openFileExplorerButton;
+    Button checkForSongsButton;
     Button loadButton;
 
+    private SongSelector songSelector;
 
 
 
     public override void _Ready()
     {
+        songSelector = GetNode<SongSelector>("../../../SongSelector");
 
-
-        openFileExplorerButton = GetNode<Button>("AddNewSongsButton");
-        openFileExplorerButton.Pressed += CheckForNewSongs;
+        checkForSongsButton = GetNode<Button>("AddNewSongsButton");
+        checkForSongsButton.Pressed += CheckForNewSongs;
 
         loadButton = GetNode<Button>("LoadSongButton");
         loadButton.Pressed += OnLoadSongPressed;
+
 
 
         //CheckForNewSongs();
@@ -79,8 +81,9 @@ public partial class BeatTimeReader : Control
 
     public void OnLoadSongPressed()
     {
-        //open new menu to select song
-        //new menu is new scene that will create a little button for each .json file in the audio folder
+        songSelector.Visible = true;
+        songSelector.LookForNewSongs();
+
     }
 
     private void OnFileSelected(string path)

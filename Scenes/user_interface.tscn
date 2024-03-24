@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bntghcjqmpkaa"]
+[gd_scene load_steps=7 format=3 uid="uid://bntghcjqmpkaa"]
 
 [ext_resource type="Script" path="res://Scripts/Interface.cs" id="1_k730o"]
 [ext_resource type="Texture2D" uid="uid://4kti6im0hcve" path="res://Sprites/pauseMenu.png" id="2_ehb6q"]
 [ext_resource type="Script" path="res://Scripts/BeatTimeReader.cs" id="3_j5rqn"]
+[ext_resource type="PackedScene" uid="uid://mmbvrdraroc0" path="res://Scenes/song_selector.tscn" id="4_iqfnw"]
 
 [sub_resource type="SystemFont" id="SystemFont_e5lcd"]
 subpixel_positioning = 0
@@ -87,3 +88,8 @@ offset_top = 4.0
 offset_right = 115.0
 offset_bottom = 39.0
 text = "Pause"
+
+[node name="SongSelector" parent="." instance=ExtResource("4_iqfnw")]
+visible = false
+position = Vector2(300.75, 121)
+scale = Vector2(0.175, 0.175)

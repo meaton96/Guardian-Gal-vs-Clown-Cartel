@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://mmbvrdraroc0"]
+
+[ext_resource type="Script" path="res://Scripts/SongSelector.cs" id="1_2ed05"]
+[ext_resource type="Texture2D" uid="uid://4kti6im0hcve" path="res://Sprites/pauseMenu.png" id="2_66j4v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xcx7"]
+bg_color = Color(0.376471, 0.682353, 0.407843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24lel"]
+bg_color = Color(0.466037, 0.650662, 0.536984, 1)
+
+[node name="SongSelector" type="Node2D"]
+script = ExtResource("1_2ed05")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-3, 1.00002)
+scale = Vector2(2.225, 1.82333)
+texture = ExtResource("2_66j4v")
+
+[node name="Columns" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(700, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = -470.0
+offset_right = 350.0
+offset_bottom = -430.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="LeftCol" type="VBoxContainer" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightCol" type="VBoxContainer" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuButtons" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(650, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = 458.0
+offset_right = 22.0
+offset_bottom = 498.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="SubmitButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1xcx7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_24lel")
+text = "Submit"
+
+[node name="CancelButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Cancel"
