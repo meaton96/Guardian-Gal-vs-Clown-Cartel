@@ -141,10 +141,12 @@ public partial class NoteController : Container
 	}
 	public void StartLevel()
 	{
-		WaitForSeconds(MUSIC_DELAY / 1000, () =>
-		{
-			musicPlayer.Play();
-		});
+		// WaitForSeconds(MUSIC_DELAY / 1000, () =>
+		// {
+		// 	musicPlayer.Play();
+		// });
+
+		musicPlayer.PlayMusic(MUSIC_DELAY / 1000);
 	}
 
 	public void HandleNoteRemoving()
