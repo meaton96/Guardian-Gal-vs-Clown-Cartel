@@ -30,7 +30,7 @@ public partial class Note : Sprite2D
 	public bool active; // If true, note is moving across scene, else it is wating in the pool
 	public float rightBound;
 	public float leftBound;
-	protected float speed = 4.0f;
+	protected float speed = 8.0f;
 	protected Color baseColor;
 	protected Control bounds;
 	private float timer = 0;
