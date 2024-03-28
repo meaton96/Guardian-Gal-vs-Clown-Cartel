@@ -10,7 +10,7 @@ using NAudioBPM;
 using System.Globalization;
 using NAudio.Wave;
 
-public partial class BeatTimeReader : Control
+public partial class PauseMenu : Control
 {
     //const string PYTHON_PATH = @"c:\audio_importer\env\Scripts\python.exe";
 
@@ -25,12 +25,13 @@ public partial class BeatTimeReader : Control
     Button openFileExplorerButton;
     Button loadButton;
 
+    NoteController noteController;
 
 
 
     public override void _Ready()
     {
-
+        
 
         openFileExplorerButton = GetNode<Button>("AddNewSongsButton");
         openFileExplorerButton.Pressed += CheckForNewSongs;
@@ -41,6 +42,7 @@ public partial class BeatTimeReader : Control
 
         //CheckForNewSongs();
     }
+    
 
     private void CheckForNewSongs()
     {

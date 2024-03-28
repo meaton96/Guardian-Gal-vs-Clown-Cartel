@@ -45,51 +45,5 @@ public partial class NoteOverlay : Node2D
 			_ => "Error",
 		};
 	}
-	public void AdjustOverlay(float width, List<float> breakpoints, bool used)
-	{
-		// float totalWidth = width;
-		// float remainingWidth = totalWidth;
-
-		// for (int i = breakpoints.Count - 1; i >= 0; i--)
-		// {
-		// 	float breakpoint = breakpoints[i];
-		// 	float spriteWidth = remainingWidth * breakpoint;
-		// 	remainingWidth -= spriteWidth;
-
-		// 	// Adjust sprite width
-		// 	if (i == 0)
-		// 	{
-		// 		perfect.Scale = new Vector2(spriteWidth / perfect.Texture.GetSize().X, 1);
-		// 	}
-		// 	else if (i == 1)
-		// 	{
-		// 		float initialWidth = great.Texture.GetSize().X;
-		// 		float scale = spriteWidth / initialWidth;
-		// 		great.Scale = new Vector2(scale, 1);
-		// 	}
-		// 	else if (i == 2)
-		// 	{
-		// 		float initialWidth = good.Texture.GetSize().X;
-		// 		float scale = spriteWidth / initialWidth;
-		// 		good.Scale = new Vector2(scale, 1);
-		// 	}
-		// 	else if (i == 3)
-		// 	{
-		// 		float initialWidth = ok.Texture.GetSize().X;
-		// 		float scale = spriteWidth / initialWidth;
-		// 		ok.Scale = new Vector2(scale, 1);
-		// 	}
-
-		// 	// Adjust sprite position
-		// 	float spriteX = totalWidth - remainingWidth - spriteWidth;
-		// 	if (i == 0)
-		// 		perfect.Position = new Vector2(spriteX, 0);
-		// 	else if (i == 1)
-		// 		great.Position = new Vector2(spriteX, 0);
-		// 	else if (i == 2)
-		// 		good.Position = new Vector2(spriteX, 0);
-		// 	else if (i == 3)
-		// 		ok.Position = new Vector2(spriteX, 0);
-		// }
-	}
+	
 }

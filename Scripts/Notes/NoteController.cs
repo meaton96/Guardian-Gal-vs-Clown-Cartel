@@ -29,7 +29,7 @@ public partial class NoteController : Container
 
 	private MusicPlayer musicPlayer;
 
-	private System.Collections.Generic.Dictionary<float, int> notes = new();
+	private System.Collections.Generic.Dictionary<float, int> levelNotes = new();
 	private int index = 0;
 
 	// Called when the node enters the scene tree for the first time.
@@ -38,7 +38,17 @@ public partial class NoteController : Container
 		existingNotes = new();
 		player = GetNode<Player>("../Player");
 		musicPlayer = GetNode<MusicPlayer>("../MusicPlayer");
+		LoadSong();
+		
+	}
+	private async void WaitForSeconds(float seconds, Action action)
+	{
+		
+		await ToSignal(GetTree().CreateTimer(seconds), "timeout");
+		action();
+	}
 
+	public void LoadSong() {
 		var song = GetSongFromJson("./audio/8-bit-circus.json");
 		var beatTimesList = song.
 							AsGodotDictionary()["beat_times"].
@@ -50,15 +60,10 @@ public partial class NoteController : Container
 
 		for (int x = 0; x < beatTimesList.Count; x++)
 		{
-			notes.Add(beatTimesList[x], noteTypesList[x]);
+			levelNotes.Add(beatTimesList[x], noteTypesList[x]);
 		}
 	}
-	private async void WaitForSeconds(float seconds, Action action)
-	{
-		
-		await ToSignal(GetTree().CreateTimer(seconds), "timeout");
-		action();
-	}
+
 
 	public static Variant GetSongFromJson(string path)
 	{
@@ -125,7 +130,7 @@ public partial class NoteController : Container
 			AddChild(instance);
 			(instance as Note).Visible = true;
 
-
+				
 
 			ySpawnPos += spawningUp ? 30 : -30;
 			if (ySpawnPos >= GetViewportRect().Size.Y - 100 || ySpawnPos <= 100)
@@ -141,11 +146,11 @@ public partial class NoteController : Container
 	}
 	public void StartLevel()
 	{
-		// WaitForSeconds(MUSIC_DELAY / 1000, () =>
-		// {
-		// 	musicPlayer.Play();
-		// });
-
+	//	LoadSong();
+		musicPlayer.StopMusic();
+		RemoveAllNotes();
+		index = 0;
+		time = 0;
 		musicPlayer.PlayMusic(MUSIC_DELAY / 1000);
 	}
 
@@ -173,11 +178,11 @@ public partial class NoteController : Container
 	public void HandleNoteSpawning(double delta)
 	{
 		time += delta;
-
-		if (index < notes.Keys.Count && time >= notes.ElementAt(index).Key)
+		
+		if (index < levelNotes.Keys.Count && time >= levelNotes.ElementAt(index).Key)
 		{
 			//currentNoteSpawnInterval = DEFAULT_NOTE_SPAWN_INTERVAL;
-			switch (notes[notes.ElementAt(index).Key])
+			switch (levelNotes[levelNotes.ElementAt(index).Key])
 			{
 				case 0:
 					SpawnNote(typeof(RegNote));

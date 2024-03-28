@@ -7,9 +7,10 @@ public partial class Interface : VBoxContainer
 	//Label inputText;
 	Label scoreText;
 
-	Button resetButton, pauseButton, resumeButton;
+	Button pauseButton, resumeButton, restartButton;
 
 	MusicPlayer musicPlayer;
+	NoteController noteController;
 
 	Node2D pauseMenu;
 	//Label platformLabel;
@@ -20,12 +21,17 @@ public partial class Interface : VBoxContainer
 		scoreText = GetNode<Label>("ScoreLabel");
 		pauseMenu = GetNode<Node2D>("PauseMenu");
 		musicPlayer = GetNode<MusicPlayer>("../../MusicPlayer");
+
+		noteController = GetNode<NoteController>("../../NoteController");
+
+
+        
 		CreateButton();
 	}
 	private void CreateButton()
 	{
-		resetButton = GetNode<Button>("../Button/ResetButton");
-		resetButton.Pressed += ClearInput;
+		// resetButton = GetNode<Button>("../Button/ResetButton");
+		// resetButton.Pressed += ClearInput;
 
 		pauseButton = GetNode<Button>("../PauseButton/PauseButton");
 		pauseButton.Pressed += PauseGame;
@@ -33,7 +39,17 @@ public partial class Interface : VBoxContainer
 		resumeButton = GetNode<Button>("PauseMenu/PauseContainer/ResumeButton");
 		resumeButton.Pressed += OnCloseButtonPressed;
 
+		restartButton = GetNode<Button>("PauseMenu/PauseContainer/RestartButton");
+        restartButton.Pressed += RestartSong;
+
+
+
 	}
+	public void RestartSong() {
+        noteController.StartLevel();
+        OnCloseButtonPressed();
+        
+    }
 	public void PauseGame()
 	{
 		GD.Print("PauseGame");
@@ -60,10 +76,10 @@ public partial class Interface : VBoxContainer
 		//inputText.Text = $"{input}\n{inputText.Text}";
 
 	}
-	public void ClearInput()
-	{
-		//inputText.Text = "";
-	}
+	// public void ClearInput()
+	// {
+	// 	//inputText.Text = "";
+	// }
 
 	public void DisplayMiss()
 	{

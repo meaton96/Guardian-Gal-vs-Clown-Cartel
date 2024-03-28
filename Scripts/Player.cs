@@ -65,16 +65,7 @@ public partial class Player : CharacterBody2D
 
 	private void HandleKeyboardInput(InputEvent @event)
 	{
-		if (@event is InputEventKey keyEvent)
-		{
-			if (keyEvent.Pressed)
-			{
-				if (keyEvent.Keycode == Key.Escape)
-				{
-					ui.ClearInput();
-				}
-			}
-		}
+		
 	}
 
 	

@@ -40,21 +40,23 @@ public partial class MusicPlayer : AudioStreamPlayer
 		// AudioServer.AddBusEffect(bus_idx, delay_effect);	
 
 
-		_timeBegin = Time.GetTicksUsec();
-		_timeDelay = AudioServer.GetTimeToNextMix() + 
-				AudioServer.GetOutputLatency();
+		//_timeBegin = Time.GetTicksUsec();
+		//_timeDelay = AudioServer.GetTimeToNextMix() + 
+	//			AudioServer.GetOutputLatency();
 		
 	}
 	//public void PlayMusic() {Play();}
-
-	public void PausePlayback() {
-		
-	
+	public void StopMusic() {
+		Stop();
+		playing = false;
 	}
+
 	public void PlayMusic(double delay = 0) {
+		
 		if (playing) {
 			return;
 		}
+		//Seek(0);	//rewind to the beginning
 		paused = false;
 		timeToDelay = delay;
 		if (timeToDelay == 0) {
@@ -63,7 +65,6 @@ public partial class MusicPlayer : AudioStreamPlayer
 		else {
 			timer = 0;
 			waitingToPlay = true;
-			
 		}
 	}
 	private void BeginPlayback() {
@@ -88,7 +89,7 @@ public partial class MusicPlayer : AudioStreamPlayer
 				return;
 			}
 			timer += delta;
-			GD.Print(timer);
+		//	GD.Print(timer);
 			if (timer >= timeToDelay) {
 				BeginPlayback();
 				waitingToPlay = false;
