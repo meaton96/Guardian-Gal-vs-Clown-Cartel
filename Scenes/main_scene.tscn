@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=40 format=3 uid="uid://b2vfgihr8uqcs"]
 
 [ext_resource type="Script" path="res://Scripts/Tutorial/TutorialManager.cs" id="1_a7pyt"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_nbgm6"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ce2hpman0tn6f" path="res://Prefabs/tap_note.tscn" id="11_8fd4a"]
 [ext_resource type="PackedScene" uid="uid://d0ri1p6oy3xva" path="res://Prefabs/swipe_note.tscn" id="12_dxvkw"]
 [ext_resource type="PackedScene" uid="uid://m6502aymcibt" path="res://Prefabs/hold_note.tscn" id="13_he02o"]
+[ext_resource type="Texture2D" uid="uid://x7yjjwyfiplf" path="res://Sprites/floor.PNG" id="16_bon7a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
 atlas = ExtResource("2_akdtg")
@@ -192,7 +193,8 @@ font_size = 30
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(1093, 578)
+z_index = 10
+position = Vector2(1140, 737)
 script = ExtResource("1_nbgm6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -212,11 +214,12 @@ script = ExtResource("6_bgj8b")
 metadata/_edit_use_anchors_ = true
 
 [node name="Line" type="BoxContainer" parent="."]
-offset_left = 2101.0
-offset_top = -222.0
-offset_right = 2117.0
-offset_bottom = 478.0
-scale = Vector2(1, 2.44)
+z_index = 10
+offset_left = 2089.0
+offset_top = -204.0
+offset_right = 2105.0
+offset_bottom = 496.0
+scale = Vector2(0.944487, 2.30455)
 script = ExtResource("7_i3gw4")
 metadata/_edit_use_anchors_ = true
 
@@ -256,10 +259,10 @@ script = null
 [node name="TutorialUI" type="Node2D" parent="TutorialManager"]
 
 [node name="Text" type="VBoxContainer" parent="TutorialManager/TutorialUI"]
-offset_left = 91.0
-offset_top = 114.0
-offset_right = 2002.0
-offset_bottom = 165.0
+offset_left = 56.0
+offset_top = 176.0
+offset_right = 1967.0
+offset_bottom = 227.0
 
 [node name="TutorialTextLabel" type="Label" parent="TutorialManager/TutorialUI/Text"]
 layout_mode = 2
@@ -274,12 +277,17 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 868.0
-offset_top = 1001.0
+offset_top = 894.0
 offset_right = 1323.0
-offset_bottom = 1049.0
+offset_bottom = 942.0
 grow_horizontal = 0
 action_mode = 0
 text = "Got it!"
 
 [node name="UserInterface" parent="." instance=ExtResource("8_umv5j")]
 position = Vector2(-2, 4)
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(1201, 1043)
+scale = Vector2(2.345, 2.345)
+texture = ExtResource("16_bon7a")
