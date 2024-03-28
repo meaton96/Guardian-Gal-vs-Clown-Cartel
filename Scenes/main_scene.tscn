@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="5_b7sd3"]
 [ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="6_bgj8b"]
 [ext_resource type="Script" path="res://Scripts/Line.cs" id="7_i3gw4"]
+[ext_resource type="Texture2D" uid="uid://du3ib3tk7q6od" path="res://Sprites/line.PNG" id="8_7m21a"]
 [ext_resource type="PackedScene" uid="uid://bntghcjqmpkaa" path="res://Scenes/user_interface.tscn" id="8_umv5j"]
 [ext_resource type="PackedScene" uid="uid://27sterys2r35" path="res://Scenes/music_player.tscn" id="10_4dffj"]
 [ext_resource type="Script" path="res://Scripts/PointHandling.cs" id="10_ht7m7"]
@@ -185,8 +186,6 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_st583"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_2vgcy"]
 font_size = 30
 
@@ -222,10 +221,9 @@ script = ExtResource("7_i3gw4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Line"]
-modulate = Color(1, 1, 1, 0.368627)
-position = Vector2(7.99975, 315.785)
-scale = Vector2(-13.4052, 454.262)
-texture = SubResource("PlaceholderTexture2D_st583")
+position = Vector2(2, 313.525)
+scale = Vector2(1.71596, 0.857978)
+texture = ExtResource("8_7m21a")
 
 [node name="MusicPlayer" parent="." instance=ExtResource("10_4dffj")]
 volume_db = -18.488
