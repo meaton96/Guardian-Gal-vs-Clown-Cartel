@@ -7,7 +7,7 @@ public partial class Note : Sprite2D
 	// References
 	private Line lineDetector;		
 	private NoteOverlay noteOverlay;
-	public const bool DISPLAY_OVERLAY = true;
+	public const bool DISPLAY_OVERLAY = false;
 
 
 	private readonly List<float> hitBreakpoints = new() {
@@ -36,9 +36,10 @@ public partial class Note : Sprite2D
 	private float timer = 0;
 
 	// Change in each note definition, default is middle of screen
-	protected float ySpawnPos = 300;
+	protected float ySpawnPos = 400;
 	protected float xSpawnPos = 0;
 
+	public float Speed { get { return speed; } set { speed = value; } }
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

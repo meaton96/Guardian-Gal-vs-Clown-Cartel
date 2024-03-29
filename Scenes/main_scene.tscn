@@ -215,16 +215,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Line" type="BoxContainer" parent="."]
 z_index = 10
-offset_left = 2089.0
-offset_top = -204.0
-offset_right = 2105.0
-offset_bottom = 496.0
+offset_left = 2081.0
+offset_top = 15.0
+offset_right = 2096.0
+offset_bottom = 515.0
 scale = Vector2(0.944487, 2.30455)
 script = ExtResource("7_i3gw4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Line"]
-position = Vector2(2, 313.525)
+z_index = 10
+position = Vector2(6.35246, 220)
 scale = Vector2(1.71596, 0.857978)
 texture = ExtResource("8_7m21a")
 
