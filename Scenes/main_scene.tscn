@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b2vfgihr8uqcs"]
+[gd_scene load_steps=47 format=3 uid="uid://b2vfgihr8uqcs"]
 
 [ext_resource type="Script" path="res://Scripts/Tutorial/TutorialManager.cs" id="1_a7pyt"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_nbgm6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bebfm7vbvdp4x" path="res://PlaceholderCharacter/Attack_KG_2.png" id="3_i6i1j"]
 [ext_resource type="Texture2D" uid="uid://dignm8vagpq3n" path="res://PlaceholderCharacter/Attack_KG_4.png" id="4_g17pa"]
 [ext_resource type="Texture2D" uid="uid://wxqdhp24fdbx" path="res://PlaceholderCharacter/Idle_KG_2.png" id="5_b7sd3"]
+[ext_resource type="Texture2D" uid="uid://jewsjitnb18j" path="res://Sprites/elenWhiffIdle.png" id="5_hqxmu"]
 [ext_resource type="Script" path="res://Scripts/Notes/NoteController.cs" id="6_bgj8b"]
 [ext_resource type="Script" path="res://Scripts/Line.cs" id="7_i3gw4"]
 [ext_resource type="Texture2D" uid="uid://du3ib3tk7q6od" path="res://Sprites/line.PNG" id="8_7m21a"]
@@ -16,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://d0ri1p6oy3xva" path="res://Prefabs/swipe_note.tscn" id="12_dxvkw"]
 [ext_resource type="PackedScene" uid="uid://m6502aymcibt" path="res://Prefabs/hold_note.tscn" id="13_he02o"]
 [ext_resource type="Texture2D" uid="uid://x7yjjwyfiplf" path="res://Sprites/floor.PNG" id="16_bon7a"]
+[ext_resource type="Texture2D" uid="uid://b2l7165snqtlt" path="res://Sprites/theHoarde.png" id="16_c28bo"]
+[ext_resource type="Texture2D" uid="uid://taqbh1h64sn1" path="res://Sprites/clown.png" id="16_p77xy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
 atlas = ExtResource("2_akdtg")
@@ -84,6 +87,22 @@ region = Rect2(300, 0, 100, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0b6ue"]
 atlas = ExtResource("4_g17pa")
 region = Rect2(400, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxf5i"]
+atlas = ExtResource("5_hqxmu")
+region = Rect2(0, 0, 36, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pthin"]
+atlas = ExtResource("5_hqxmu")
+region = Rect2(100, 0, 36, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2vm8"]
+atlas = ExtResource("5_hqxmu")
+region = Rect2(200, 0, 36, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl6b2"]
+atlas = ExtResource("5_hqxmu")
+region = Rect2(300, 0, 36, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xm4t3"]
 atlas = ExtResource("5_b7sd3")
@@ -171,6 +190,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bxf5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pthin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2vm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl6b2")
+}],
+"loop": true,
+"name": &"elen_whiff_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xm4t3")
 }, {
 "duration": 1.0,
@@ -201,8 +237,8 @@ script = ExtResource("1_nbgm6")
 position = Vector2(1165, 185)
 scale = Vector2(2.65176, 2.97656)
 sprite_frames = SubResource("SpriteFrames_nse0a")
-animation = &"attack1_ph"
-autoplay = "idle_ph"
+animation = &"elen_whiff_idle"
+autoplay = "elen_whiff_idle"
 
 [node name="NoteController" type="Container" parent="."]
 offset_left = 12.0
@@ -287,6 +323,21 @@ text = "Got it!"
 
 [node name="UserInterface" parent="." instance=ExtResource("8_umv5j")]
 position = Vector2(-2, 4)
+
+[node name="TheHoarde" type="Sprite2D" parent="."]
+position = Vector2(322, 704)
+scale = Vector2(4, 4)
+texture = ExtResource("16_c28bo")
+
+[node name="Clown" type="Sprite2D" parent="."]
+position = Vector2(607, 910)
+scale = Vector2(3, 3)
+texture = ExtResource("16_p77xy")
+
+[node name="Clown2" type="Sprite2D" parent="."]
+position = Vector2(193, 909)
+scale = Vector2(3, 3)
+texture = ExtResource("16_p77xy")
 
 [node name="Floor" type="Sprite2D" parent="."]
 position = Vector2(1201, 1043)
