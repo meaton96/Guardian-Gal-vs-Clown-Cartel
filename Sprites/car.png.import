@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddutoqsc7qb3v"
-path="res://.godot/imported/elenWhiffAttack.png-1a14d53a25a3285a4b069980053ecf69.ctex"
+uid="uid://d3krjmpettfex"
+path="res://.godot/imported/car.png-eb8d6d79e60418c6949b48a25471675e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/elenWhiffAttack.png"
-dest_files=["res://.godot/imported/elenWhiffAttack.png-1a14d53a25a3285a4b069980053ecf69.ctex"]
+source_file="res://Sprites/car.png"
+dest_files=["res://.godot/imported/car.png-eb8d6d79e60418c6949b48a25471675e.ctex"]
 
 [params]
 
