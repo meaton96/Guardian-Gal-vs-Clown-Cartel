@@ -204,7 +204,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"elen_whiff_idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -222,6 +222,11 @@ animations = [{
 "loop": true,
 "name": &"idle_ph",
 "speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"regular_attack",
+"speed": 5.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2vgcy"]
@@ -240,6 +245,7 @@ scale = Vector2(2.65176, 2.97656)
 sprite_frames = SubResource("SpriteFrames_nse0a")
 animation = &"elen_whiff_idle"
 autoplay = "elen_whiff_idle"
+frame_progress = 0.0698224
 
 [node name="NoteController" type="Container" parent="."]
 offset_left = 12.0
