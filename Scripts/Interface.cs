@@ -5,6 +5,12 @@ public partial class Interface : VBoxContainer
 {
 	Label text;
 	//Label inputText;
+	Sprite2D perfect;
+	Sprite2D great;
+	Sprite2D good;
+	Sprite2D ok;
+	Sprite2D tooSlow;
+
 	Label scoreText;
 
 	Button pauseButton, resumeButton, restartButton;
@@ -24,8 +30,17 @@ public partial class Interface : VBoxContainer
 
 		noteController = GetNode<NoteController>("../../NoteController");
 
+		perfect = GetNode<Sprite2D>("PerfectFeedback");
+		perfect.Visible = false;
+		great = GetNode<Sprite2D>("GreatFeedback");
+		great.Visible = false;
+		good = GetNode<Sprite2D>("GoodFeedback");
+		good.Visible = false;
+		ok = GetNode<Sprite2D>("OkFeedback");
+		ok.Visible = false;
+		tooSlow = GetNode<Sprite2D>("TooSlowFeedback");
+		tooSlow.Visible = false;
 
-        
 		CreateButton();
 	}
 	private void CreateButton()
@@ -40,16 +55,17 @@ public partial class Interface : VBoxContainer
 		resumeButton.Pressed += OnCloseButtonPressed;
 
 		restartButton = GetNode<Button>("PauseMenu/PauseContainer/RestartButton");
-        restartButton.Pressed += RestartSong;
+		restartButton.Pressed += RestartSong;
 
 
 
 	}
-	public void RestartSong() {
-        noteController.StartLevel();
-        OnCloseButtonPressed();
-        
-    }
+	public void RestartSong()
+	{
+		noteController.StartLevel();
+		OnCloseButtonPressed();
+
+	}
 	public void PauseGame()
 	{
 		GD.Print("PauseGame");
@@ -83,22 +99,51 @@ public partial class Interface : VBoxContainer
 
 	public void DisplayMiss()
 	{
-		text.Text = "Miss :(";
+		perfect.Visible = false;
+		great.Visible = false;
+		good.Visible = false;
+		ok.Visible = false;
+		tooSlow.Visible = true;
 	}
 
 	public void DisplayPerfect()
 	{
-		text.Text = "PERFECT!! :D";
+		//text.Text = "PERFECT!! :D";
+		perfect.Visible = true;
+		great.Visible = false;
+		good.Visible = false;
+		ok.Visible = false;
+		tooSlow.Visible = false;
 	}
 
 	public void DisplayGreat()
 	{
-		text.Text = "Great!";
+		//text.Text = "Great!";
+		perfect.Visible = false;
+		great.Visible = true;
+		good.Visible = false;
+		ok.Visible = false;
+		tooSlow.Visible = false;
 	}
 
 	public void DisplayGood()
 	{
-		text.Text = "good";
+		//text.Text = "good";
+		perfect.Visible = false;
+		great.Visible = false;
+		good.Visible = true;
+		ok.Visible = false;
+		tooSlow.Visible = false;
+	}
+
+	public void DisplayOk()
+	{
+		//text.Text = "good";
+		perfect.Visible = false;
+		great.Visible = false;
+		good.Visible = false;
+		ok.Visible = true;
+		tooSlow.Visible = false;
 	}
 
 	public void DisplayScore(int score)

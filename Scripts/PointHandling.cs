@@ -8,9 +8,10 @@ public partial class PointHandling : Node
 	private Line lineDetector;
 
 	//fields
-	private int perfect = 5;
-	private int great = 3;
-	private int good = 1;
+	private int perfect = 10;
+	private int great = 5;
+	private int good = 3;
+	private int okay = 1;
 
 	public int PlayerScore { get; set; }
 
@@ -56,17 +57,36 @@ public partial class PointHandling : Node
 	public void Miss() // TODO: Move this somewhere else once lives are implemented
 	{
 		GD.Print("Miss");
+		ui.DisplayMiss();
 	}
-	public void Perfect() {
+	public void Perfect()
+	{
 		GD.Print("Perfect");
+
+		PlayerScore += perfect;
+		ui.DisplayPerfect();
 	}
-	public void Great() {
+	public void Great()
+	{
 		GD.Print("Great");
+
+		PlayerScore += great;
+		ui.DisplayGreat();
 	}
-	public void Good() {
+	public void Good()
+	{
 		GD.Print("Good");
+
+
+		PlayerScore += good;
+		ui.DisplayGood();
 	}
-	public void OK() {
+	public void OK()
+	{
 		GD.Print("OK");
+
+
+		PlayerScore += okay;
+		ui.DisplayOk();
 	}
 }
