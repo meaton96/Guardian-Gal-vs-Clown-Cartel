@@ -7,7 +7,7 @@ public partial class Note : Sprite2D
 	// References
 	private Line lineDetector;		
 	private NoteOverlay noteOverlay;
-	public const bool DISPLAY_OVERLAY = false;
+	public const bool DISPLAY_OVERLAY = true;
 
 
 	private readonly List<float> hitBreakpoints = new() {
@@ -49,7 +49,7 @@ public partial class Note : Sprite2D
 		bounds = GetNode<Control>("Bounds");
 		baseColor = Modulate;
 
-		if (DISPLAY_OVERLAY) {
+		if (DISPLAY_OVERLAY && GetType() != typeof(HoldNote)) {
 			noteOverlay = GetNode<NoteOverlay>("NoteOverlay");
 			noteOverlay.AdjustOverlay(bounds.Size.X, overlaySizes);
 			noteOverlay.Visible = true;

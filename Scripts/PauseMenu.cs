@@ -34,7 +34,7 @@ public partial class PauseMenu : Control
         
 
         openFileExplorerButton = GetNode<Button>("AddNewSongsButton");
-        openFileExplorerButton.Pressed += CheckForNewSongs;
+        openFileExplorerButton.Pressed += () => CheckForNewSongs("user://8-bit-circus.wav");
 
         loadButton = GetNode<Button>("LoadSongButton");
         loadButton.Pressed += OnLoadSongPressed;
@@ -44,9 +44,10 @@ public partial class PauseMenu : Control
     }
     
 
-    private void CheckForNewSongs()
+    public void CheckForNewSongs(string path)
     {
-        string file = @"audio\8-bit-circus.wav";
+        string file = path;;
+        file = ProjectSettings.GlobalizePath(file);
         int start = 0;
         int length = new AudioFileReader(file).TotalTime.Seconds;
 

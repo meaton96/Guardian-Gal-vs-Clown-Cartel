@@ -234,6 +234,31 @@ font_size = 30
 
 [node name="scene_root" type="Node2D"]
 
+[node name="TheHoarde" type="Sprite2D" parent="."]
+position = Vector2(322, 704)
+scale = Vector2(4, 4)
+texture = ExtResource("16_c28bo")
+
+[node name="Clown" type="Sprite2D" parent="."]
+position = Vector2(607, 910)
+scale = Vector2(3, 3)
+texture = ExtResource("16_p77xy")
+
+[node name="Clown2" type="Sprite2D" parent="."]
+position = Vector2(193, 909)
+scale = Vector2(3, 3)
+texture = ExtResource("16_p77xy")
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(1201, 1043)
+scale = Vector2(2.345, 2.345)
+texture = ExtResource("16_bon7a")
+
+[node name="Car" type="Sprite2D" parent="."]
+position = Vector2(2091, 919)
+scale = Vector2(2, 2)
+texture = ExtResource("20_pvidr")
+
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = 10
 position = Vector2(1140, 737)
@@ -330,28 +355,3 @@ text = "Got it!"
 
 [node name="UserInterface" parent="." instance=ExtResource("8_umv5j")]
 position = Vector2(-2, 4)
-
-[node name="TheHoarde" type="Sprite2D" parent="."]
-position = Vector2(322, 704)
-scale = Vector2(4, 4)
-texture = ExtResource("16_c28bo")
-
-[node name="Clown" type="Sprite2D" parent="."]
-position = Vector2(607, 910)
-scale = Vector2(3, 3)
-texture = ExtResource("16_p77xy")
-
-[node name="Clown2" type="Sprite2D" parent="."]
-position = Vector2(193, 909)
-scale = Vector2(3, 3)
-texture = ExtResource("16_p77xy")
-
-[node name="Floor" type="Sprite2D" parent="."]
-position = Vector2(1201, 1043)
-scale = Vector2(2.345, 2.345)
-texture = ExtResource("16_bon7a")
-
-[node name="Car" type="Sprite2D" parent="."]
-position = Vector2(2091, 919)
-scale = Vector2(2, 2)
-texture = ExtResource("20_pvidr")

@@ -1,12 +1,14 @@
 using System.Linq;
 using System;
-using System.IO;
 using Godot;
+using System.IO;
 using Godot.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 public partial class NoteController : Container
 {
+	private const string TEMP_JSON = "{\"beat_times\": [0.3439229,0.93666667,1.1589569,1.6397732,2.4980044,2.5599546,3.4326077,3.5062132,4.363651,4.563991,5.25966,5.661383,6.0834923,6.9559865,7.030476,7.8359184,8.4652605,8.719773,9.201201,9.639796,10.491542,10.512653,11.443673,11.641564,12.283538,12.741293,13.1634245,13.781701,14.052585,14.915873,15.00898,15.799501,16.239954,16.719728,17.322767,17.661678,18.4817,18.726303,19.43805,19.891066,20.24347,20.863447],\"note_types\": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"tempo\": 136}";
 	public List<Note> existingNotes;
 	private double time;
 	private double currentNoteSpawnInterval;
@@ -22,6 +24,8 @@ public partial class NoteController : Container
 
 	// References
 	private Player player;
+
+	private PauseMenu pauseMenu;
 	//notes
 	private PackedScene tapNoteScene = GD.Load<PackedScene>("res://Prefabs/tap_note.tscn");
 	private PackedScene holdNoteScene = GD.Load<PackedScene>("res://Prefabs/hold_note.tscn");
@@ -38,6 +42,8 @@ public partial class NoteController : Container
 		existingNotes = new();
 		player = GetNode<Player>("../Player");
 		musicPlayer = GetNode<MusicPlayer>("../MusicPlayer");
+		pauseMenu = GetNode<PauseMenu>("../UserInterface/UserInterface/PauseMenu/PauseContainer");
+		
 		LoadSong();
 		
 	}
@@ -47,9 +53,24 @@ public partial class NoteController : Container
 		await ToSignal(GetTree().CreateTimer(seconds), "timeout");
 		action();
 	}
+	
 
 	public void LoadSong() {
-		var song = GetSongFromJson("./audio/8-bit-circus.json");
+
+		string path = "res://audio/8-bit-circus.json";
+		string folderPath = "res://audio";
+
+		if (!DoesFolderExist(folderPath))
+		{
+			var dir = Directory.CreateDirectory(ProjectSettings.GlobalizePath(folderPath));
+			GD.Print($"created audio folder at {dir.FullName}");
+			string fullPath = ProjectSettings.GlobalizePath(path);
+			File.WriteAllText(fullPath, TEMP_JSON);
+			GD.Print("wrote temp json");
+		}
+
+
+		var song = GetSongFromJson(path);
 		var beatTimesList = song.
 							AsGodotDictionary()["beat_times"].
 							AsFloat32Array().
@@ -64,18 +85,30 @@ public partial class NoteController : Container
 		}
 	}
 
+	private bool DoesFolderExist(string godotPath) {
+		GD.Print(ProjectSettings.GlobalizePath(godotPath) + " exists: " + Directory.Exists(ProjectSettings.GlobalizePath(godotPath)));
+		return Directory.Exists(ProjectSettings.GlobalizePath(godotPath));
+	}
+
 
 	public static Variant GetSongFromJson(string path)
 	{
 		string json = "";
 		try
 		{
-			//Pass the file path and file name to the StreamReader constructor
-			StreamReader sr = new(path);
-			//Read the first line of text
-			json = sr.ReadToEnd();
-			//close the file
-			sr.Close();
+			// //Pass the file path and file name to the StreamReader constructor
+			// StreamReader sr = new(path);
+
+
+			// //Read the first line of text
+			// json = sr.ReadToEnd();
+			// //close the file
+			// sr.Close();
+
+			
+
+			json = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read).GetAsText();
+
 		}
 		catch (Exception e)
 		{
