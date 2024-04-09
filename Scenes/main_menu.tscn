@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjv1m2i2tragg"]
+
+[ext_resource type="Texture2D" uid="uid://4kti6im0hcve" path="res://Sprites/pauseMenu.png" id="1_b8xud"]
+[ext_resource type="Script" path="res://Scripts/Menus/MainMenu.cs" id="1_n7vkb"]
+[ext_resource type="Theme" uid="uid://cxhic8ysbrcn3" path="res://Themes/button_theme.tres" id="2_otvsk"]
+[ext_resource type="Texture2D" uid="uid://bjvelaud8mj5e" path="res://Sprites/pauseButton.PNG" id="3_hk7u2"]
+[ext_resource type="Texture2D" uid="uid://1hrc3xrnfxb8" path="res://Sprites/playButton.PNG" id="4_12d3o"]
+[ext_resource type="Texture2D" uid="uid://da78ys7uah76t" path="res://Sprites/settingsButton.PNG" id="5_tprrc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n7vkb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1186, 565)
+scale = Vector2(6.44, 2)
+texture = ExtResource("1_b8xud")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1035.0
+offset_top = 500.0
+offset_right = 1107.0
+offset_bottom = 540.0
+scale = Vector2(5.34984, 5.34984)
+theme = ExtResource("2_otvsk")
+icon = ExtResource("4_12d3o")
+flat = true
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1035.0
+offset_top = 663.0
+offset_right = 1107.0
+offset_bottom = 703.0
+scale = Vector2(5.34984, 5.34984)
+theme = ExtResource("2_otvsk")
+theme_type_variation = &"FlatButton"
+icon = ExtResource("5_tprrc")
+flat = true
+
+[node name="TutorialButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1035.0
+offset_top = 828.0
+offset_right = 1107.0
+offset_bottom = 868.0
+scale = Vector2(5.34984, 5.34984)
+theme = ExtResource("2_otvsk")
+theme_type_variation = &"FlatButton"
+icon = ExtResource("3_hk7u2")
+flat = true

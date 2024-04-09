@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq6085eipti4c"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/SettingsMenu.cs" id="1_7ridw"]
+[ext_resource type="Texture2D" uid="uid://4kti6im0hcve" path="res://Sprites/pauseMenu.png" id="1_61ve7"]
+[ext_resource type="Theme" uid="uid://cxhic8ysbrcn3" path="res://Themes/button_theme.tres" id="2_wmwbm"]
+[ext_resource type="Texture2D" uid="uid://dx1hbuu6aynfl" path="res://Sprites/backButton.PNG" id="3_eajih"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ridw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1089, 428)
+scale = Vector2(8.57075, 2.49751)
+texture = ExtResource("1_61ve7")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 72.0
+offset_bottom = 70.0
+scale = Vector2(5.34984, 5.34984)
+theme = ExtResource("2_wmwbm")
+icon = ExtResource("3_eajih")
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 357.0
+offset_right = 993.0
+offset_bottom = 439.0
+scale = Vector2(4.49671, 4.49671)
+text = "Nothing here yet!"
+text_direction = 1

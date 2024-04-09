@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://n2bi3lw4hv80"]
+
+[ext_resource type="Script" path="res://Scripts/Tutorial/TutorialManager.cs" id="1_meutj"]
+[ext_resource type="PackedScene" uid="uid://ce2hpman0tn6f" path="res://Prefabs/tap_note.tscn" id="2_caruu"]
+[ext_resource type="PackedScene" uid="uid://d0ri1p6oy3xva" path="res://Prefabs/swipe_note.tscn" id="3_pj71u"]
+[ext_resource type="PackedScene" uid="uid://m6502aymcibt" path="res://Prefabs/hold_note.tscn" id="4_26ykf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2vgcy"]
+font_size = 30
+
+[node name="TutorialManager" type="Node2D"]
+script = ExtResource("1_meutj")
+
+[node name="NoteSprites" type="Node" parent="."]
+
+[node name="TapNote" parent="NoteSprites" instance=ExtResource("2_caruu")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="SwipeNote" parent="NoteSprites" instance=ExtResource("3_pj71u")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="HoldNote" parent="NoteSprites" instance=ExtResource("4_26ykf")]
+visible = false
+position = Vector2(227.652, 405)
+script = null
+
+[node name="TutorialUI" type="Node2D" parent="."]
+
+[node name="Text" type="VBoxContainer" parent="TutorialUI"]
+offset_left = 56.0
+offset_top = 176.0
+offset_right = 1967.0
+offset_bottom = 227.0
+
+[node name="TutorialTextLabel" type="Label" parent="TutorialUI/Text"]
+layout_mode = 2
+text = "Tutorial Text Goes Here"
+label_settings = SubResource("LabelSettings_2vgcy")
+autowrap_mode = 3
+
+[node name="Buttons" type="Node2D" parent="TutorialUI"]
+
+[node name="ProgressTutorial" type="Button" parent="TutorialUI/Buttons"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 868.0
+offset_top = 894.0
+offset_right = 1323.0
+offset_bottom = 942.0
+grow_horizontal = 0
+action_mode = 0
+text = "Got it!"

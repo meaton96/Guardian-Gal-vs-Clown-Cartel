@@ -16,7 +16,7 @@ public partial class Interface : VBoxContainer
 	Button pauseButton, resumeButton, restartButton;
 
 	MusicPlayer musicPlayer;
-	NoteController noteController;
+ 	NoteController noteController;
 
 	Node2D pauseMenu;
 	//Label platformLabel;
