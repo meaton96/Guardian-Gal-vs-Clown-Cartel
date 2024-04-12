@@ -57,28 +57,38 @@ public partial class NoteController : Container
 
 	public void LoadSong() {
 
-		string path = "res://audio/8-bit-circus.json";
-		string folderPath = "res://audio";
+		// string path = "res://audio/8-bit-circus.json";
+		// string folderPath = "res://audio";
 
-		if (!DoesFolderExist(folderPath))
+		// if (!DoesFolderExist(folderPath))
+		// {
+		// 	var dir = Directory.CreateDirectory(ProjectSettings.GlobalizePath(folderPath));
+		// 	GD.Print($"created audio folder at {dir.FullName}");
+		// 	string fullPath = ProjectSettings.GlobalizePath(path);
+		// 	File.WriteAllText(fullPath, TEMP_JSON);
+		// 	GD.Print("wrote temp json");
+		// }
+
+
+		// //var song = GetSongFromJson(path);
+		// var song  = Json.ParseString(TEMP_JSON);
+		// var beatTimesList = song.
+		// 					AsGodotDictionary()["beat_times"].
+		// 					AsFloat32Array().
+		// 					ToList();
+
+		List<float> beatTimesList = new List<float>()
 		{
-			var dir = Directory.CreateDirectory(ProjectSettings.GlobalizePath(folderPath));
-			GD.Print($"created audio folder at {dir.FullName}");
-			string fullPath = ProjectSettings.GlobalizePath(path);
-			File.WriteAllText(fullPath, TEMP_JSON);
-			GD.Print("wrote temp json");
-		}
-
-
-		//var song = GetSongFromJson(path);
-		var song  = Json.ParseString(TEMP_JSON);
-		var beatTimesList = song.
-							AsGodotDictionary()["beat_times"].
-							AsFloat32Array().
-							ToList();
+			0.3439229f, 0.93666667f, 1.1589569f, 1.6397732f, 2.4980044f, 2.5599546f, 3.4326077f, 3.5062132f, 4.363651f, 4.563991f,
+			5.25966f, 5.661383f, 6.0834923f, 6.9559865f, 7.030476f, 7.8359184f, 8.4652605f, 8.719773f, 9.201201f, 9.639796f,
+			10.491542f, 10.512653f, 11.443673f, 11.641564f, 12.283538f, 12.741293f, 13.1634245f, 13.781701f, 14.052585f, 14.915873f,
+			15.00898f, 15.799501f, 16.239954f, 16.719728f, 17.322767f, 17.661678f, 18.4817f, 18.726303f, 19.43805f, 19.891066f,
+			20.24347f, 20.863447f
+		};
 
 		//GD.Print(song);
-		var noteTypesList = song.AsGodotDictionary()["note_types"].AsInt32Array().ToList();
+		//var noteTypesList = song.AsGodotDictionary()["note_types"].AsInt32Array().ToList();
+		List<int> noteTypesList = Enumerable.Repeat(0, beatTimesList.Count).ToList();
 
 		for (int x = 0; x < beatTimesList.Count; x++)
 		{
