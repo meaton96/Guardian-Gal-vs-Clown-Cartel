@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using NAudio;
 using NAudioBPM;
-using System.Globalization;
 using NAudio.Wave;
 
 public partial class PauseMenu : Control
@@ -34,10 +33,10 @@ public partial class PauseMenu : Control
         
 
         openFileExplorerButton = GetNode<Button>("AddNewSongsButton");
-        openFileExplorerButton.Pressed += () => CheckForNewSongs("user://8-bit-circus.wav");
+       // openFileExplorerButton.Pressed += () => CheckForNewSongs("user://8-bit-circus.wav");
 
         loadButton = GetNode<Button>("LoadSongButton");
-        loadButton.Pressed += OnLoadSongPressed;
+       // loadButton.Pressed += OnLoadSongPressed;
 
 
         //CheckForNewSongs();

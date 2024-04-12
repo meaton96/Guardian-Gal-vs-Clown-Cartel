@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 public partial class NoteController : Container
 {
-	private const string TEMP_JSON = "{\"beat_times\": [0.3439229,0.93666667,1.1589569,1.6397732,2.4980044,2.5599546,3.4326077,3.5062132,4.363651,4.563991,5.25966,5.661383,6.0834923,6.9559865,7.030476,7.8359184,8.4652605,8.719773,9.201201,9.639796,10.491542,10.512653,11.443673,11.641564,12.283538,12.741293,13.1634245,13.781701,14.052585,14.915873,15.00898,15.799501,16.239954,16.719728,17.322767,17.661678,18.4817,18.726303,19.43805,19.891066,20.24347,20.863447],\"note_types\": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"tempo\": 136}";
+	private const string TEMP_JSON = "{\"beat_times\": [0.3439229,0.93666667,1.1589569,1.6397732,2.4980044,2.5599546,3.4326077,3.5062132,4.363651,4.563991,5.25966,5.661383,6.0834923,6.9559865,7.030476,7.8359184,8.4652605,8.719773,9.201201,9.639796,10.491542,10.512653,11.443673,11.641564,12.283538,12.741293,13.1634245,13.781701,14.052585,14.915873,15.00898,15.799501,16.239954,16.719728,17.322767,17.661678,18.4817,18.726303,19.43805,19.891066,20.24347,20.863447],\"note_types\": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"tempo\": 136}";
 	public List<Note> existingNotes;
 	private double time;
 	private double currentNoteSpawnInterval;
@@ -70,7 +70,8 @@ public partial class NoteController : Container
 		}
 
 
-		var song = GetSongFromJson(path);
+		//var song = GetSongFromJson(path);
+		var song  = Json.ParseString(TEMP_JSON);
 		var beatTimesList = song.
 							AsGodotDictionary()["beat_times"].
 							AsFloat32Array().
@@ -95,18 +96,7 @@ public partial class NoteController : Container
 	{
 		string json = "";
 		try
-		{
-			// //Pass the file path and file name to the StreamReader constructor
-			// StreamReader sr = new(path);
-
-
-			// //Read the first line of text
-			// json = sr.ReadToEnd();
-			// //close the file
-			// sr.Close();
-
-			
-
+		{	
 			json = Godot.FileAccess.Open(path, Godot.FileAccess.ModeFlags.Read).GetAsText();
 
 		}
