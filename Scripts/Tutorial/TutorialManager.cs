@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class TutorialManager : Node
+public partial class TutorialManager : Node2D
 {
 	// Tutorial text
 	const string TUTORIAL_TEXT_INITIAL = "Welcome to Guardian Gal vs. Clown Cartel! Before Ellen Whiff can defend her business from the evil cartel of clowns she needs to learn how to fight.";
@@ -24,6 +24,7 @@ public partial class TutorialManager : Node
 	private const double SWIPE_NOTE_SPAWN_INTERVAL = 0.75;
 	private const double HOLD_NOTE_SPAWN_INTERVAL = 1.5;
 	private bool checkNoteDetection;
+	private bool tutorialEnabled;
 
 	// References
 	private Sprite2D tapNote;
@@ -31,10 +32,11 @@ public partial class TutorialManager : Node
 	private Sprite2D holdNote;
 	private Label tutorialTextLabel;
 	private NoteController noteController;
-	private Button progressTutorialButton;
+	public Button progressTutorialButton;
 	private List<Sprite2D> noteSprites;
 	private Node2D uiParent;
 	private Line line;
+
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -62,7 +64,7 @@ public partial class TutorialManager : Node
 		// Initialize Tutorial Prompts
 		tutorialProgressCount = 1;
 		RefreshTutorialDisplay();
-		uiParent.Visible = false;
+		//uiParent.Visible = false;
 
 		checkNoteDetection = false;
 	}
@@ -90,16 +92,19 @@ public partial class TutorialManager : Node
 		// 	break;
 		// }
 
-		if (checkNoteDetection && noteController.existingNotes.Count > 0 && noteController.existingNotes[0].CheckNoteHit())
+		if (tutorialEnabled)
 		{
-			noteController.existingNotes[0].Speed = 0;
-			displayedText = TUTORIAL_TEXT_NOTE_HIT;
-			checkNoteDetection = false;
-		}
+			if (checkNoteDetection && noteController.existingNotes.Count > 0 && noteController.existingNotes[0].CheckNoteHit())
+			{
+				noteController.existingNotes[0].Speed = 0;
+				displayedText = TUTORIAL_TEXT_NOTE_HIT;
+				checkNoteDetection = false;
+			}
 
-		if (tutorialProgressCount == 2)
-		{
+			if (tutorialProgressCount == 2)
+			{
 
+			}
 		}
     }
 
@@ -108,75 +113,78 @@ public partial class TutorialManager : Node
     /// </summary>
     public void ProgressTutorial()
 	{
-		// Checks for the current tutorial progress
-		switch (tutorialProgressCount)
+		if (tutorialEnabled)
 		{
-			// Initial Case
-			case 0:
-				displayedText = TUTORIAL_TEXT_INITIAL;
-				progressTutorialButton.Text = BUTTON_TEXT_INITIAL;
-				tutorialProgressCount++;
-			break;
-			// Tap-Note Cases
-			case 1:
-				displayedText = TUTORIAL_TEXT_TAP_NOTES;
-				progressTutorialButton.Text = BUTTON_TEXT_NOTES_PRE_SPAWN;
-				SwapNoteSpriteTo(tapNote);
-				tutorialProgressCount++;
-			break;
-			case 2:
-				//Start tap note tutorial interactive section
-				progressTutorialButton.Text = BUTTON_TEXT_NOTES_SPAWNING;
-				HideAllNoteSprites();
-				SpawnSingleNote(new RegNote());
-				checkNoteDetection = true;
-				tutorialProgressCount++;
-			break;
-			// Swipe-Note Cases
-			case 3:
-				displayedText = TUTORIAL_TEXT_SWIPE_NOTES;
-				progressTutorialButton.Text = BUTTON_TEXT_NOTES_PRE_SPAWN;
-				noteController.RemoveAllNotes();
-				SwapNoteSpriteTo(swipeNote);
-				tutorialProgressCount++;
-			break;
-			case 4:
-				// Start swipe note tutorial interactive section
-				progressTutorialButton.Text = BUTTON_TEXT_NOTES_SPAWNING;
-				HideAllNoteSprites();
-				SpawnSingleNote(new SwipeNote());
-				checkNoteDetection = true;
-				tutorialProgressCount++;
-			break;
-			// Hold-Note Cases
-			case 5:
-				displayedText = TUTORIAL_TEXT_HOLD_NOTES;
-				progressTutorialButton.Text = BUTTON_TEXT_NOTES_PRE_SPAWN;
-				noteController.RemoveAllNotes();
-				SwapNoteSpriteTo(holdNote);
-				tutorialProgressCount++;
-			break;
-			case 6:
-				// Start hold note tutorial interactive section
-				progressTutorialButton.Text = BUTTON_TEXT_NOTES_SPAWNING;
-				HideAllNoteSprites();
-				checkNoteDetection = false;
-				SpawnSingleNote(new HoldNote());
-				tutorialProgressCount++;
-			break;
-			// Final Case
-			case 7:
-				displayedText = TUTORIAL_TEXT_FINAL;
-				progressTutorialButton.Text = BUTTON_TEXT_FINAL;
-				noteController.RemoveAllNotes();
-				tutorialProgressCount++;
-			break;	
-			// End Case, finishes tutorial and begins normal game
-			case 8:
-				EndTutorial();
-			break;	
+			// Checks for the current tutorial progress
+			switch (tutorialProgressCount)
+			{
+				// Initial Case
+				case 0:
+					displayedText = TUTORIAL_TEXT_INITIAL;
+					progressTutorialButton.Text = BUTTON_TEXT_INITIAL;
+					tutorialProgressCount++;
+				break;
+				// Tap-Note Cases
+				case 1:
+					displayedText = TUTORIAL_TEXT_TAP_NOTES;
+					progressTutorialButton.Text = BUTTON_TEXT_NOTES_PRE_SPAWN;
+					SwapNoteSpriteTo(tapNote);
+					tutorialProgressCount++;
+				break;
+				case 2:
+					//Start tap note tutorial interactive section
+					progressTutorialButton.Text = BUTTON_TEXT_NOTES_SPAWNING;
+					HideAllNoteSprites();
+					SpawnSingleNote(new RegNote());
+					checkNoteDetection = true;
+					tutorialProgressCount++;
+				break;
+				// Swipe-Note Cases
+				case 3:
+					displayedText = TUTORIAL_TEXT_SWIPE_NOTES;
+					progressTutorialButton.Text = BUTTON_TEXT_NOTES_PRE_SPAWN;
+					noteController.RemoveAllNotes();
+					SwapNoteSpriteTo(swipeNote);
+					tutorialProgressCount++;
+				break;
+				case 4:
+					// Start swipe note tutorial interactive section
+					progressTutorialButton.Text = BUTTON_TEXT_NOTES_SPAWNING;
+					HideAllNoteSprites();
+					SpawnSingleNote(new SwipeNote());
+					checkNoteDetection = true;
+					tutorialProgressCount++;
+				break;
+				// Hold-Note Cases
+				case 5:
+					displayedText = TUTORIAL_TEXT_HOLD_NOTES;
+					progressTutorialButton.Text = BUTTON_TEXT_NOTES_PRE_SPAWN;
+					noteController.RemoveAllNotes();
+					SwapNoteSpriteTo(holdNote);
+					tutorialProgressCount++;
+				break;
+				case 6:
+					// Start hold note tutorial interactive section
+					progressTutorialButton.Text = BUTTON_TEXT_NOTES_SPAWNING;
+					HideAllNoteSprites();
+					checkNoteDetection = false;
+					SpawnSingleNote(new HoldNote());
+					tutorialProgressCount++;
+				break;
+				// Final Case
+				case 7:
+					displayedText = TUTORIAL_TEXT_FINAL;
+					progressTutorialButton.Text = BUTTON_TEXT_FINAL;
+					noteController.RemoveAllNotes();
+					tutorialProgressCount++;
+				break;	
+				// End Case, finishes tutorial and begins normal game
+				case 8:
+					EndTutorial();
+				break;	
+			}
+			RefreshTutorialDisplay();
 		}
-		RefreshTutorialDisplay();
 	}
 	
 	// Helper methods
@@ -238,5 +246,19 @@ public partial class TutorialManager : Node
 		noteController.disableNoteSpawning = false;
 		noteController.StartLevel();
 		QueueFree();
+	}
+
+	public void DisableTutorial()
+	{
+		tutorialEnabled = false;
+	}
+
+	public void EnableTutorial()
+	{
+		tutorialEnabled = true;
+		tutorialProgressCount = 1;
+		RefreshTutorialDisplay();
+		//uiParent.Visible = false;
+		noteController.disableNoteSpawning = true;
 	}
 }
