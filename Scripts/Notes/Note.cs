@@ -140,6 +140,8 @@ public partial class Note : Sprite2D
 
 		}
 		
+		var pointController = GetNode<PointHandling>("../../PointController");
+		pointController.Miss();
 
 		active = false;
 		return -1;

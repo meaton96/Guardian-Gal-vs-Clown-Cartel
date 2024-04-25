@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://itcldvkjfqaq"]
+
+[ext_resource type="Texture2D" uid="uid://ehg0k5shu2au" path="res://Sprites/orange/end/burning_end_1.png" id="1_yda2r"]
+[ext_resource type="Texture2D" uid="uid://jjwc34xdt66h" path="res://Sprites/orange/loops/burning_loop_1.png" id="2_ncdgj"]
+[ext_resource type="Texture2D" uid="uid://cgunv4ksocjsj" path="res://Sprites/orange/start/burning_start_1.png" id="3_b2aqn"]
+
+[sub_resource type="Animation" id="Animation_bp7g2"]
+resource_name = "fire-start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fire-start:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_xh7a4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fire-start:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fire-loop:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fire-end:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1i76j"]
+resource_name = "fire-loop"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fire-loop:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_vbaxi"]
+resource_name = "fire-end"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fire-end:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w3qv3"]
+_data = {
+"RESET": SubResource("Animation_xh7a4"),
+"fire-end": SubResource("Animation_vbaxi"),
+"fire-loop": SubResource("Animation_1i76j"),
+"fire-start": SubResource("Animation_bp7g2")
+}
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(4, 4)
+
+[node name="fire-start" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_b2aqn")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w3qv3")
+}
+autoplay = "fire-loop"
+next/fire-end = &"fire-loop"
+
+[node name="fire-loop" type="Sprite2D" parent="."]
+texture = ExtResource("2_ncdgj")
+hframes = 8
+
+[node name="fire-end" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_yda2r")
+hframes = 4

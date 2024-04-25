@@ -3,7 +3,7 @@ using System;
 
 public partial class Interface : VBoxContainer
 {
-	Label text;
+	//Label text;
 	//Label inputText;
 	Sprite2D perfect;
 	Sprite2D great;
@@ -12,6 +12,7 @@ public partial class Interface : VBoxContainer
 	Sprite2D tooSlow;
 
 	Label scoreText;
+	Label streakText;
 
 	Button pauseButton, resumeButton, restartButton;
 
@@ -23,8 +24,9 @@ public partial class Interface : VBoxContainer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		text = GetNode<Label>("FeedbackLabel");
-		scoreText = GetNode<Label>("ScoreLabel");
+		//text = GetNode<Label>("FeedbackLabel");
+		scoreText = GetNode<Label>("ScoreAnchor/score-anchor/ScoreLabel");
+		streakText = GetNode<Label>("ScoreAnchor/streak-anchor/StreakLabel");
 		pauseMenu = GetNode<Node2D>("PauseMenu");
 		musicPlayer = GetNode<MusicPlayer>("../../MusicPlayer");
 
@@ -149,5 +151,9 @@ public partial class Interface : VBoxContainer
 	public void DisplayScore(int score)
 	{
 		scoreText.Text = score.ToString();
+	}
+	public void DisplayStreak(int streak)
+	{
+		streakText.Text = streak.ToString();
 	}
 }

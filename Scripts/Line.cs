@@ -20,66 +20,6 @@ public partial class Line : Container
 
 	}
 
-	// Returns false if there is no note detected after checking tap
-	// public bool CheckTap()
-	// {
-	// 	foreach (Note n in noteController.existingNotes)
-	// 	{
-	// 		// Check if the note is a regular note, if its active, 
-	// 		//	and if the line is at all within the bounds of the note (AABB, but only one axis)
-	// 		if (n is RegNote && n.CheckNoteHit())
-	// 		{
-	// 			hitNote = n;
-	// 			pointController.HandleScore(n);
-	// 			return true;
-	// 		}
-	// 		else if (n is RegNote && !n.CheckNoteHit())
-	// 		{
-	// 			pointController.Miss();
-	// 		}
-	// 	}
-	// 	return false;
-	// }
-
-	// public bool CheckHold()
-	// {
-	// 	foreach (Note n in noteController.existingNotes)
-	// 	{
-	// 		// Check if the note is a hold note, if its active, 
-	// 		//	and if the line is at all within the bounds of the note (AABB, but only one axis)
-	// 		if (n is HoldNote && n.CheckNoteHit())
-	// 		{
-	// 			hitNote = n;
-	// 			pointController.HandleScore(n);
-	// 			return true;
-	// 		}
-	// 		else if (n is HoldNote && !n.CheckNoteHit())
-	// 		{
-	// 			pointController.Miss();
-	// 		}
-	// 	}
-	// 	return false;
-	// }
-
-	// public bool CheckSwipe()
-	// {
-	// 	foreach (Note n in noteController.existingNotes)
-	// 	{
-	// 		// Check if the note is a swipe note, if its active, 
-	// 		//	and if the line is at all within the bounds of the note (AABB, but only one axis)
-	// 		if (n is SwipeNote && n.CheckNoteHit())
-	// 		{
-	// 			hitNote = n;
-	// 			pointController.HandleScore(n);
-	// 			return true;
-	// 		}
-	// 		else if (n is SwipeNote && !n.CheckNoteHit())
-	// 		{
-	// 			pointController.Miss();
-	// 		}
-	// 	}
-	// 	return false;
-	// }
 
 	/// <summary>
 	/// Checks if there is a note over the line at all
@@ -92,7 +32,7 @@ public partial class Line : Container
 			if (n.CheckNoteHit())
 			{
 				hitNote = n;
-				GD.Print("HIT NOTE DETECTED");
+				//GD.Print("HIT NOTE DETECTED");
 				return true;
 			}
 		}

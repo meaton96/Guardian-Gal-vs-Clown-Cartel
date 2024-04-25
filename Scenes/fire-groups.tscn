@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://c60aceqrux8s4"]
+
+[ext_resource type="Script" path="res://Scripts/FireGroups.cs" id="1_cucx7"]
+[ext_resource type="PackedScene" uid="uid://itcldvkjfqaq" path="res://Prefabs/fire.tscn" id="5_cudep"]
+
+[node name="fire-groups" type="Node2D"]
+script = ExtResource("1_cucx7")
+
+[node name="group1" type="Node2D" parent="."]
+visible = false
+
+[node name="Node2D" parent="group1" instance=ExtResource("5_cudep")]
+position = Vector2(29, 405)
+
+[node name="Node2D2" parent="group1" instance=ExtResource("5_cudep")]
+position = Vector2(249, 419)
+
+[node name="Node2D3" parent="group1" instance=ExtResource("5_cudep")]
+position = Vector2(493, 737)
+
+[node name="group2" type="Node2D" parent="."]
+visible = false
+
+[node name="Node2D" parent="group2" instance=ExtResource("5_cudep")]
+position = Vector2(66, 605)
+
+[node name="Node2D2" parent="group2" instance=ExtResource("5_cudep")]
+position = Vector2(256, 646)
+
+[node name="Node2D3" parent="group2" instance=ExtResource("5_cudep")]
+position = Vector2(48, 942)
+
+[node name="group3" type="Node2D" parent="."]
+visible = false
+
+[node name="Node2D" parent="group3" instance=ExtResource("5_cudep")]
+position = Vector2(340, 820)
+
+[node name="Node2D2" parent="group3" instance=ExtResource("5_cudep")]
+position = Vector2(392, 510)
+
+[node name="Node2D3" parent="group3" instance=ExtResource("5_cudep")]
+position = Vector2(469, 936)
+
+[node name="Node2D4" parent="group3" instance=ExtResource("5_cudep")]
+position = Vector2(136, 346)
+
+[node name="Node2D5" parent="group3" instance=ExtResource("5_cudep")]
+position = Vector2(150, 755)
+
+[node name="Node2D6" parent="group3" instance=ExtResource("5_cudep")]
+position = Vector2(559, 844)
