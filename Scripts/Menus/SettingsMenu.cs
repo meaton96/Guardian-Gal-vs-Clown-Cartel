@@ -38,6 +38,5 @@ public partial class SettingsMenu : Control
 	private void CloseSettings()
 	{
 		this.Visible = false;
-		mainMenu.Visible = true;
 	}
 }

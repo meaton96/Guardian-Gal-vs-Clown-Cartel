@@ -166,7 +166,7 @@ public partial class NoteController : Container
 				
 
 			ySpawnPos += spawningUp ? 30 : -30;
-			if (ySpawnPos >= GetViewportRect().Size.Y - 100 || ySpawnPos <= 100)
+			if (ySpawnPos >= GetViewportRect().Size.Y - 100 || ySpawnPos <= 300)
 			{
 				// start decreasing spawnPosY
 				spawningUp = !spawningUp;

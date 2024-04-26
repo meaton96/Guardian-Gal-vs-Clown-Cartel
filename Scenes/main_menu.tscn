@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjv1m2i2tragg"]
+[gd_scene load_steps=11 format=3 uid="uid://bjv1m2i2tragg"]
 
-[ext_resource type="Texture2D" uid="uid://4kti6im0hcve" path="res://Sprites/pauseMenu.png" id="1_b8xud"]
 [ext_resource type="Script" path="res://Scripts/Menus/MainMenu.cs" id="1_n7vkb"]
 [ext_resource type="Theme" uid="uid://cxhic8ysbrcn3" path="res://Themes/button_theme.tres" id="2_otvsk"]
-[ext_resource type="Texture2D" uid="uid://bjvelaud8mj5e" path="res://Sprites/pauseButton.PNG" id="3_hk7u2"]
 [ext_resource type="Texture2D" uid="uid://1hrc3xrnfxb8" path="res://Sprites/playButton.PNG" id="4_12d3o"]
 [ext_resource type="Texture2D" uid="uid://da78ys7uah76t" path="res://Sprites/settingsButton.PNG" id="5_tprrc"]
+[ext_resource type="Texture2D" uid="uid://46f0gupodwss" path="res://Sprites/tutorialButton.PNG" id="6_tqtf8"]
+[ext_resource type="Script" path="res://Scripts/AnimateBG.cs" id="7_6iin1"]
 [ext_resource type="Texture2D" uid="uid://b6s58cvsjix5a" path="res://Sprites/logo.png" id="7_66qa5"]
+[ext_resource type="Texture2D" uid="uid://cuhebrs22ufl1" path="res://Sprites/PGY.png" id="8_gffny"]
+[ext_resource type="Texture2D" uid="uid://be7k2cljr3mla" path="res://Sprites/YPG.png" id="9_3reqa"]
+[ext_resource type="Texture2D" uid="uid://b76c1rpf7lor0" path="res://Sprites/GYP.png" id="10_v28ar"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,17 +20,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n7vkb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1186, 565)
-scale = Vector2(6.44, 2)
-texture = ExtResource("1_b8xud")
-
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1050.0
-offset_top = 500.0
+offset_top = 487.0
 offset_right = 1122.0
-offset_bottom = 540.0
+offset_bottom = 527.0
 scale = Vector2(5.34984, 5.34984)
 theme = ExtResource("2_otvsk")
 icon = ExtResource("4_12d3o")
@@ -36,9 +34,9 @@ flat = true
 [node name="SettingsButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1050.0
-offset_top = 663.0
+offset_top = 841.0
 offset_right = 1122.0
-offset_bottom = 703.0
+offset_bottom = 881.0
 scale = Vector2(5.34984, 5.34984)
 theme = ExtResource("2_otvsk")
 theme_type_variation = &"FlatButton"
@@ -47,17 +45,38 @@ flat = true
 
 [node name="TutorialButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1050.0
-offset_top = 828.0
-offset_right = 1122.0
-offset_bottom = 868.0
+offset_left = 974.0
+offset_top = 664.0
+offset_right = 1070.0
+offset_bottom = 704.0
 scale = Vector2(5.34984, 5.34984)
 theme = ExtResource("2_otvsk")
 theme_type_variation = &"FlatButton"
-icon = ExtResource("3_hk7u2")
+icon = ExtResource("6_tqtf8")
 flat = true
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(1200, 215)
 scale = Vector2(3.98409, 3.98409)
 texture = ExtResource("7_66qa5")
+
+[node name="AnimatedBG" type="Sprite2D" parent="."]
+script = ExtResource("7_6iin1")
+
+[node name="PGY" type="Sprite2D" parent="AnimatedBG"]
+z_index = -1
+position = Vector2(1166, 604)
+scale = Vector2(3.77417, 3.77417)
+texture = ExtResource("8_gffny")
+
+[node name="YPG" type="Sprite2D" parent="AnimatedBG"]
+z_index = -1
+position = Vector2(1166, 604)
+scale = Vector2(3.77417, 3.77417)
+texture = ExtResource("9_3reqa")
+
+[node name="GYP" type="Sprite2D" parent="AnimatedBG"]
+z_index = -1
+position = Vector2(1166, 604)
+scale = Vector2(3.77417, 3.77417)
+texture = ExtResource("10_v28ar")

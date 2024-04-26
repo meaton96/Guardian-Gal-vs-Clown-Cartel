@@ -34,6 +34,7 @@ public partial class MainMenu : Control
 
 		tutorialScript = GetNode<TutorialManager>("../../Game/Tutorial");;
 		tutorial = GetNode<Node2D>("../../Game/Tutorial");
+		tutorial.Visible = false;
 
 		settingsMenu = GetNode<Control>("../SettingsMenu");
 		settingsMenu.Visible = false;
@@ -62,31 +63,33 @@ public partial class MainMenu : Control
 
 	private void Play()
 	{
-		GD.Print("Playing!");
 		this.Visible = false;
 		game.Visible = true;
 		settingsMenu.Visible = false;
-		tutorial.Visible = false;
-		tutorialScript.DisableTutorial();
 		noteController.disableNoteSpawning = false;
 		noteController.StartLevel();
 	}
 	private void OpenSettings()
 	{
-		GD.Print("Settings!");
-		this.Visible = false;
 		settingsMenu.Visible = true;
-		tutorial.Visible = false;
-		tutorialScript.DisableTutorial();
 	}
 	private void PlayTutorial()
 	{
-		GD.Print("Tutorial!");
 		this.Visible = false;
 		settingsMenu.Visible = false;
 		game.Visible = true;
 		tutorial.Visible = true;
 		tutorialScript.progressTutorialButton.Disabled = false;
 		tutorialScript.EnableTutorial();
+	}
+
+	public void OpenMainMenu()
+	{
+		Visible = true;
+		game.Visible = false;
+		settingsMenu.Visible = false;
+		tutorial.Visible = false;
+		tutorialScript.DisableTutorial();
+		noteController.disableNoteSpawning = true;
 	}
 }

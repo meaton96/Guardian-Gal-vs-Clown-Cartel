@@ -14,10 +14,11 @@ public partial class Interface : VBoxContainer
 	Label scoreText;
 	Label streakText;
 
-	Button pauseButton, resumeButton, restartButton;
+	Button pauseButton, resumeButton, restartButton, backButton;
 
 	MusicPlayer musicPlayer;
  	NoteController noteController;
+	MainMenu mainMenu;
 
 	Node2D pauseMenu;
 	//Label platformLabel;
@@ -29,6 +30,7 @@ public partial class Interface : VBoxContainer
 		streakText = GetNode<Label>("ScoreAnchor/streak-anchor/StreakLabel");
 		pauseMenu = GetNode<Node2D>("PauseMenu");
 		musicPlayer = GetNode<MusicPlayer>("../../MusicPlayer");
+		mainMenu = GetNode<MainMenu>("../../../Menus/MainMenu");
 
 		noteController = GetNode<NoteController>("../../NoteController");
 
@@ -59,8 +61,8 @@ public partial class Interface : VBoxContainer
 		restartButton = GetNode<Button>("PauseMenu/PauseContainer/RestartButton");
 		restartButton.Pressed += RestartSong;
 
-
-
+		backButton = GetNode<Button>("PauseMenu/PauseContainer/BackButton");
+		//backButton.Pressed += mainMenu.OpenMainMenu;
 	}
 	public void RestartSong()
 	{
@@ -98,7 +100,7 @@ public partial class Interface : VBoxContainer
 	// {
 	// 	//inputText.Text = "";
 	// }
-
+	
 	public void DisplayMiss()
 	{
 		perfect.Visible = false;

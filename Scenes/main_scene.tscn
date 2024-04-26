@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://taqbh1h64sn1" path="res://Sprites/clown.png" id="16_p77xy"]
 [ext_resource type="PackedScene" uid="uid://n2bi3lw4hv80" path="res://Scenes/tutorial.tscn" id="17_1g44b"]
 [ext_resource type="Texture2D" uid="uid://d3krjmpettfex" path="res://Sprites/car.png" id="20_pvidr"]
-[ext_resource type="PackedScene" uid="uid://c60aceqrux8s4" path="res://Scenes/fire-groups.tscn" id="20_snt73"]
+[ext_resource type="PackedScene" path="res://Scenes/fire-groups.tscn" id="20_snt73"]
 [ext_resource type="PackedScene" uid="uid://cq6085eipti4c" path="res://Scenes/settings_menu.tscn" id="21_nnr4o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jhbm"]
@@ -262,7 +262,7 @@ texture = ExtResource("16_bon7a")
 
 [node name="Player" type="CharacterBody2D" parent="Game"]
 z_index = 10
-position = Vector2(1140, 737)
+position = Vector2(1140, 755)
 script = ExtResource("1_nbgm6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/Player"]
@@ -314,9 +314,9 @@ position = Vector2(-2, 4)
 [node name="Tutorial" parent="Game" instance=ExtResource("17_1g44b")]
 
 [node name="Menus" type="Node2D" parent="."]
-visible = false
 
 [node name="SettingsMenu" parent="Menus" instance=ExtResource("21_nnr4o")]
+z_index = 5
 offset_top = 2.0
 offset_bottom = 2.0
 
